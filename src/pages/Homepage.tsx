@@ -3,6 +3,7 @@ import Navigation from "@/components/layout/Navigation";
 import SearchFilters from "@/components/search/SearchFilters";
 import OpportunityCard from "@/components/opportunities/OpportunityCard";
 import FeaturedOpportunities from "@/components/opportunities/FeaturedOpportunities";
+import ExploreCategories from "@/components/categories/ExploreCategories";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Users, Award } from "lucide-react";
 
@@ -47,10 +48,32 @@ const mockOpportunities = [
     description: "Поддршка за проекти кои промовираат одржлива животна средина и зелени технологии.",
     budget: "€15,000 - €75,000",
     deadline: "10 февруари 2024",
-    type: "Приватно Финансирање",
-    source: "Swiss Foundation",
+    type: "Кредити",
+    source: "ЕБРР",
     status: "closed" as const,
     sector: "Животна Средина"
+  },
+  {
+    id: "5",
+    title: "Јавна набавка за IT услуги",
+    description: "Тендер за развој на дигитална платформа за електронски услуги на граѓаните.",
+    budget: "€200,000 - €500,000",
+    deadline: "25 март 2024",
+    type: "Тендери",
+    source: "Министерство за информатичко општество",
+    status: "open" as const,
+    sector: "Технологија"
+  },
+  {
+    id: "6",
+    title: "Seed инвестиции за стартапи",
+    description: "Рано-фазни инвестиции за технолошки стартапи во регионот на Балканот.",
+    budget: "€25,000 - €250,000",
+    deadline: "15 мај 2024",
+    type: "Инвеститори",
+    source: "South Central Ventures",
+    status: "open" as const,
+    sector: "Технологија"
   }
 ];
 
@@ -124,6 +147,12 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Explore Categories */}
+      <ExploreCategories 
+        onCategorySelect={setSelectedType}
+        selectedType={selectedType}
+      />
 
       {/* Search & Filters */}
       <section className="py-8 px-4">
