@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import SearchFilters from "@/components/search/SearchFilters";
 import OpportunityCard from "@/components/opportunities/OpportunityCard";
+import FeaturedOpportunities from "@/components/opportunities/FeaturedOpportunities";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Users, Award } from "lucide-react";
 
@@ -173,6 +174,9 @@ const Homepage = () => {
           )}
         </div>
       </section>
+
+      {/* Featured Opportunities */}
+      <FeaturedOpportunities />
     </div>
   );
 };
