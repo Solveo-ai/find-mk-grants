@@ -1,4 +1,4 @@
-import { Building2, Briefcase, FileText, TrendingUp, Banknote } from "lucide-react";
+import { Briefcase, FileText, TrendingUp, Banknote } from "lucide-react";
 
 interface Category {
   id: string;
@@ -10,14 +10,6 @@ interface Category {
 }
 
 const categories: Category[] = [
-  {
-    id: "eu-funds",
-    title: "ЕУ Фондови",
-    description: "Хоризонт Европа, ИПА, Еразмус+ и други европски програми",
-    icon: Building2,
-    count: 45,
-    type: "ЕУ Фондови"
-  },
   {
     id: "public-grants",
     title: "Јавни Грантови", 
@@ -70,7 +62,7 @@ const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategories
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category) => {
             const Icon = category.icon;
             const isSelected = selectedType === category.type;
