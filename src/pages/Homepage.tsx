@@ -81,15 +81,11 @@ const Homepage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [selectedSector, setSelectedSector] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState("");
-  const [selectedYear, setSelectedYear] = useState("");
 
   const clearFilters = () => {
     setSearchQuery("");
     setSelectedType("");
     setSelectedSector("");
-    setSelectedStatus("");
-    setSelectedYear("");
   };
 
   // Filter opportunities based on search and filters
@@ -100,9 +96,8 @@ const Homepage = () => {
     
     const matchesType = selectedType === "" || opportunity.type === selectedType;
     const matchesSector = selectedSector === "" || opportunity.sector === selectedSector;
-    const matchesStatus = selectedStatus === "" || opportunity.status === selectedStatus;
     
-    return matchesSearch && matchesType && matchesSector && matchesStatus;
+    return matchesSearch && matchesType && matchesSector;
   });
 
   return (
@@ -164,10 +159,6 @@ const Homepage = () => {
             onTypeChange={setSelectedType}
             selectedSector={selectedSector}
             onSectorChange={setSelectedSector}
-            selectedStatus={selectedStatus}
-            onStatusChange={setSelectedStatus}
-            selectedYear={selectedYear}
-            onYearChange={setSelectedYear}
             onClearFilters={clearFilters}
           />
         </div>

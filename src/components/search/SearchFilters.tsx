@@ -11,10 +11,6 @@ interface SearchFiltersProps {
   onTypeChange: (value: string) => void;
   selectedSector: string;
   onSectorChange: (value: string) => void;
-  selectedStatus: string;
-  onStatusChange: (value: string) => void;
-  selectedYear: string;
-  onYearChange: (value: string) => void;
   onClearFilters: () => void;
 }
 
@@ -25,13 +21,9 @@ const SearchFilters = ({
   onTypeChange,
   selectedSector,
   onSectorChange,
-  selectedStatus,
-  onStatusChange,
-  selectedYear,
-  onYearChange,
   onClearFilters,
 }: SearchFiltersProps) => {
-  const hasActiveFilters = selectedType || selectedSector || selectedStatus || selectedYear || searchQuery;
+  const hasActiveFilters = selectedType || selectedSector || searchQuery;
 
   return (
     <Card className="bg-gradient-hero border-0 shadow-md">
@@ -48,7 +40,7 @@ const SearchFilters = ({
         </div>
 
         {/* Filters */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <Select value={selectedType} onValueChange={onTypeChange}>
             <SelectTrigger className="bg-background/90">
               <SelectValue placeholder="Тип на можност" />
@@ -75,28 +67,6 @@ const SearchFilters = ({
               <SelectItem value="culture">Култура</SelectItem>
               <SelectItem value="tourism">Туризам</SelectItem>
               <SelectItem value="sme">МСП</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select value={selectedStatus} onValueChange={onStatusChange}>
-            <SelectTrigger className="bg-background/90">
-              <SelectValue placeholder="Статус" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="open">Отворени</SelectItem>
-              <SelectItem value="upcoming">Претстојни</SelectItem>
-              <SelectItem value="closed">Затворени</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select value={selectedYear} onValueChange={onYearChange}>
-            <SelectTrigger className="bg-background/90">
-              <SelectValue placeholder="Година" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="2024">2024</SelectItem>
-              <SelectItem value="2025">2025</SelectItem>
-              <SelectItem value="2023">2023</SelectItem>
             </SelectContent>
           </Select>
         </div>
