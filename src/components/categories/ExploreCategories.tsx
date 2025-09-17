@@ -12,7 +12,7 @@ interface Category {
 const categories: Category[] = [
   {
     id: "public-grants",
-    title: "Јавни Грантови", 
+    title: "Грантови", 
     description: "Државни фондови, министерски програми и локални иницијативи",
     icon: Briefcase,
     count: 32,
