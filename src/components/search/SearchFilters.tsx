@@ -47,7 +47,7 @@ const SearchFilters = ({
             <SelectTrigger className="bg-background/90">
               <SelectValue placeholder="Тип на можност" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="w-full">
               <SelectItem value="public-grants">Јавни Грантови</SelectItem>
               <SelectItem value="tenders">Тендери</SelectItem>
               <SelectItem value="private-funding">Приватно Финансирање</SelectItem>
@@ -68,7 +68,7 @@ const SearchFilters = ({
                 <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-full p-0" align="start">
+            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
               <div className="p-3">
                 <div className="space-y-2">
                   {[
