@@ -59,7 +59,7 @@ const SearchFilters = ({
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full justify-between bg-background/90 h-10"
+                className="w-full justify-between bg-background/90 h-10 font-normal"
               >
                 {selectedSector.length > 0 
                   ? `${selectedSector.length} избрани` 
