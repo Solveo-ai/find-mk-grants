@@ -45,8 +45,8 @@ const categories: Category[] = [
 ];
 
 interface ExploreCategoriesProps {
-  onCategorySelect: (type: string) => void;
-  selectedType: string;
+  onCategorySelect: (type: string[]) => void;
+  selectedType: string[];
 }
 
 const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategoriesProps) => {
@@ -65,12 +65,18 @@ const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategories
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category) => {
             const Icon = category.icon;
-            const isSelected = selectedType === category.type;
+            const isSelected = selectedType.includes(category.type);
             
             return (
               <div
                 key={category.id}
-                onClick={() => onCategorySelect(category.type)}
+                onClick={() => {
+                  if (selectedType.includes(category.type)) {
+                    onCategorySelect(selectedType.filter(t => t !== category.type));
+                  } else {
+                    onCategorySelect([...selectedType, category.type]);
+                  }
+                }}
                 className={`
                   group cursor-pointer rounded-xl p-6 transition-all duration-300 hover-scale
                   ${isSelected 
@@ -135,10 +141,10 @@ const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategories
         </div>
 
         {/* Clear Filter Button */}
-        {selectedType && (
+        {selectedType.length > 0 && (
           <div className="text-center mt-8 animate-fade-in">
             <button
-              onClick={() => onCategorySelect("")}
+              onClick={() => onCategorySelect([])}
               className="text-caption text-muted-foreground hover:text-primary transition-colors underline"
             >
               Прикажи ги сите категории

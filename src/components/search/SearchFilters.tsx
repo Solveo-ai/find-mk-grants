@@ -9,8 +9,8 @@ import { Search, Filter, X, ChevronDown } from "lucide-react";
 interface SearchFiltersProps {
   searchQuery: string;
   onSearchChange: (value: string) => void;
-  selectedType: string;
-  onTypeChange: (value: string) => void;
+  selectedType: string[];
+  onTypeChange: (value: string[]) => void;
   selectedSector: string[];
   onSectorChange: (value: string[]) => void;
   onClearFilters: () => void;
@@ -25,7 +25,7 @@ const SearchFilters = ({
   onSectorChange,
   onClearFilters,
 }: SearchFiltersProps) => {
-  const hasActiveFilters = selectedType || selectedSector.length > 0 || searchQuery;
+  const hasActiveFilters = selectedType.length > 0 || selectedSector.length > 0 || searchQuery;
 
   return (
     <Card className="bg-gradient-hero border-0 shadow-md">
@@ -43,17 +43,52 @@ const SearchFilters = ({
 
         {/* Filters */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <Select value={selectedType} onValueChange={onTypeChange}>
-            <SelectTrigger className="bg-background/90">
-              <SelectValue placeholder="Тип на можност" />
-            </SelectTrigger>
-            <SelectContent className="w-full">
-              <SelectItem value="public-grants">Јавни Грантови</SelectItem>
-              <SelectItem value="tenders">Тендери</SelectItem>
-              <SelectItem value="private-funding">Приватно Финансирање</SelectItem>
-              <SelectItem value="loans">Кредити</SelectItem>
-            </SelectContent>
-          </Select>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-between bg-background/90 h-10 font-normal"
+              >
+                {selectedType.length > 0 
+                  ? `${selectedType.length} избрани` 
+                  : "Тип на можност"
+                }
+                <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
+              <div className="p-3">
+                <div className="space-y-2">
+                  {[
+                    { value: "grants", label: "Грантови" },
+                    { value: "tenders", label: "Тендери" },
+                    { value: "private-funding", label: "Приватно Финансирање" },
+                    { value: "loans", label: "Кредити" }
+                  ].map((type) => (
+                    <div key={type.value} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={type.value}
+                        checked={selectedType.includes(type.value)}
+                        onCheckedChange={(checked) => {
+                          if (checked) {
+                            onTypeChange([...selectedType, type.value]);
+                          } else {
+                            onTypeChange(selectedType.filter(t => t !== type.value));
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor={type.value}
+                        className="text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                      >
+                        {type.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
 
           <Popover>
             <PopoverTrigger asChild>

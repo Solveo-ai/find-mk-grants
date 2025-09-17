@@ -79,12 +79,12 @@ const mockOpportunities = [
 
 const Homepage = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType, setSelectedType] = useState<string[]>([]);
   const [selectedSector, setSelectedSector] = useState<string[]>([]);
 
   const clearFilters = () => {
     setSearchQuery("");
-    setSelectedType("");
+    setSelectedType([]);
     setSelectedSector([]);
   };
 
@@ -94,7 +94,7 @@ const Homepage = () => {
       opportunity.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       opportunity.description.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesType = selectedType === "" || opportunity.type === selectedType;
+    const matchesType = selectedType.length === 0 || selectedType.includes(opportunity.type);
     const matchesSector = selectedSector.length === 0 || selectedSector.includes(opportunity.sector);
     
     return matchesSearch && matchesType && matchesSector;
