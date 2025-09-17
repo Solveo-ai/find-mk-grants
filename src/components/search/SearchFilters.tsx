@@ -2,15 +2,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, Filter, X } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Search, Filter, X, ChevronDown } from "lucide-react";
 
 interface SearchFiltersProps {
   searchQuery: string;
   onSearchChange: (value: string) => void;
   selectedType: string;
   onTypeChange: (value: string) => void;
-  selectedSector: string;
-  onSectorChange: (value: string) => void;
+  selectedSector: string[];
+  onSectorChange: (value: string[]) => void;
   onClearFilters: () => void;
 }
 
@@ -23,7 +25,7 @@ const SearchFilters = ({
   onSectorChange,
   onClearFilters,
 }: SearchFiltersProps) => {
-  const hasActiveFilters = selectedType || selectedSector || searchQuery;
+  const hasActiveFilters = selectedType || selectedSector.length > 0 || searchQuery;
 
   return (
     <Card className="bg-gradient-hero border-0 shadow-md">
@@ -46,7 +48,6 @@ const SearchFilters = ({
               <SelectValue placeholder="Тип на можност" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="eu-funds">ЕУ Фондови</SelectItem>
               <SelectItem value="public-grants">Јавни Грантови</SelectItem>
               <SelectItem value="tenders">Тендери</SelectItem>
               <SelectItem value="private-funding">Приватно Финансирање</SelectItem>
@@ -54,21 +55,57 @@ const SearchFilters = ({
             </SelectContent>
           </Select>
 
-          <Select value={selectedSector} onValueChange={onSectorChange}>
-            <SelectTrigger className="bg-background/90">
-              <SelectValue placeholder="Сектор/Тема" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="agriculture">Земјоделство</SelectItem>
-              <SelectItem value="education">Образование</SelectItem>
-              <SelectItem value="health">Здравство</SelectItem>
-              <SelectItem value="environment">Животна Средина</SelectItem>
-              <SelectItem value="technology">Технологија</SelectItem>
-              <SelectItem value="culture">Култура</SelectItem>
-              <SelectItem value="tourism">Туризам</SelectItem>
-              <SelectItem value="sme">МСП</SelectItem>
-            </SelectContent>
-          </Select>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-between bg-background/90 h-10"
+              >
+                {selectedSector.length > 0 
+                  ? `${selectedSector.length} избрани` 
+                  : "Сектор/Тема"
+                }
+                <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-full p-0" align="start">
+              <div className="p-3">
+                <div className="space-y-2">
+                  {[
+                    { value: "eu-funds", label: "ЕУ Фондови" },
+                    { value: "agriculture", label: "Земјоделство" },
+                    { value: "education", label: "Образование" },
+                    { value: "health", label: "Здравство" },
+                    { value: "environment", label: "Животна Средина" },
+                    { value: "technology", label: "Технологија" },
+                    { value: "culture", label: "Култура" },
+                    { value: "tourism", label: "Туризам" },
+                    { value: "sme", label: "МСП" }
+                  ].map((sector) => (
+                    <div key={sector.value} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={sector.value}
+                        checked={selectedSector.includes(sector.value)}
+                        onCheckedChange={(checked) => {
+                          if (checked) {
+                            onSectorChange([...selectedSector, sector.value]);
+                          } else {
+                            onSectorChange(selectedSector.filter(s => s !== sector.value));
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor={sector.value}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                      >
+                        {sector.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
 
         {/* Clear Filters */}
