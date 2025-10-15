@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -121,14 +122,17 @@ export default {
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
-    function({ addUtilities }) {
-      const newUtilities = {
+    tailwindcssAnimate,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function({ addUtilities }: any) {
+      addUtilities({
         '.hover-scale': {
-          '@apply transition-transform duration-200 hover:scale-105': {},
+          transition: 'transform 0.2s ease',
+          '&:hover': {
+            transform: 'scale(1.05)',
+          },
         },
-      }
-      addUtilities(newUtilities)
+      });
     }
   ],
 } satisfies Config;

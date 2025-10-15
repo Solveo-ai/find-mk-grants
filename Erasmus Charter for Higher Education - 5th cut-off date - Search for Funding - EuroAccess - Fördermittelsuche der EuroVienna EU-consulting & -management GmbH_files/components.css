@@ -1,0 +1,18 @@
+/* a very basic css file that only includes styles that are similar on all components (for example error view and loading view) */
+
+.componentError { min-width: 40px; min-height: 40px;position: relative; }
+
+.componentIcon { display: inline-block; vertical-align: middle; width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; margin: -20px 0 0 -20px; border-radius: 4px; background-color: #ED6B00;z-index: 1; }
+.componentIcon-error { background-color: #F8333C; }
+.componentIcon-error:before { content: '!'; width: 28px; height: 28px; border: 2px solid #FFFFFF; border-radius: 50%; position: absolute; top: 4px; left: 4px; font-size: 20px; line-height: 28px; text-align: center; color: #FFFFFF; font-family: sans-serif,arial,helvetica,clean; }
+
+
+.componentLoading, .componentLoadingFailed { min-height: 40px; min-width: 40px; pointer-events:none; }
+.componentLoading { cursor: wait; }
+.componentLoading .componentIcon, .componentLoadingFailed .componentIcon { pointer-events:all; }
+@-moz-keyframes loadspin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes loadspin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes loadspin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.componentIcon-load:before { content: ''; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0); border-radius: 50%; position: absolute; top: 9px; left: 9px; border-top-color: #FFFFFF; -webkit-animation:loadspin 1s linear infinite; -moz-animation:loadspin 1s linear infinite; animation:loadspin 1s linear infinite; }
+.componentIcon-load:after { content: ''; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0); border-radius: 50%; position: absolute; top: 9px; left: 9px; border-top-color: #FFFFFF; -webkit-animation:loadspin 1.2s linear infinite; -moz-animation:loadspin 1.2s linear infinite; animation:loadspin 1.2s linear infinite; }
+

@@ -1,0 +1,278 @@
+/*
+Standard Formular CSS
+
+@site       	wien-ticket.at IFRAME
+@author     	Sindre Wimberger // wimberger@echonet.at
+@copyright  	echonet communication gmbh
+							schottenfeldgasse 24, 1070 vienna
+							http://www.echonet.at
+@date       	11.04.2011
+							
+@sections   	=formulare
+								=layout
+								=error
+								=label
+								=elements
+								=standard
+							=buttons
+							=custom
+								=size
+								=color
+
+@section =formulare
+-------------------------------------------------------------------*/
+/* ----- +layout ----- */
+form {clear: both;padding:0;width:100%; max-width: 670px; margin-left: -2.5px}
+fieldset {border:0 none;margin:0 0 1em;padding:0.5em 0;position:relative;text-align: left;}
+fieldset.p0 {padding:0;}
+fieldset.control { }
+legend {font-weight:bold;font-size:1.1em;padding:0;margin: 20px 0 0 0;}
+form ol, form ul {list-style-type:none;margin:0;overflow:hidden;padding:0;}
+form ol li, form ul li {
+	background-image:none;
+	list-style-image:none;
+	width:100%;
+	max-width: 665px;
+	position: relative;
+	margin-left: 2.5px
+}
+form li ol, form li ul {/*float:left;*/padding:0;}
+form ol li li, form ul li li {list-style-image:none;padding:1px 0;}
+form ol div label, form ul div label {display:block;float:none;margin:0;width:auto;font-family: 'Traulha',serif; }
+form .optgroup, form .optgroup li {width:auto;}
+form .optgroup {float:none;}
+form .optgroup li {margin-right:10px;}
+form li {margin-bottom: 10px; float: left}
+
+	/* ----- +gmap ----- */
+	/*#GDform { display: none; }*/
+
+/* ----- +error ----- */
+form .error-msg {border:1px solid;clear:both;margin:.69em 0;padding:.5em 1em;}
+form .error-msg legend {border:1px solid;padding:.2em .5em;}
+form .error-msg ul { overflow:visible;}
+form .error-msg ul li {clear:both;float: none;list-style-image:none;padding:2px 0;width:auto;margin-bottom: 0}
+form .error-msg label {
+	float:none;
+	display:inline;
+	margin:0;
+	padding:0;
+	width:auto;
+	font-size: var(--14px);
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #D05C5C;
+}
+form li.error label:not(.checktxt):not(.radiotxt):not(.labelcheckradio) { width: 100%; }
+form li.error label:not(.checktxt):not(.radiotxt):after { content: 'Pflichtfeld';  position: absolute;right: 0;font-family:'PPAgrandir'; font-size:0.8571428571428571em; }
+form li.error label.labelcheckradio:after { right: auto;left: 0;top: 34px; }
+form li.error input, form li.error select, form li.error textarea {font-weight:normal;}
+
+/* ----- +label ----- */
+form small {display:block;font-size:0.85em;}
+label, form ol div, form ul div {float:left;line-height:1.3;margin:5px 20px 5px 0;vertical-align:top }
+label{color: #3E3E3E; margin-left: 12px}
+label[for=login-password]{position: relative; width: 100%}
+label[for=login-password] a{
+	position: absolute;
+	right: 30px;
+	font-size: var(--11px);
+	text-decoration: underline;
+	top: 4px;
+}
+form .checktxt, form .radiotxt, form .widetxt { margin-right:0;}
+form fieldset .autotxt {width:auto;}
+form label.req {display:block;float:none;font-weight:bold;margin:0 0 .69em;width:100%;}
+
+/* ----- +elements ----- */
+input, select {
+	border: 1px solid #CECECE;
+	border-radius: 67px;
+	float:left;
+	font-size: var(--14px) !important; 
+	padding: 0 16px !important;
+	width: 100%;
+	background-color: transparent;
+	border-color: #CECECE;
+	height: 40px;
+	outline: none;
+	
+}
+textarea{
+	border: 1px solid #CECECE;
+	border-radius: 18px;
+	font-size: var(--14px); 
+	padding: 20px 25px;
+	width: 100%;
+	background-color: transparent;
+	border-color: #CECECE;
+	min-height: 230px;
+	max-width: 665px;
+	outline: none
+}
+textarea:focus:required:invalid, input:focus:required:invalid {border: 1px solid #CC595E;}
+.form-li{width: min(100%,500px); padding: 0 2px}
+.form-li select, .form-li input{margin-bottom: 10px}
+input[type=text],input[type=email],input[type=url],input[type=date],input[type=tel],input[type=number], select { font-weight: bold;  position: relative}
+.clearinput{
+	position: absolute;
+	right: 2%;
+	top: -40px;
+	transition: tran;
+	cursor: pointer;
+	margin: 0;
+}
+.clearinput p{
+	font-size: var(--12px);
+	text-decoration: underline;
+	text-transform: none;
+	font-weight: normal;
+	text-align: right
+}
+.clearinput span{
+	display: none;
+	width: 10px;
+	height: 2px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+}
+.clearinput span:first-of-type{transform: rotate(45deg)}
+.clearinput span:last-of-type{transform: rotate(-45deg)}
+select {-webkit-appearance: none !important;-moz-appearance: none !important;appearance: none !important;cursor: pointer;  }
+select::-ms-expand { display: none; } /* fix for IE <= 11 */
+select::after{
+	background-image: url("/_assets/css/icon/down_arrow_icon.svg");
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.select-icon {
+  position: absolute;
+    top: 37px;
+    right: 15px;
+    width: 30px;
+    height: 27px;
+    pointer-events: none;
+    padding-left: 5px;
+    margin: 0;
+	background-image: url("/_assets/css/icon/arrow_icon.svg");
+	filter: invert(21%) sepia(2%) saturate(0%) hue-rotate(25deg) brightness(97%) contrast(88%);
+	background-size: 50%;
+}
+/*select:focus:active:hover + .select-icon { transform: rotate(180deg); }*/
+
+option {padding-left: 0.4em;} /* resets rendering error */
+textarea {vertical-align:top;resize:none;}
+input.button {text-align:center;}
+input.button:focus {text-decoration:underline;}
+input.img {border:0 none;padding:0;width: auto;}
+input.noborder {background-color: transparent;border: 0 none;margin-bottom:.7em;margin-right:5px;padding:0;width:auto;}
+input.checkbox, input.radio {background-color: transparent;border: 0 none;margin:7px 5px 0 0;padding:0;width:auto;}
+label, input[type=checkbox], input[type=radio], input[type=submit], button {cursor:pointer;}
+input[type='text'],input[type='password']{cursor:text;}
+input[type='hidden']{display:none;}
+input[disabled='disabled'] {background-color:#DADADD; cursor:auto;}
+input[type="submit"]::-moz-focus-inner {border:0;} /* http://christophzillgens.com/de/articles/input-und-button-gleich-hoch */
+input[type="checkbox"], input[type="radio"] { display: none; }
+label.checktxt, label.radiotxt { position: relative;padding: 2px 5px 3px 25px;display: inline-block;float: none;margin: 0 0 5px 0;font-weight: normal; }
+input[type="radio"]:checked + label.radiotxt::before { background-image: url(../content/default/radio.svg); background-color:  var(--ea-blue);}
+input[type="checkbox"]:checked + label.checktxt::before { background-image: url("/_assets/css/icon/check_white.svg"); background-color:  var(--ea-blue); }
+input[type="radio"]:checked + label.radiotxt, input[type="checkbox"]:checked + label.checktxt { }
+label.checktxt::before, label.radiotxt::before {
+  content: "";
+  color: #fff;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-repeat: no-repeat;
+    background-color: transparent;
+  border: 2px solid #3E3E3E;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  margin: 0px 10px -7px -25px;
+    background-position: center;
+    background-size: 14px auto;
+}
+label.radiotxt::before { border-radius: 50%; }
+
+
+/* ----- +standard ----- */
+form .wauto {width:auto;}
+form .spacer {display:block;margin:.2em 5px 0 0;float:left; text-align:center;}
+form .short {margin-right:10px;width:100px;}
+form img.captcha {float:left;margin-right:.5em;}
+
+/* @section =buttons mit Hintergrundbild
+-------------------------------------------------------------------*/
+a.button, a.button:link, a.button:visited, a.button:focus, a.button:hover, a.button:active, button {
+	cursor:pointer;
+	display:inline-block;
+	font-size:1em;
+	font-weight:bold;
+	text-transform: uppercase;
+	color: black;
+	margin:0;
+	padding:10px 20px;
+	text-align:center;
+	text-decoration:none !important;
+	background-color: var(--button-yellow);
+	border: none;
+	border-radius: 67px;
+	width: 330px;
+	max-width: 95%
+} 
+button {overflow: visible; } /* http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+a.button:focus, a.button:hover, a.button:active { text-decoration:underline;}
+button::-moz-focus-inner {border: none;}
+button.auto, a.auto:link, a.auto:visited, a.auto:focus, a.auto:hover, a.auto:active {width:auto;}
+button.fright, a.fright:link, a.fright:visited, a.fright:focus, a.fright:hover, a.fright:active {float:right;}
+a.button.secondary-btn, button.secondary-btn{
+	background-color: var(--ea-blue);
+	color: white;
+}
+a.button.secondary-btn:hover, button.secondary-btn:hover{background-color:#5879A5 }
+
+/* ----- +size ----- */
+label, form ol div, form ul div {overflow:hidden;width: 100%;float: none;display: block; }
+form fieldset .right {margin-left:170px;} /* label width + label margin-right 160px + 10px */
+input.captcha {margin-top:10px;width:100px;}
+
+/* ----- +color ----- */
+form .req li label {background-color:transparent;}
+a.button:focus, a.button:hover, a.button:active, button:focus, button:hover, button:active { background-color: #EDD466}
+input.placeholder {color:#B3B3B3;}
+input::placeholder,input::-webkit-input-placeholder,input:-moz-placeholder {font-weight: normal}
+form .error-msg, form .error-msg legend {background-color: #FFCECF;border-color:#BF0027;}
+form .error-msg legend {
+-webkit-box-shadow: 0 0 5px #BF0027;
+-moz-box-shadow: 0 0 5px #BF0027;
+-o-box-shadow: 0 0 5px #BF0027;
+box-shadow: 0 0 5px #BF0027;
+}
+form .error-msg {background-color: #FFCECF;border-color:#f00;
+/*-webkit-box-shadow: 0 0 5px #f00;
+-moz-box-shadow: 0 0 5px #f00;
+-o-box-shadow: 0 0 5px #f00;
+box-shadow: 0 0 5px #f00;*/
+}
+form li.error label {color:#f00;}
+input[type=text]:focus:invalid,
+input[type=email]:focus:invalid,
+input[type=url]:focus:invalid,
+input[type=date]:focus:invalid,
+input[type=tel]:focus:invalid,
+input[type=number]:focus:out-of-range,
+form li.error input, form li.error select, form li.error textarea {border-color:#f00;}
+form li.error textarea { background-color: rgba(199, 42, 42, 0.1); }
+/*
+input[type=text]:focus:valid,
+input[type=email]:focus:valid,
+input[type=number]:focus:in-range { outline: 2px #0f0 solid; }*/
+
+@media screen and (min-width: 720px) {
+    label, form ol div, form ul div {overflow:hidden;width: auto;float: left; }
+}

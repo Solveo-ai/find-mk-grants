@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Building2, Globe, Users } from "lucide-react";
 import { useSources } from "@/hooks/useOpportunities";
+import { Link } from "react-router-dom";
 
 
 const Sources = () => {
@@ -81,13 +82,10 @@ const Sources = () => {
                   
                   {/* Actions */}
                   <div className="flex gap-2">
-                    <Button variant="default" size="sm" className="flex-1">
-                      <Building2 className="w-4 h-4 mr-2" />
-                      Погледни можности
-                    </Button>
-                    <Button variant="outline" size="sm" asChild>
+                    <Button variant="default" size="sm" className="flex-1" asChild>
                       <a href={source.website} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4" />
+                        <Building2 className="w-4 h-4 mr-2" />
+                        Погледни можности
                       </a>
                     </Button>
                   </div>
@@ -108,8 +106,10 @@ const Sources = () => {
             Ако знаете за дополнителни извори на финансирање кои не се наведени тука, 
             ве молиме контактирајте не за да ги додадеме во нашата база.
           </p>
-          <Button size="lg">
-            Предложи извор
+          <Button size="lg" asChild>
+            <Link to="/contact">
+              Предложи извор
+            </Link>
           </Button>
         </div>
       </section>

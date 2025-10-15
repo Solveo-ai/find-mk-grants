@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import SearchFilters from "@/components/search/SearchFilters";
 import OpportunityCard from "@/components/opportunities/OpportunityCard";
-import FeaturedOpportunities from "@/components/opportunities/FeaturedOpportunities";
+import EUFinancing from "@/components/opportunities/EUFinancing";
 import ExploreCategories from "@/components/categories/ExploreCategories";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Users, Award } from "lucide-react";
@@ -195,8 +195,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Featured Opportunities */}
-      <FeaturedOpportunities />
+      {/* EU Financing */}
+      <EUFinancing />
     </div>
   );
 };

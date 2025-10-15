@@ -1,0 +1,40 @@
+✅ Second Contact Form Added Successfully!
+I've successfully added a second contact form specifically for funding questions to the Contact page.
+
+🆕 New Features Added:
+1. New Supabase Edge Function (supabase/functions/send-funding-question/index.ts)
+Email recipient: info@solveo.co
+Subject: "Прашање за можности за финансирање"
+Fields: Full Name, Email, Question
+Success message: "Вашето прашање е успешно испратено. Ви благодариме!"
+2. Second Contact Form (Added to frontend/src/pages/Contact.tsx)
+Title: "Прашања за финансирање"
+Fields:
+Име и презиме (Full Name) - required
+Email адреса (Email Address) - required
+Прашање (Your Question) - multiline textarea - required
+Consistent styling with the first form
+Form validation with Macedonian error messages
+📧 Contact Page Now Has Two Forms:
+Form 1: General Inquiries & Source Suggestions
+Used for "Предложи извор" and general contact
+Sends to: Info@solveo.co
+Fields: Name, Email, Message, Optional Source Link
+Form 2: Funding Questions ⭐ NEW
+Specifically for questions about funding opportunities
+Sends to: info@solveo.co
+Fields: Full Name, Email, Question
+🎨 Design & UX:
+✅ Consistent styling - both forms use the same Card, Input, and Button components
+✅ Clear labeling - each form has distinct titles and purposes
+✅ Responsive layout - works on all screen sizes
+✅ Form validation - required fields with proper error messages
+✅ Loading states - shows "Се испраќа..." during submission
+✅ Success feedback - appropriate success messages for each form
+🔧 Ready for Email Integration:
+Both forms are configured to send emails once you add your email service API key:
+
+# Add to Supabase environment variables
+RESEND_API_KEY=your_resend_api_key_here
+🧪 Test It:
+Visit http://localhost:8081/contact to see both forms side by side. The new funding questions form is clearly labeled and ready for users to ask specific questions about funding opportunities!

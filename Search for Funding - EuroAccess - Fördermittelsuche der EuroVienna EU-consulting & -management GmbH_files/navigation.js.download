@@ -1,0 +1,36 @@
+function initNavOpener() {
+    
+    
+    
+    $(".nav__element_opener:not(.initialized)").each(function(){
+        $(this).addClass("initialized");
+        $(this).on("click", function(event){
+            event.preventDefault();
+			$('.nav__sub-list[data-navigation-id="'+$(this).attr("data-navigation-id")+'"]').toggleClass("open").slideToggle();
+			$(this).toggleClass("open");
+            $(this).parents('li').toggleClass("open");
+        });
+    });
+    
+    
+}
+
+$(function() {
+    
+    addHtmlChanged('initNavOpener');
+    
+    //console.log("hier");
+    $('#nav .nav__element.active').each(function(){
+        //if($(this).hasClass("active")){
+            //$(this).slideToggle();
+            //console.log($(this));
+        //console.log($(this).find('.nav__sub-list'));
+        if($(this).find('.nav__sub-list').length){
+            $(this).addClass('open');
+           $(this).find('.nav__sub-list').slideToggle();
+            $(this).find('.nav__element_opener').addClass('open');
+        }
+            //$('.nav__sub-list[data-navigation-id="'+$(this).attr("data-navigation-id")+'"]').slideToggle();
+        //}
+    });
+});

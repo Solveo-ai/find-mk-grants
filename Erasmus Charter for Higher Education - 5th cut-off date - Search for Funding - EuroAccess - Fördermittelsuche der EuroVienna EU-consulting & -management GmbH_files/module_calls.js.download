@@ -1,0 +1,18 @@
+$(function(){
+    /*$('#test-id').on('click', function(){
+        var pdf_opt = {
+					margin:       0,
+					filename:     'file.pdf',
+					image:        { type: 'jpeg', quality: 0.98 },
+					html2canvas:  { scale: 1, scrollY: 0 },
+					jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+					pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+				};
+    
+    //html2pdf().set(pdf_opt).from($("#calldata")).save();
+    var element = document.getElementById('calldata');
+    html2pdf().set(pdf_opt).from(element).save();
+    console.log('test');
+    });*/
+});
+

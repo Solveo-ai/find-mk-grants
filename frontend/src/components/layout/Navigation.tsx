@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X, Star } from "lucide-react";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -12,9 +12,6 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Search className="w-5 h-5 text-white" />
-            </div>
             <span className="text-xl font-bold text-foreground">
               Funding Macedonia
             </span>
@@ -34,8 +31,15 @@ const Navigation = () => {
             >
               Извори
             </Link>
-            <Button variant="outline" size="sm">
-              Контакт
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/starred">
+                <Star className="w-4 h-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/contact">
+                Контакт
+              </Link>
             </Button>
           </div>
 
@@ -73,8 +77,18 @@ const Navigation = () => {
                 Извори
               </Link>
               <div className="px-3 pt-2">
-                <Button variant="outline" size="sm" className="w-full">
-                  Контакт
+                <Button variant="ghost" size="sm" className="w-full justify-start" asChild>
+                  <Link to="/starred" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Star className="w-4 h-4 mr-2" />
+                    Зачувани
+                  </Link>
+                </Button>
+              </div>
+              <div className="px-3 pt-2">
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    Контакт
+                  </Link>
                 </Button>
               </div>
             </div>

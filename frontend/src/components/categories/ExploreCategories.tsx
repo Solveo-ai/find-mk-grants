@@ -1,4 +1,4 @@
-import { Briefcase, FileText, TrendingUp, Banknote } from "lucide-react";
+import { Briefcase, FileText, TrendingUp, Banknote, Euro } from "lucide-react";
 
 interface Category {
   id: string;
@@ -12,11 +12,11 @@ interface Category {
 const categories: Category[] = [
   {
     id: "public-grants",
-    title: "Грантови", 
+    title: "Грантови",
     description: "Државни фондови, министерски програми и локални иницијативи",
     icon: Briefcase,
     count: 32,
-    type: "Јавни Грантови"
+    type: "grants"
   },
   {
     id: "tenders",
@@ -24,7 +24,7 @@ const categories: Category[] = [
     description: "Јавни набавки, концесии и договори за услуги",
     icon: FileText,
     count: 28,
-    type: "Тендери"
+    type: "tenders"
   },
   {
     id: "investors",
@@ -32,7 +32,7 @@ const categories: Category[] = [
     description: "Венчур капитал, бизнис ангели и приватни инвестициски фондови",
     icon: TrendingUp,
     count: 18,
-    type: "Инвеститори"
+    type: "private-funding"
   },
   {
     id: "loans",
@@ -40,16 +40,27 @@ const categories: Category[] = [
     description: "Банкарски кредити, микрофинансирање и развојни кредити",
     icon: Banknote,
     count: 23,
-    type: "Кредити"
+    type: "loans"
+  },
+  {
+    id: "eu-financing",
+    title: "EU Финансирање",
+    description: "Европски фондови, грантови и програми за финансирање",
+    icon: Euro,
+    count: 0, // Will be populated dynamically
+    type: "eu-financing"
   }
 ];
 
 interface ExploreCategoriesProps {
   onCategorySelect: (type: string[]) => void;
   selectedType: string[];
+  counts?: { [key: string]: number };
+  onScrollToEUFinancing?: () => void;
+  euGrantsCount?: number;
 }
 
-const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategoriesProps) => {
+const ExploreCategories = ({ onCategorySelect, selectedType, counts, onScrollToEUFinancing, euGrantsCount }: ExploreCategoriesProps) => {
   return (
     <section className="py-16 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -62,51 +73,56 @@ const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategories
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6">
           {categories.map((category) => {
             const Icon = category.icon;
             const isSelected = selectedType.includes(category.type);
-            
+            const isEUFinancing = category.id === 'eu-financing';
+
             return (
               <div
                 key={category.id}
                 onClick={() => {
-                  if (selectedType.includes(category.type)) {
-                    onCategorySelect(selectedType.filter(t => t !== category.type));
+                  if (isEUFinancing && onScrollToEUFinancing) {
+                    onScrollToEUFinancing();
                   } else {
-                    onCategorySelect([...selectedType, category.type]);
+                    if (selectedType.includes(category.type)) {
+                      onCategorySelect(selectedType.filter(t => t !== category.type));
+                    } else {
+                      onCategorySelect([...selectedType, category.type]);
+                    }
                   }
                 }}
                 className={`
-                  group cursor-pointer rounded-xl p-6 transition-all duration-300 hover-scale
-                  ${isSelected 
-                    ? 'bg-primary text-primary-foreground shadow-card border-2 border-primary' 
+                  group cursor-pointer rounded-xl p-4 lg:p-6 transition-all duration-300 hover-scale
+                  ${isSelected
+                    ? 'bg-primary text-primary-foreground shadow-card border-2 border-primary'
                     : 'bg-card hover:bg-card/80 hover:shadow-card border border-border'
                   }
                 `}
               >
                 {/* Icon */}
                 <div className={`
-                  w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300
+                  w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center mb-3 lg:mb-4 transition-all duration-300
                   ${isSelected
                     ? 'bg-primary-foreground/20'
                     : 'bg-primary group-hover:bg-primary group-hover:scale-110'
                   }
                 `}>
                   <Icon className={`
-                    w-6 h-6 transition-colors duration-300
-                    ${isSelected 
-                      ? 'text-primary-foreground' 
+                    w-5 h-5 lg:w-6 lg:h-6 transition-colors duration-300
+                    ${isSelected
+                      ? 'text-primary-foreground'
                       : 'text-primary-foreground group-hover:text-primary-foreground'
                     }
                   `} />
                 </div>
 
                 {/* Content */}
-                <div className="space-y-2">
+                <div className="space-y-1 lg:space-y-2">
                   <div className="flex items-center justify-between">
                     <h3 className={`
-                      text-card-title font-semibold transition-colors duration-300
+                      text-sm lg:text-card-title font-semibold transition-colors duration-300
                       ${isSelected ? 'text-primary-foreground' : 'text-foreground group-hover:text-primary'}
                     `}>
                       {category.title}
@@ -118,12 +134,12 @@ const ExploreCategories = ({ onCategorySelect, selectedType }: ExploreCategories
                         : 'bg-primary/10 text-primary group-hover:bg-primary-foreground group-hover:text-primary'
                       }
                     `}>
-                      {category.count}
+                      {isEUFinancing ? (euGrantsCount ?? 0) : (counts?.[category.type] ?? category.count)}
                     </div>
                   </div>
-                  
+
                   <p className={`
-                    text-sm leading-relaxed transition-colors duration-300
+                    text-xs lg:text-sm leading-relaxed transition-colors duration-300
                     ${isSelected ? 'text-primary-foreground/80' : 'text-muted-foreground'}
                   `}>
                     {category.description}

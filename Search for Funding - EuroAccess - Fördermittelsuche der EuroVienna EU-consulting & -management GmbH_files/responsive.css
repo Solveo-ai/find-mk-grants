@@ -1,0 +1,18 @@
+/* @section =responsive design
+-------------------------------------------------------------------*/
+@media screen and (max-width: 320px){ /* Smartphone Portrait */
+
+}
+@media screen and (min-width: 480px), print{ /* Smartphone Landscape */
+
+}
+@media screen and (min-width: 720px) {
+	
+}
+@media screen and (min-width: 960px){
+
+}
+/* Retina Displays - other background images */
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5 )and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 2dppx) {
+	
+}

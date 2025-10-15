@@ -2,18 +2,20 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, Euro, Building2, ExternalLink } from "lucide-react";
+import { Calendar, Euro, Building2, ExternalLink, Award, Users, Star } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface OpportunityCardProps {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   budget?: string;
-  deadline: string;
-  type: string;
-  source: string;
-  status: "open" | "closed" | "upcoming";
+  deadline?: string;
+  type?: string; // 'grants', 'tenders', etc.
+  source?: string;
+  status?: "open" | "closed" | "upcoming";
   sector?: string;
+  url?: string; // For external link
 }
 
 const OpportunityCard = ({
@@ -26,7 +28,41 @@ const OpportunityCard = ({
   source,
   status,
   sector,
+  url,
 }: OpportunityCardProps) => {
+  const [isStarred, setIsStarred] = useState(false);
+
+  useEffect(() => {
+    const starredGrants = JSON.parse(localStorage.getItem('starredGrants') || '[]');
+    setIsStarred(starredGrants.some((grant: any) => grant.id === id));
+  }, [id]);
+
+  const toggleStar = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const starredGrants = JSON.parse(localStorage.getItem('starredGrants') || '[]');
+    let newStarredGrants;
+    if (isStarred) {
+      newStarredGrants = starredGrants.filter((grant: any) => grant.id !== id);
+    } else {
+      const grantObject = {
+        id,
+        title,
+        description,
+        budget,
+        deadline,
+        type,
+        source,
+        status,
+        sector,
+        url,
+      };
+      newStarredGrants = [...starredGrants, grantObject];
+    }
+    localStorage.setItem('starredGrants', JSON.stringify(newStarredGrants));
+    setIsStarred(!isStarred);
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "open":
@@ -53,18 +89,59 @@ const OpportunityCard = ({
     }
   };
 
+  // Icon and color by type
+  const getTypeIcon = (type: string | undefined) => {
+    switch (type) {
+      case "tenders":
+        return <Building2 className="w-5 h-5 text-primary" />;
+      case "grants":
+        return <Award className="w-5 h-5 text-primary" />;
+      case "loans":
+        return <Euro className="w-5 h-5 text-primary" />;
+      case "private-funding":
+        return <Users className="w-5 h-5 text-primary" />;
+      default:
+        return <Award className="w-5 h-5 text-primary" />;
+    }
+  };
+
+  // Type label
+  const getTypeLabel = (type: string | undefined) => {
+    switch (type) {
+      case "tenders":
+        return "Јавна набавка";
+      case "grants":
+        return "Грант";
+      case "loans":
+        return "Кредит";
+      case "private-funding":
+        return "Приватно финансирање";
+      default:
+        return type || "Можност";
+    }
+  };
+
   return (
     <Card className="h-full hover:shadow-card transition-all duration-300 group">
       <CardHeader className="pb-3">
         <div className="flex justify-between items-start gap-3">
-          <h3 className="text-card-title group-hover:text-primary transition-colors line-clamp-2">
-            {title}
-          </h3>
-          <Badge className={getStatusColor(status)} variant="secondary">
-            {getStatusText(status)}
-          </Badge>
+          <div className="flex items-center gap-2">
+            {getTypeIcon(type)}
+            <Link to={`/opportunity/${id}`}>
+              <h3 className="text-card-title group-hover:text-primary transition-colors line-clamp-2 cursor-pointer">
+                {title}
+              </h3>
+            </Link>
+          </div>
+          {status && (
+            <Badge className={getStatusColor(status)} variant="secondary">
+              {getStatusText(status)}
+            </Badge>
+          )}
         </div>
-        <p className="text-caption line-clamp-3 mt-2">{description}</p>
+        {description && (
+          <p className="text-caption line-clamp-3 mt-2">{description}</p>
+        )}
       </CardHeader>
 
       <CardContent className="pb-3">
@@ -75,21 +152,23 @@ const OpportunityCard = ({
               <span>{budget}</span>
             </div>
           )}
-          
-          <div className="flex items-center gap-2 text-caption">
-            <Calendar className="w-4 h-4 text-muted-foreground" />
-            <span>Рок: {deadline}</span>
-          </div>
-          
-          <div className="flex items-center gap-2 text-caption">
-            <Building2 className="w-4 h-4 text-muted-foreground" />
-            <span>{source}</span>
-          </div>
+          {deadline && (
+            <div className="flex items-center gap-2 text-caption">
+              <Calendar className="w-4 h-4 text-muted-foreground" />
+              <span>Рок: {deadline}</span>
+            </div>
+          )}
+          {source && (
+            <div className="flex items-center gap-2 text-caption">
+              <Building2 className="w-4 h-4 text-muted-foreground" />
+              <span>{source}</span>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-2 mt-3">
           <Badge variant="outline" className="text-xs">
-            {type}
+            {getTypeLabel(type)}
           </Badge>
           {sector && (
             <Badge variant="outline" className="text-xs">
@@ -102,22 +181,35 @@ const OpportunityCard = ({
       <CardFooter className="pt-0">
         <div className="flex gap-2 w-full">
           <Button
-            asChild
-            variant="default"
+            onClick={toggleStar}
+            variant={isStarred ? "default" : "outline"}
             size="sm"
             className="flex-1"
           >
-            <Link to={`/opportunity/${id}`}>
-              Детали
-            </Link>
+            <Star className={`w-4 h-4 mr-2 ${isStarred ? 'fill-current' : ''}`} />
+            {isStarred ? "Зачувано" : "Зачувај"}
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className="px-3"
-          >
-            <ExternalLink className="w-4 h-4" />
-          </Button>
+          {url ? (
+            <Button
+              variant="outline"
+              size="sm"
+              className="px-3"
+              asChild
+            >
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </Button>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              className="px-3"
+              disabled
+            >
+              <ExternalLink className="w-4 h-4" />
+            </Button>
+          )}
         </div>
       </CardFooter>
     </Card>

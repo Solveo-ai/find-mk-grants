@@ -2,11 +2,15 @@ import { useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import SearchFilters from "@/components/search/SearchFilters";
 import OpportunityCard from "@/components/opportunities/OpportunityCard";
-import FeaturedOpportunities from "@/components/opportunities/FeaturedOpportunities";
+import EUFinancing from "@/components/opportunities/EUFinancing";
 import ExploreCategories from "@/components/categories/ExploreCategories";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Users, Award } from "lucide-react";
 import { useOpportunities } from "@/hooks/useOpportunities";
+import { useAvailableGrantsCount } from "@/hooks/useAvailableGrantsCount";
+import { useGrants } from "@/hooks/useGrants";
+import { useEuroAccessGrants } from "@/hooks/useEuroAccessGrants";
+import GrantsFeed from "@/components/grants/GrantsFeed";
 
 
 const Homepage = () => {
@@ -19,6 +23,27 @@ const Homepage = () => {
     sector: selectedSector,
     search: searchQuery
   });
+  const { count: availableGrantsCount, isLoading: isGrantsCountLoading } = useAvailableGrantsCount();
+
+  const { data: grantsData } = useGrants({ limit: 1000 });
+  const { data: tendersData } = useGrants({ limit: 1000, type: ['tenders'] });
+  const { data: privateFundingData } = useGrants({ limit: 1000, type: ['private-funding'] });
+  const { data: loansData } = useGrants({ limit: 1000, type: ['loans'] });
+  const { grants: euGrants } = useEuroAccessGrants(1000); // Get all EU grants for count
+
+  const categoryCounts = {
+    grants: grantsData?.filter(g => g.type === 'grants').length || 0,
+    tenders: tendersData?.length || 0,
+    'private-funding': privateFundingData?.length || 0,
+    loans: loansData?.length || 0,
+  };
+
+  const scrollToEUFinancing = () => {
+    const euSection = document.getElementById('eu-financing-section');
+    if (euSection) {
+      euSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const clearFilters = () => {
     setSearchQuery("");
@@ -70,9 +95,12 @@ const Homepage = () => {
       </section>
 
       {/* Explore Categories */}
-      <ExploreCategories 
+      <ExploreCategories
         onCategorySelect={setSelectedType}
         selectedType={selectedType}
+        counts={categoryCounts}
+        onScrollToEUFinancing={scrollToEUFinancing}
+        euGrantsCount={euGrants.length}
       />
 
       {/* Search & Filters */}
@@ -95,7 +123,7 @@ const Homepage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-section">
-              Можности за финансирање ({opportunities.length})
+              Можности за финансирање
             </h2>
           </div>
 
@@ -103,30 +131,37 @@ const Homepage = () => {
             <div className="text-center py-12">
               <p className="text-muted-foreground">Се вчитуваат можности...</p>
             </div>
-          ) : opportunities.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {opportunities.map((opportunity) => (
-                <OpportunityCard
-                  key={opportunity.id}
-                  {...opportunity}
-                />
-              ))}
-            </div>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg mb-4">
-                Не се најдени можности кои се совпаѓаат со вашите критериуми.
-              </p>
-              <Button variant="outline" onClick={clearFilters}>
-                Избришете ги филтрите
-              </Button>
-            </div>
+            <>
+              {opportunities.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                  {opportunities.map((opportunity) => (
+                    <OpportunityCard
+                      key={opportunity.id}
+                      {...opportunity}
+                    />
+                  ))}
+                </div>
+              )}
+              {/* Real-time Grants Feed (tenders, grants, etc) */}
+              <GrantsFeed limit={200} order="created_at" direction="desc" type={selectedType} sector={selectedSector} search={searchQuery} />
+              {opportunities.length === 0 && (searchQuery || selectedType.length > 0 || selectedSector.length > 0) && (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground text-lg mb-4">
+                    Не се најдени можности кои се совпаѓаат со вашите критериуми.
+                  </p>
+                  <Button variant="outline" onClick={clearFilters}>
+                    Избришете ги филтрите
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
 
-      {/* Featured Opportunities */}
-      <FeaturedOpportunities />
+      {/* EU Financing */}
+      <EUFinancing />
     </div>
   );
 };

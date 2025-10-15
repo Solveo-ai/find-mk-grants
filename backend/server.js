@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
+const { translateToMacedonian } = require('./translate');
 require('dotenv').config();
 
 const app = express();
@@ -75,13 +76,33 @@ app.get('/api/sources', async (req, res) => {
 app.get('/api/opportunities/featured', async (req, res) => {
   try {
     const { data, error } = await supabase
-      .from('opportunities')
+      .from('grants')
       .select('*')
-      .eq('status', 'open')
+      .order('created_at', { ascending: false })
       .limit(3);
 
     if (error) throw error;
-    res.json(data);
+    // Transform grants to opportunities format and translate to Macedonian
+    const transformed = await Promise.all(data.map(async (grant) => ({
+      id: grant.id,
+      title: await translateToMacedonian(grant.title || '', 'en'),
+      description: await translateToMacedonian(grant.description || '', 'en'),
+      budget: grant.amount ? `${grant.currency || 'EUR'} ${grant.amount}` : null,
+      deadline: grant.deadline,
+      type: grant.type,
+      source: await translateToMacedonian(grant.source_url || '', 'en'),
+      status: 'open',
+      sector: grant.tags?.join(', '),
+      eligibility: null,
+      application_process: null,
+      contact_info: null,
+      source_url: grant.url,
+      total_budget: null,
+      applicants_count: null,
+      created_at: grant.created_at,
+      updated_at: grant.updated_at
+    })));
+    res.json(transformed);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

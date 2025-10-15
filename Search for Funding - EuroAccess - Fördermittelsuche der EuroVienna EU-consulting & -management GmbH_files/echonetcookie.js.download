@@ -1,0 +1,555 @@
+
+/* this JS file is created by automation - changing anything here won't last. Changes need to be done on the original Server (currently https://cookies.echonet.biz) */
+
+var echonetCookieController = {
+    echonetCookieName: 'echonetCookieDecision', // Name of the Cookie where the preferences are saved
+    echonetSuppressCookieName: 'echonetSuppress', // Name of the Cookie where the preferences are saved
+    echonetCookieValue: false, // The value of the Cookie where the preferences are saved (is filled by readEchonetCookieValue())
+    echonetCookieBannerAttatched: false, // The value of the Cookie where the preferences are saved (is filled by readEchonetCookieValue())
+    website: {"id":"65","name":"euro-access.eu","urls":"www.euro-access.eu euro-access.eu www.euro-access.at euro-access.at eurvie-web-test1.vm.nextlayer.at","cookiedomainurl":"","callout_path":"\/_tools\/save_cookie_decision.php","dynamic_data_path":"","explanation":"<h3>Datenschutz, DSGVO &amp; Cookies<\/h3>\r\n\r\n<p>Die Webseite von Euro Access - das Portal f&uuml;r EU-F&ouml;rderungen - arbeitet mit verschiedenen externen Diensten (zB Videos, Schriftarten, E-Paper...)&nbsp;und ben&ouml;tigt auch sog. Cookies (kleine Dateien, die im Browser lokal bei den nutzenden Personen abgespeichert werden). Sie k&ouml;nnen hier eine Auswahl treffen, wenn Sie bestimmte Dienste nicht zulassen oder erlauben m&ouml;chten. &Auml;nderungen sind auf unserer Datenschutz-Seite jederzeit machbar. Hinweise:<\/p>\r\n\r\n<p>&bull; Aufrufe von Seiten und Dateien&nbsp;werden am Server generell 14 Tage lang protokolliert.<br \/>\r\n&bull; Eingaben in Formulare werden elektronisch von uns verarbeitet.&nbsp;Personenbezogene&nbsp;Daten in den Formularen zur Beantwortung Ihrer Anfrage ((vor-)vertragliche Kommunikation werden iSd Art 6 Abs 2 lit b DSGVO) verarbeitet.&nbsp;<br \/>\r\n&bull; Ihre Datenschutz-Entscheidung wird in Cookie-Form in Ihrem Browser f&uuml;r 90 Tage gespeichert.<\/p>\r\n","explanation_en":"<h2>Privacy &amp; Cookies<\/h2>\r\n\r\n<p>Here you can define which services and cookies but also which content parts we are allowed to use during your visit on our website (like video content, fonts...). You can choose here if you accept optional cookies and services, which will transfer some of your data to third parties.You can change or reset your settings on our legal note page whenever you want. Also important to know about data privacy:<\/p>\r\n\r\n<p><em>&bull; Opening sites or files is always cause a protocoll entry by the webserver for 14 days.<br \/>\r\n&bull; If you fill out a form, we process the data electronically.<br \/>\r\n&bull; Your settings are saved on your device for 90 days.<\/em><\/p>\r\n","iframe_placeholder":"<h3>Datenschutz-Einstellungen<\/h3>\r\n\r\n<p>F&uuml;r diesen Inhalt haben Sie keine Erlaubnis in den Datenschutz-Einstellungen des Consent-Banners erteilt. Bitte gehen Sie in die Einstellungen und adaptieren Sie Ihre Vorgaben, damit Sie den Inhalt sehen k&ouml;nnen.<\/p>\r\n\r\n<ul>\r\n\t<li>Meine <a class=\"cookielife_show\" href=\"#\">Cookie-Einstellungen anzeigen<\/a><\/li>\r\n\t<li>Meine <a class=\"cookielife_reset\" href=\"#\">Cookie-Einstellungen entfernen \/ zur&uuml;cksetzen<\/a><\/li>\r\n<\/ul>\r\n","iframe_placeholder_en":"<h3>Content blocked by GDPR-Decition<\/h3>\r\n\r\n<p>This content can not be shown, because you do not allow this content to be loaded with your settings on our consent-banner. If you want to see the content, you can change your GDPR-settings here. Please reload the website then, to see the content.<\/p>\r\n\r\n<ul>\r\n\t<li>Show my <a class=\"cookielife_show\" href=\"#\">privacy settings<\/a><\/li>\r\n\t<li>Reset my <a class=\"cookielife_reset\" href=\"#\">privacy settings<\/a><\/li>\r\n<\/ul>\r\n","button_detail":"Einstellungen","button_detail_en":"Let me choose!","button_selection":"Auswahl best\u00e4tigen","button_selection_en":"Save","button_all":"Alles akzeptieren","button_all_en":"Ok, continue...","button_refuse":"Ablehnen","button_refuse_en":"Decline","class_prefix":"ec_","color_main_background":"#ffffff","color_main_text":"#3e3e3e","color_primary_background":"#e5c216","color_primary_text":"#3e3e3e","color_secundary_background":"#e5c216","color_secundary_text":"#3e3e3e","imageurl_logo":"https:\/\/eurvie-web-test1.vm.nextlayer.at\/_media\/_site_logo\/1_logo_euroaccess.svg","imagewidth_logo":"150","imagetitle_logo":"Euro Access","imagealt_logo":"Euro Access Logo","layout_logo":"logo_right","show_sponsored":"0","hide_button_individual":"0","hide_button_all":"0","hide_button_refuse":"0","button_selection_primary_col":"0","cookie_lifetime_hours":"2160","cookie_secure":"1","cookie_samesite":"Strict","impressum":"","datenschutz":"","impressum_en":"","datenschutz_en":"","show_cookiebutton":"0","cookiebutton_direction":"re","cookie_template":{"id":"1","name":"Standard","suffix":""},"cookie_categories":{"109":{"id":"109","name":"Notwendige Cookies \/ Berechtiges Interesse","name_en":"Necessary \/ Legal","force_check":"1"},"110":{"id":"110","name":"Externe Inhalte \/ Video, Landkarten...","name_en":"External Content \/ Video, Maps...","force_check":"0"},"111":{"id":"111","name":"Analyse & Statistik","name_en":"Analytics & Stats","force_check":"0"}},"cookie_services":{"4":{"id":"4","name":"Cookie Zustimmung","name_en":"Cookie-Consent","description":"Mit diesem Cookie wird gespeichert, was Sie als Nutzer in diesem Cookie-Consent-Vorgang eingestellt haben.","description_en":"With this cookie the settings you choose in this cookie consent banner are saved for the future.","shorttag":"echonetcookies","cookie_category_id":"109","force_check":"1"},"5":{"id":"5","name":"Session Cookie","name_en":"Session Cookie","description":"Notwendig um Ihre Session eindeutig zu identifizieren und gegebenenfalls Einstellungen, die Sie auf der Webseite vornehmen oder beispielsweise einen Warenkorb zu speichern.","description_en":"Necessary to clearly identify your session and save settings you will or have chosen on the website eg. for color-contrast or for the use of a basket.","shorttag":"sessioncookie","cookie_category_id":"109","force_check":"1"},"8":{"id":"8","name":"Dailymotion Player","name_en":"Dailymotion Player","description":"Videos von dailymotion.com anzeigen (Frankreich)","description_en":"Display videos from dailymotion.com (France)","shorttag":"dailymotionplayer","cookie_category_id":"110","force_check":"0"},"12":{"id":"12","name":"Google Maps","name_en":"Google Maps","description":"Google \/ Alphabet Inc. (USA) Google Maps l\u00e4dt auch automatisch Google Fonts nach um die Landkartenelemente anzuzeigen. Wenn Sie Maps akzeptieren, wird also auch Google Fonts in der Landkarte angezeigt.","description_en":"Google \/ Alphabet Inc. (USA) Google Maps also loads Google Fonts for it's display, if you accept Google Maps you will also have Google Fonts loaded inside the map.","shorttag":"googlemaps","cookie_category_id":"110","force_check":"0"},"6":{"id":"6","name":"Vimeo Player","name_en":"Vimeo Player","description":"Vimeo Inc. (USA) Notwendiges Cookie f\u00fcr die Darstellung von Video-Inhalten \u00fcber das System von vimeo.com mit eingebetteten Videos.","description_en":"Vimeo Inc. (USA) Necessary cookie for the display of video-content based on the platform of vimeo.com with embedded videos on the website.","shorttag":"vimeoplayer","cookie_category_id":"110","force_check":"0"},"7":{"id":"7","name":"Youtube Player","name_en":"Youtube Player","description":"Google \/ Alphabet Inc. (USA) Notwendiges Cookie f\u00fcr die Darstellung von Video-Inhalten \u00fcber das System von youtube.com mit eingebetteten Videos.","description_en":"Google \/ Alphabet Inc. (USA) Necessary cookie for the display of video-content based on the platform of youtube.com with embedded videos on the website.","shorttag":"youtubeplayer","cookie_category_id":"110","force_check":"0"},"9":{"id":"9","name":"Google Tag-Manager","name_en":"Google Tag-Manager","description":"Google \/ Alphabet Inc. (USA) Registriert eine eindeutige ID, die verwendet wird, um statistische Daten dazu, wie der Besucher die Website nutzt, zu generieren.","description_en":"Google \/ Alphabet Inc. (USA) Registres a unique ID which is used to be added to statistics data, who people use the website.","shorttag":"googletagmanager","cookie_category_id":"111","force_check":"0"}},"containerclass":"ec_container","activeclass":"ec_active"}, // All the Data specific for this Website
+    callbackStack: [],
+    cookieBannerHtml_de: "<div class=\"ec_container\">    <div class=\"ec_background\"></div>    <div class=\"ec_popup\">        <img class=\"ec_logo\" src=\"https://eurvie-web-test1.vm.nextlayer.at/_media/_site_logo/1_logo_euroaccess.svg\" title=\"Euro Access\" alt=\"Euro Access Logo\">        <div class=\"ec_explanation\"><h3>Datenschutz, DSGVO &amp; Cookies</h3><p>Die Webseite von Euro Access - das Portal f&uuml;r EU-F&ouml;rderungen - arbeitet mit verschiedenen externen Diensten (zB Videos, Schriftarten, E-Paper...)&nbsp;und ben&ouml;tigt auch sog. Cookies (kleine Dateien, die im Browser lokal bei den nutzenden Personen abgespeichert werden). Sie k&ouml;nnen hier eine Auswahl treffen, wenn Sie bestimmte Dienste nicht zulassen oder erlauben m&ouml;chten. &Auml;nderungen sind auf unserer Datenschutz-Seite jederzeit machbar. Hinweise:</p><p>&bull; Aufrufe von Seiten und Dateien&nbsp;werden am Server generell 14 Tage lang protokolliert.<br />&bull; Eingaben in Formulare werden elektronisch von uns verarbeitet.&nbsp;Personenbezogene&nbsp;Daten in den Formularen zur Beantwortung Ihrer Anfrage ((vor-)vertragliche Kommunikation werden iSd Art 6 Abs 2 lit b DSGVO) verarbeitet.&nbsp;<br />&bull; Ihre Datenschutz-Entscheidung wird in Cookie-Form in Ihrem Browser f&uuml;r 90 Tage gespeichert.</p>        </div>        <ul class=\"ec_categories ec_hide ec_toggleDetailView\">            <li class=\"ec_category ec_category_109\">                <input type=\"checkbox\" value=\"1\" name=\"ec_categorycheckbox_109\" class=\"ec_categorycheckbox ec_categorycheckbox_109\" id=\"ec_categorycheckbox_109\" onchange=\"echonetCookieController.tick('category', '109');\" checked=\"checked\" disabled=\"disabled\"><label class=\"ec_stylelabel\" for=\"ec_categorycheckbox_109\"></label><label class=\"ec_categorylabel\" for=\"ec_categorycheckbox_109\">Notwendige Cookies / Berechtiges Interesse</label><a href=\"#ec_services_109\" class=\"ec_servicesToggler ec_servicesToggler_109\" id=\"ec_servicesToggler_109\" onclick=\"event.preventDefault();echonetCookieController.toggleClass('ec_services_109', 'ec_open');echonetCookieController.toggleClass('ec_servicesToggler_109', 'ec_open');\"></a>                <ul class=\"ec_services ec_services_109\" id=\"ec_services_109\">                    <li class=\"ec_service ec_service_4\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_4\" class=\"ec_servicecheckbox ec_servicecheckbox_4\" id=\"ec_servicecheckbox_4\" onchange=\"echonetCookieController.tick('service', '4');\" checked=\"checked\" disabled=\"disabled\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_4\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_4\">Cookie Zustimmung</label>                        <div class=\"ec_servicedescription\">                            Mit diesem Cookie wird gespeichert, was Sie als Nutzer in diesem Cookie-Consent-Vorgang eingestellt haben.                        </div>                    </li>                                        <li class=\"ec_service ec_service_5\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_5\" class=\"ec_servicecheckbox ec_servicecheckbox_5\" id=\"ec_servicecheckbox_5\" onchange=\"echonetCookieController.tick('service', '5');\" checked=\"checked\" disabled=\"disabled\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_5\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_5\">Session Cookie</label>                        <div class=\"ec_servicedescription\">                            Notwendig um Ihre Session eindeutig zu identifizieren und gegebenenfalls Einstellungen, die Sie auf der Webseite vornehmen oder beispielsweise einen Warenkorb zu speichern.                        </div>                    </li>                </ul>            </li>                        <li class=\"ec_category ec_category_110\">                <input type=\"checkbox\" value=\"1\" name=\"ec_categorycheckbox_110\" class=\"ec_categorycheckbox ec_categorycheckbox_110\" id=\"ec_categorycheckbox_110\" onchange=\"echonetCookieController.tick('category', '110');\"><label class=\"ec_stylelabel\" for=\"ec_categorycheckbox_110\"></label><label class=\"ec_categorylabel\" for=\"ec_categorycheckbox_110\">Externe Inhalte / Video, Landkarten...</label><a href=\"#ec_services_110\" class=\"ec_servicesToggler ec_servicesToggler_110\" id=\"ec_servicesToggler_110\" onclick=\"event.preventDefault();echonetCookieController.toggleClass('ec_services_110', 'ec_open');echonetCookieController.toggleClass('ec_servicesToggler_110', 'ec_open');\"></a>                <ul class=\"ec_services ec_services_110\" id=\"ec_services_110\">                    <li class=\"ec_service ec_service_8\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_8\" class=\"ec_servicecheckbox ec_servicecheckbox_8\" id=\"ec_servicecheckbox_8\" onchange=\"echonetCookieController.tick('service', '8');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_8\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_8\">Dailymotion Player</label>                        <div class=\"ec_servicedescription\">                            Videos von dailymotion.com anzeigen (Frankreich)                        </div>                    </li>                                        <li class=\"ec_service ec_service_12\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_12\" class=\"ec_servicecheckbox ec_servicecheckbox_12\" id=\"ec_servicecheckbox_12\" onchange=\"echonetCookieController.tick('service', '12');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_12\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_12\">Google Maps</label>                        <div class=\"ec_servicedescription\">                            Google / Alphabet Inc. (USA) Google Maps lädt auch automatisch Google Fonts nach um die Landkartenelemente anzuzeigen. Wenn Sie Maps akzeptieren, wird also auch Google Fonts in der Landkarte angezeigt.                        </div>                    </li>                                        <li class=\"ec_service ec_service_6\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_6\" class=\"ec_servicecheckbox ec_servicecheckbox_6\" id=\"ec_servicecheckbox_6\" onchange=\"echonetCookieController.tick('service', '6');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_6\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_6\">Vimeo Player</label>                        <div class=\"ec_servicedescription\">                            Vimeo Inc. (USA) Notwendiges Cookie für die Darstellung von Video-Inhalten über das System von vimeo.com mit eingebetteten Videos.                        </div>                    </li>                                        <li class=\"ec_service ec_service_7\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_7\" class=\"ec_servicecheckbox ec_servicecheckbox_7\" id=\"ec_servicecheckbox_7\" onchange=\"echonetCookieController.tick('service', '7');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_7\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_7\">Youtube Player</label>                        <div class=\"ec_servicedescription\">                            Google / Alphabet Inc. (USA) Notwendiges Cookie für die Darstellung von Video-Inhalten über das System von youtube.com mit eingebetteten Videos.                        </div>                    </li>                </ul>            </li>                        <li class=\"ec_category ec_category_111\">                <input type=\"checkbox\" value=\"1\" name=\"ec_categorycheckbox_111\" class=\"ec_categorycheckbox ec_categorycheckbox_111\" id=\"ec_categorycheckbox_111\" onchange=\"echonetCookieController.tick('category', '111');\"><label class=\"ec_stylelabel\" for=\"ec_categorycheckbox_111\"></label><label class=\"ec_categorylabel\" for=\"ec_categorycheckbox_111\">Analyse & Statistik</label><a href=\"#ec_services_111\" class=\"ec_servicesToggler ec_servicesToggler_111\" id=\"ec_servicesToggler_111\" onclick=\"event.preventDefault();echonetCookieController.toggleClass('ec_services_111', 'ec_open');echonetCookieController.toggleClass('ec_servicesToggler_111', 'ec_open');\"></a>                <ul class=\"ec_services ec_services_111\" id=\"ec_services_111\">                    <li class=\"ec_service ec_service_9\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_9\" class=\"ec_servicecheckbox ec_servicecheckbox_9\" id=\"ec_servicecheckbox_9\" onchange=\"echonetCookieController.tick('service', '9');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_9\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_9\">Google Tag-Manager</label>                        <div class=\"ec_servicedescription\">                            Google / Alphabet Inc. (USA) Registriert eine eindeutige ID, die verwendet wird, um statistische Daten dazu, wie der Besucher die Website nutzt, zu generieren.                        </div>                    </li>                </ul>            </li>        </ul>        <div class=\"ec_buttons\">            <button type=\"button\" class=\"ec_button ec_button_individual ec_toggleDetailView\" onclick=\"echonetCookieController.toggleDetailView();\">Einstellungen</button>            <button type=\"button\" class=\"ec_button ec_button_refuse ec_toggleDetailView\"  onclick=\"echonetCookieController.decide(false, true);\">Ablehnen</button>            <button type=\"button\" class=\"ec_button ec_button_ticked ec_button_primarycolor_0 ec_hide ec_toggleDetailView\" onclick=\"echonetCookieController.decide(false, false);\">Auswahl bestätigen</button>            <button type=\"button\" class=\"ec_button ec_button_all\" onclick=\"echonetCookieController.decide(true, false);\">Alles akzeptieren</button>        </div></div></div>",
+    
+    cookieBannerHtml_en: "<div class=\"ec_container\">    <div class=\"ec_background\"></div>    <div class=\"ec_popup\">        <img class=\"ec_logo\" src=\"https://eurvie-web-test1.vm.nextlayer.at/_media/_site_logo/1_logo_euroaccess.svg\" title=\"Euro Access\" alt=\"Euro Access Logo\">        <div class=\"ec_explanation\"><h2>Privacy &amp; Cookies</h2><p>Here you can define which services and cookies but also which content parts we are allowed to use during your visit on our website (like video content, fonts...). You can choose here if you accept optional cookies and services, which will transfer some of your data to third parties.You can change or reset your settings on our legal note page whenever you want. Also important to know about data privacy:</p><p><em>&bull; Opening sites or files is always cause a protocoll entry by the webserver for 14 days.<br />&bull; If you fill out a form, we process the data electronically.<br />&bull; Your settings are saved on your device for 90 days.</em></p>        </div>        <ul class=\"ec_categories ec_hide ec_toggleDetailView\">            <li class=\"ec_category ec_category_109\">                <input type=\"checkbox\" value=\"1\" name=\"ec_categorycheckbox_109\" class=\"ec_categorycheckbox ec_categorycheckbox_109\" id=\"ec_categorycheckbox_109\" onchange=\"echonetCookieController.tick('category', '109');\" checked=\"checked\" disabled=\"disabled\"><label class=\"ec_stylelabel\" for=\"ec_categorycheckbox_109\"></label><label class=\"ec_categorylabel\" for=\"ec_categorycheckbox_109\">Necessary / Legal</label><a href=\"#ec_services_109\" class=\"ec_servicesToggler ec_servicesToggler_109\" id=\"ec_servicesToggler_109\" onclick=\"event.preventDefault();echonetCookieController.toggleClass('ec_services_109', 'ec_open');echonetCookieController.toggleClass('ec_servicesToggler_109', 'ec_open');\"></a>                <ul class=\"ec_services ec_services_109\" id=\"ec_services_109\">                    <li class=\"ec_service ec_service_4\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_4\" class=\"ec_servicecheckbox ec_servicecheckbox_4\" id=\"ec_servicecheckbox_4\" onchange=\"echonetCookieController.tick('service', '4');\" checked=\"checked\" disabled=\"disabled\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_4\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_4\">Cookie-Consent</label>                        <div class=\"ec_servicedescription\">                            With this cookie the settings you choose in this cookie consent banner are saved for the future.                        </div>                    </li>                                        <li class=\"ec_service ec_service_5\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_5\" class=\"ec_servicecheckbox ec_servicecheckbox_5\" id=\"ec_servicecheckbox_5\" onchange=\"echonetCookieController.tick('service', '5');\" checked=\"checked\" disabled=\"disabled\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_5\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_5\">Session Cookie</label>                        <div class=\"ec_servicedescription\">                            Necessary to clearly identify your session and save settings you will or have chosen on the website eg. for color-contrast or for the use of a basket.                        </div>                    </li>                </ul>            </li>                        <li class=\"ec_category ec_category_110\">                <input type=\"checkbox\" value=\"1\" name=\"ec_categorycheckbox_110\" class=\"ec_categorycheckbox ec_categorycheckbox_110\" id=\"ec_categorycheckbox_110\" onchange=\"echonetCookieController.tick('category', '110');\"><label class=\"ec_stylelabel\" for=\"ec_categorycheckbox_110\"></label><label class=\"ec_categorylabel\" for=\"ec_categorycheckbox_110\">External Content / Video, Maps...</label><a href=\"#ec_services_110\" class=\"ec_servicesToggler ec_servicesToggler_110\" id=\"ec_servicesToggler_110\" onclick=\"event.preventDefault();echonetCookieController.toggleClass('ec_services_110', 'ec_open');echonetCookieController.toggleClass('ec_servicesToggler_110', 'ec_open');\"></a>                <ul class=\"ec_services ec_services_110\" id=\"ec_services_110\">                    <li class=\"ec_service ec_service_8\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_8\" class=\"ec_servicecheckbox ec_servicecheckbox_8\" id=\"ec_servicecheckbox_8\" onchange=\"echonetCookieController.tick('service', '8');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_8\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_8\">Dailymotion Player</label>                        <div class=\"ec_servicedescription\">                            Display videos from dailymotion.com (France)                        </div>                    </li>                                        <li class=\"ec_service ec_service_12\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_12\" class=\"ec_servicecheckbox ec_servicecheckbox_12\" id=\"ec_servicecheckbox_12\" onchange=\"echonetCookieController.tick('service', '12');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_12\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_12\">Google Maps</label>                        <div class=\"ec_servicedescription\">                            Google / Alphabet Inc. (USA) Google Maps also loads Google Fonts for it's display, if you accept Google Maps you will also have Google Fonts loaded inside the map.                        </div>                    </li>                                        <li class=\"ec_service ec_service_6\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_6\" class=\"ec_servicecheckbox ec_servicecheckbox_6\" id=\"ec_servicecheckbox_6\" onchange=\"echonetCookieController.tick('service', '6');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_6\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_6\">Vimeo Player</label>                        <div class=\"ec_servicedescription\">                            Vimeo Inc. (USA) Necessary cookie for the display of video-content based on the platform of vimeo.com with embedded videos on the website.                        </div>                    </li>                                        <li class=\"ec_service ec_service_7\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_7\" class=\"ec_servicecheckbox ec_servicecheckbox_7\" id=\"ec_servicecheckbox_7\" onchange=\"echonetCookieController.tick('service', '7');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_7\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_7\">Youtube Player</label>                        <div class=\"ec_servicedescription\">                            Google / Alphabet Inc. (USA) Necessary cookie for the display of video-content based on the platform of youtube.com with embedded videos on the website.                        </div>                    </li>                </ul>            </li>                        <li class=\"ec_category ec_category_111\">                <input type=\"checkbox\" value=\"1\" name=\"ec_categorycheckbox_111\" class=\"ec_categorycheckbox ec_categorycheckbox_111\" id=\"ec_categorycheckbox_111\" onchange=\"echonetCookieController.tick('category', '111');\"><label class=\"ec_stylelabel\" for=\"ec_categorycheckbox_111\"></label><label class=\"ec_categorylabel\" for=\"ec_categorycheckbox_111\">Analytics & Stats</label><a href=\"#ec_services_111\" class=\"ec_servicesToggler ec_servicesToggler_111\" id=\"ec_servicesToggler_111\" onclick=\"event.preventDefault();echonetCookieController.toggleClass('ec_services_111', 'ec_open');echonetCookieController.toggleClass('ec_servicesToggler_111', 'ec_open');\"></a>                <ul class=\"ec_services ec_services_111\" id=\"ec_services_111\">                    <li class=\"ec_service ec_service_9\">                        <input type=\"checkbox\" value=\"1\" name=\"ec_servicecheckbox_9\" class=\"ec_servicecheckbox ec_servicecheckbox_9\" id=\"ec_servicecheckbox_9\" onchange=\"echonetCookieController.tick('service', '9');\"><label class=\"ec_stylelabel\" for=\"ec_servicecheckbox_9\"></label><label class=\"ec_servicelabel\" for=\"ec_servicecheckbox_9\">Google Tag-Manager</label>                        <div class=\"ec_servicedescription\">                            Google / Alphabet Inc. (USA) Registres a unique ID which is used to be added to statistics data, who people use the website.                        </div>                    </li>                </ul>            </li>        </ul>        <div class=\"ec_buttons\">            <button type=\"button\" class=\"ec_button ec_button_individual ec_toggleDetailView\" onclick=\"echonetCookieController.toggleDetailView();\">Let me choose!</button>            <button type=\"button\" class=\"ec_button ec_button_refuse ec_toggleDetailView\"  onclick=\"echonetCookieController.decide(false, true);\">Decline</button>            <button type=\"button\" class=\"ec_button ec_button_ticked ec_button_primarycolor_0 ec_hide ec_toggleDetailView\" onclick=\"echonetCookieController.decide(false, false);\">Save</button>            <button type=\"button\" class=\"ec_button ec_button_all\" onclick=\"echonetCookieController.decide(true, false);\">Ok, continue...</button>        </div></div></div>",checkConsent: function(cookie_service_shorttag) { // function to check for consent for a specific service (by shorttag)
+        this.readEchonetCookieValue();
+        
+        var service = false;
+        for (var k in this.website.cookie_services) {
+            if (this.website.cookie_services.hasOwnProperty(k) && this.website.cookie_services[k].shorttag == cookie_service_shorttag) {
+                service = this.website.cookie_services[k];
+            }
+        }
+        
+        if(this.echonetCookieValue[cookie_service_shorttag] == true || (service != false && service.force_check == 1)) {
+           return true;
+        }
+        return false;
+    },
+    doWhenConsent: function(cookie_service_shorttag, callback) { // function that takes a function and queus it in callbackStack once the user agreed to the service 
+        if(this.checkConsent(cookie_service_shorttag)) {
+            callback();
+        } else {
+            for (var k in this.website.cookie_services) {
+                if (this.website.cookie_services.hasOwnProperty(k) && this.website.cookie_services[k].shorttag == cookie_service_shorttag) {
+                    this.callbackStack.push({"cookie_service_shorttag": cookie_service_shorttag, "callback": callback, "called": false});
+                }
+            }
+        }
+    },
+    checkCallbackStack: function() {
+        for (var k in this.callbackStack) {
+            if (this.callbackStack.hasOwnProperty(k)) {
+                if(!this.callbackStack[k].called && this.checkConsent(this.callbackStack[k].cookie_service_shorttag)) {
+                    this.callbackStack[k].callback();
+                    this.callbackStack[k].called = true;
+                }
+            }
+        }
+    },
+    decisionReset: function() { // function remove the Cookie for the echonetCookieController and therefore delete previous decisions
+        document.cookie = this.echonetCookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"+(this.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+this.website.cookie_samesite+";"+(this.website.cookiedomainurl.length  > 0 ? "domain="+this.website.cookiedomainurl+";" : "");
+        this.readEchonetCookieValue();
+    },
+    showCookieBanner: function() { // function to show the Cookie banner
+        // before showing the cookie banner we must make sure the html is already here and if not attatch it
+        if (!this.echonetCookieBannerAttatched) {
+            this.attatchCookieBanner();
+        }
+        // now also update the checkboxes to the correct Values (if decision was made before)
+        this.readEchonetCookieValue();
+        var checkedCatIds = [];
+        for (var k in this.website.cookie_services) {
+            if (this.website.cookie_services.hasOwnProperty(k)) {
+                var serviceCheckboxElement = document.getElementById(this.website.class_prefix+"servicecheckbox_"+this.website.cookie_services[k].id);
+                serviceCheckboxElement.checked = (this.website.cookie_services[k].force_check == 1 || this.checkConsent(this.website.cookie_services[k].shorttag));
+                if(serviceCheckboxElement.checked && checkedCatIds.indexOf(this.website.cookie_services[k].cookie_category_id) < 0) {
+                        checkedCatIds.push(this.website.cookie_services[k].cookie_category_id);
+                }
+            }
+        }
+        for (var k in this.website.cookie_categories) {
+            if (this.website.cookie_categories.hasOwnProperty(k)) {
+                var categoryCheckboxElement = document.getElementById(this.website.class_prefix+"categorycheckbox_"+this.website.cookie_categories[k].id);
+                categoryCheckboxElement.checked = checkedCatIds.indexOf(this.website.cookie_categories[k].id) >= 0;
+            }
+        }
+        // finally we can show the banner
+        var containerElement = document.getElementsByClassName(this.website.containerclass);
+        this.addClassElement(containerElement[0], this.website.activeclass);
+        this.addClassElement(document.documentElement, this.website.activeclass);
+		this.initClassLinks();
+    },
+    hideCookieBanner: function(removeFromDom) { // function to hide the Cookie banner (optionally remove it from the dom as well)
+        var containerElement = document.getElementsByClassName(this.website.containerclass);
+        if (containerElement.length > 0) {
+            this.removeClassElement(containerElement[0], this.website.activeclass);
+            if(removeFromDom) {
+                document.body.removeChild(containerElement[0]);
+                this.echonetCookieBannerAttatched = false;
+            }
+        }
+        this.removeClassElement(document.documentElement, this.website.activeclass);
+    },
+    attatchCookieBanner: function() { // function that attatches the neccessary HTML to the DOM
+        if(!this.echonetCookieBannerAttatched) {
+            var html = this.cookieBannerHtml_en;
+            if(this["cookieBannerHtml_"+document.documentElement.lang] != undefined) {
+               html = this["cookieBannerHtml_"+document.documentElement.lang];
+            }
+            //in order to append html to the body we assign to the innerHTML property of an anonymous element and appending each of its children (seen here: https://stackoverflow.com/questions/10309650/add-elements-to-the-dom-given-plain-text-html-using-only-pure-javascript-no-jqu)
+            var div = document.createElement('div');
+            div.innerHTML = html;
+            while (div.children.length > 0) {
+                // document.body.appendChild(div.children[0]);
+                document.body.prepend(div.children[0]); //for accessability: prepend
+            }
+        }
+        this.echonetCookieBannerAttatched = true;
+    },
+    attatchBannerbutton: function() { // function that attatches the neccessary HTML to the DOM
+        //console.log("attatchBannerbutton");
+        //console.log(window.location.hostname);
+        if(!this.buttonAttatched && this.cookieButton != undefined) {
+            var html = this.cookieButton;
+            /*if(this["cookieBannerHtml_"+document.documentElement.lang] != undefined) {
+               html = this["cookieBannerHtml_"+document.documentElement.lang];
+            }*/
+            //in order to append html to the body we assign to the innerHTML property of an anonymous element and appending each of its children (seen here: https://stackoverflow.com/questions/10309650/add-elements-to-the-dom-given-plain-text-html-using-only-pure-javascript-no-jqu)
+            var div = document.createElement('div');
+            div.innerHTML = html;
+            while (div.children.length > 0) {
+                document.body.appendChild(div.children[0]);
+            }
+        }
+        this.buttonAttatched = true;
+    },
+    decide: function(agree_all, refuse_all) { // decide what cookies to allow based on current checkbox status (or agree_all/refuse_all)
+		if (agree_all && refuse_all) {
+			agree_all = false;
+		}
+        var newEchonetCookieValue = {};
+        for (var k in this.website.cookie_services) {
+            if (this.website.cookie_services.hasOwnProperty(k)) {
+                var serviceCheckboxElement = document.getElementById(this.website.class_prefix+"servicecheckbox_"+this.website.cookie_services[k].id);
+                newEchonetCookieValue[this.website.cookie_services[k].shorttag] = (agree_all || this.website.cookie_services[k].force_check == 1 ? true : (refuse_all ? false :serviceCheckboxElement.checked));
+            }
+        }
+		var echonetCookieExpireString = "Fri, 31 Dec 9999 23:59:59 GMT";
+		if(this.website.cookie_lifetime_hours > 0) {
+			var echonetCookieExpireDate = new Date();
+			echonetCookieExpireDate.setTime(echonetCookieExpireDate.getTime()+(this.website.cookie_lifetime_hours*60*60*1000));
+			var echonetCookieExpireString = echonetCookieExpireDate.toGMTString();
+		}
+        //document.cookie = this.echonetCookieName + "=" + JSON.stringify(newEchonetCookieValue) + "; expires=" + echonetCookieExpireString + ";path=/;"+(this.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+this.website.cookie_samesite+";";
+		document.cookie = this.echonetCookieName + "=" + JSON.stringify(newEchonetCookieValue) + "; expires=" + echonetCookieExpireString + ";path=/;"+(this.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+this.website.cookie_samesite+";"+(this.website.cookiedomainurl.length  > 0 ? "domain="+this.website.cookiedomainurl+";" : "");
+        this.readEchonetCookieValue();
+        this.hideCookieBanner(true);
+        this.unblockThirdPartyScripts();
+        this.checkCallbackStack();
+        /**/
+        var xhReq = new XMLHttpRequest();
+        xhReq.open("GET", "/_tools/save_cookie_decision.php?decision=" + encodeURIComponent(JSON.stringify(this.echonetCookieValue)) , false);
+        xhReq.send(null);
+        /**/
+        
+        if(echonetCookieController.checkIfAllCookiesSet() === false || 0 == "1") {
+            if(!this.buttonAttatched){
+                echonetCookieController.attatchBannerbutton();
+            }else{
+                if(document.querySelectorAll('.cookielife_showbutton')[0] != undefined){
+                    document.querySelectorAll('.cookielife_showbutton')[0].style.display = "inline-block";
+                }    
+            }
+        }else{
+            if(document.querySelectorAll('.cookielife_showbutton')[0] != undefined){
+                document.querySelectorAll('.cookielife_showbutton')[0].style.display = "none";
+            }
+        }
+        
+    },
+    tick: function(category_or_service, id) { //function that manages the checkbox functionality (category checks all services ...)
+        var checkboxElement = document.getElementById(this.website.class_prefix+category_or_service+"checkbox_"+id);
+        if(checkboxElement !== null) {
+            switch(category_or_service) {
+              case "category":  
+                // if category changes all services beneath should change as well
+                for (var k in this.website.cookie_services) {
+                    if (this.website.cookie_services.hasOwnProperty(k) && this.website.cookie_services[k].cookie_category_id == id) {
+                        var serviceCheckboxElement = document.getElementById(this.website.class_prefix+"servicecheckbox_"+this.website.cookie_services[k].id);
+                        serviceCheckboxElement.checked = checkboxElement.checked;
+                    }
+                }
+                break;
+              case "service":
+                // if service changes check if at least one of the services of this category is checked - if so check category
+                var thisservice = this.website.cookie_services[id];
+                var atleastoneischecked = false;
+                    
+                for (var k in this.website.cookie_services) {
+                    if (this.website.cookie_services.hasOwnProperty(k) && this.website.cookie_services[k].cookie_category_id == thisservice.cookie_category_id) {
+                        var serviceCheckboxElement = document.getElementById(this.website.class_prefix+"servicecheckbox_"+this.website.cookie_services[k].id);
+                        if(serviceCheckboxElement.checked) {
+                            atleastoneischecked = true;
+                        }
+                    }
+                }
+                
+                var categoryCheckboxElement = document.getElementById(this.website.class_prefix+"categorycheckbox_"+thisservice.cookie_category_id);
+                if(categoryCheckboxElement.checked != atleastoneischecked) {
+                    categoryCheckboxElement.checked = atleastoneischecked;
+                }
+                break;
+            }
+        }
+    },
+    init: function() {
+        var selfECC = this;
+        window.addEventListener("load", function () {
+            selfECC.readSuppressCookieValue();
+            //console.log(selfECC.echonetSuppressCookieValue);
+            if(selfECC.echonetSuppressCookieValue !== undefined) { // decision has never been made
+                //document.cookie = selfECC.echonetSuppressCookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"+(selfECC.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+selfECC.website.cookie_samesite+";";   
+                document.cookie = selfECC.echonetSuppressCookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"+(selfECC.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+selfECC.website.cookie_samesite+";";
+            }else{
+                selfECC.reevaluate();
+            }
+			
+        });
+    },
+    unblockThirdPartyScripts: function() { // unblocks scripts that were blocked by blockThirdPartyScripts - also works with other elements that use the src attribute - like iframes   
+        var scriptElements = document.querySelectorAll('[data-dowhenconsent]');
+        var selfECC = this;
+        Array.prototype.forEach.call(scriptElements, function(scriptElement, index) {
+            var scriptElement = scriptElements.item(index);
+            if(selfECC.checkConsent(scriptElement.getAttribute("data-dowhenconsent")) && scriptElement.hasAttribute("data-src")) {
+                scriptElement.setAttribute("src", scriptElement.getAttribute("data-src"));
+                scriptElement.removeAttribute("data-src");
+            }
+            
+            if(selfECC.checkConsent(scriptElement.getAttribute("data-dowhenconsent")) && scriptElement.hasAttribute("data-href")) {
+                scriptElement.setAttribute("href", scriptElement.getAttribute("data-href"));
+                scriptElement.removeAttribute("data-href");
+            }
+        });
+    },
+	setIframePlaceholders: function() { // sets src attribute for iFrames that will only be loaded once 
+		var iframeElements = document.querySelectorAll('iframe[data-dowhenconsent]');
+        var selfECC = this;
+		var cookiePathEnd = "/cookie/";
+		var cookiePath = cookiePathEnd;
+		var jsSource = false;
+		var jsElement = document.querySelector('script[src$="'+cookiePathEnd+'echonetcookie.js"]');
+		if(jsElement) {
+		   	jsSource = jsElement.getAttribute("src");
+			cookiePath = jsSource.substr(0,jsSource.indexOf(cookiePathEnd)+cookiePathEnd.length);
+	   	}
+		var cssSource = false;
+		var cssElement = document.querySelector('link[href$="'+cookiePathEnd+'echonetcookie.css"]');
+		if(cssElement) {
+		   	cssSource = cssElement.getAttribute("href");
+			cookiePath = cssSource.substr(0,cssSource.indexOf(cookiePathEnd)+cookiePathEnd.length);
+	   	}
+        Array.prototype.forEach.call(iframeElements, function(iframeElement, index) {
+            var iframeElement = iframeElements.item(index);
+            if(iframeElement.hasAttribute("data-src") && !iframeElement.hasAttribute("src")) {
+				var pagelanguage = "en";
+				if(document.documentElement.lang != undefined) {
+				   pagelanguage = document.documentElement.lang;
+				}
+                iframeElement.setAttribute("src", cookiePath+"iframeplaceholder.html?service="+iframeElement.getAttribute("data-dowhenconsent")+"&target="+encodeURIComponent(iframeElement.getAttribute("data-src"))+"&language="+pagelanguage+(jsSource?"&jsSource="+encodeURIComponent(jsSource):"")+(cssSource?"&cssSource="+encodeURIComponent(cssSource):""));
+            }
+        });
+	},
+    setImgPlaceholders: function() { // sets src attribute for iFrames that will only be loaded once 
+		var imgElements = document.querySelectorAll('img[data-dowhenconsent]');
+        var selfECC = this;
+		var cookiePathEnd = "/cookie/";
+		var cookiePath = cookiePathEnd;
+		var jsSource = false;
+		var jsElement = document.querySelector('script[src$="'+cookiePathEnd+'echonetcookie.js"]');
+		if(jsElement) {
+		   	jsSource = jsElement.getAttribute("src");
+			cookiePath = jsSource.substr(0,jsSource.indexOf(cookiePathEnd)+cookiePathEnd.length);
+	   	}
+		var cssSource = false;
+		var cssElement = document.querySelector('link[href$="'+cookiePathEnd+'echonetcookie.css"]');
+		if(cssElement) {
+		   	cssSource = cssElement.getAttribute("href");
+			cookiePath = cssSource.substr(0,cssSource.indexOf(cookiePathEnd)+cookiePathEnd.length);
+	   	}
+        Array.prototype.forEach.call(imgElements, function(imgElement, index) {
+            var imgElement = imgElements.item(index);
+            if(imgElement.hasAttribute("data-src") && !imgElement.hasAttribute("src")) {
+				
+                //imgElement.setAttribute("src", "https://cookies.echonet.biz/media/file/2_imgplaceholderbg.png");
+                imgElement.setAttribute("src", 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNy45LjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRWJlbmVfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAxIDEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEgMTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPC9zdmc+DQo=');
+                /*imgElement.setAttribute("width", "100");
+                imgElement.setAttribute("height", "100");*/
+                //imgElement.style.backgroundImage = "url(http://cookies.echonet.biz/media/file/3_cookie-settings20.svg)";
+                imgElement.style.backgroundImage = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNy45LjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRWJlbmVfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAxNDEuNyAxNDEuNyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTQxLjcgMTQxLjc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtvcGFjaXR5OjAuNDt9DQoJLnN0MXtmaWxsOiNCODc4NEY7fQ0KCS5zdDJ7ZmlsbDojNzU0RDQ4O30NCgkuc3Qze2ZpbGw6I0E1NkE0Qzt9DQo8L3N0eWxlPg0KPGcgY2xhc3M9InN0MCI+DQoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTEyNy40LDUwLjhjLTIuNywyLjQtNiw0LjItOS42LDUuN2MtMS43LDAuNy0zLjMsMS4yLTUuMSwxLjdjLTAuMSwwLjItMC4xLDAuNS0wLjMsMC43bC0yLjQsMy45DQoJCWMtMC44LDEuMy0yLjMsMS45LTMuOCwxLjdsLTYtMS4xYy0xLjctMC4zLTIuNi0xLjQtMi40LTMuMWwwLDBjMC0wLjQtMC4xLTEuMS0xLTEuMmMtMTIuMS0xLjctMjIuNy05LjUtMjcuNS0yMS4yDQoJCWMtMi44LTYuNy0xLjUtMTMuMS0wLjEtMTkuOGMtMi41LTAuMy01LjEtMC4xLTYuNiwwYy02LjksMC44LTE4LjIsMy4zLTI0LjksNi40QzguMywzOC4zLDAuMSw2Ny45LDEwLjMsOTcuMw0KCQljMTEuNiwzMy41LDQ5LjUsNDcuOSw4My45LDM1LjNjMzUuMi0xMi45LDQ4LjgtNDkuOSwzNS44LTgxLjFDMTI5LjgsNTAuOCwxMjguNyw0OS43LDEyNy40LDUwLjh6Ii8+DQoJPHBhdGggY2xhc3M9InN0MiIgZD0iTTU5LjUsNzcuNGwwLjQsNi44YzAuMSwyLjEsMS44LDMuOCw0LDMuOWw3LjcsMC41YzEuOSwwLjEsMy43LTEsNC40LTIuN2wyLjMtNS4zYzAuOC0xLjgsMC4yLTMuOS0xLjQtNS4xDQoJCWwtNS41LTRjLTEuMi0wLjktMi45LTEuMS00LjMtMC41bC01LDJDNjAuNSw3My44LDU5LjQsNzUuNSw1OS41LDc3LjRMNTkuNSw3Ny40eiIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0yNi4zLDYxbDQuNCw1LjJjMS40LDEuNiwzLjgsMiw1LjcsMC44bDYuNi00LjFjMS42LTEsMi40LTIuOSwyLTQuN2wtMS4zLTUuNWMtMC41LTEuOS0yLjItMy4zLTQuMi0zLjNoLTYuOQ0KCQljLTEuNSwwLTMsMC44LTMuOCwyLjFMMjYsNTZDMjQuOSw1Ny42LDI1LjEsNTkuNiwyNi4zLDYxTDI2LjMsNjF6Ii8+DQoJPHBhdGggY2xhc3M9InN0MiIgZD0iTTY3LjQsMzcuMWwtMy42LDUuOGMtMS4xLDEuOC0wLjgsNC4yLDAuOSw1LjVsNiw0LjdjMS40LDEuMSwzLjUsMS4yLDUuMSwwLjJsNS0zLjFjMS43LTEuMSwyLjUtMy4yLDEuOS01DQoJCWwtMi4xLTYuNGMtMC41LTEuNC0xLjctMi41LTMuMi0yLjhsLTUuMy0xQzcwLjMsMzQuNyw2OC40LDM1LjUsNjcuNCwzNy4xTDY3LjQsMzcuMXoiLz4NCgk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMjkuNiw5OC41bDMuMyw0LjNjMS4xLDEuMywzLDEuNyw0LjUsMC45bDUuNC0zLjFjMS4zLTAuOCwyLTIuMiwxLjctMy43bC0wLjktNC41Yy0wLjMtMS41LTEuNi0yLjctMy4zLTIuNw0KCQlsLTUuNS0wLjJjLTEuMiwwLTIuNCwwLjUtMy4xLDEuNWwtMi40LDMuNUMyOC42LDk1LjcsMjguNiw5Ny4zLDI5LjYsOTguNUwyOS42LDk4LjV6Ii8+DQoJPHBhdGggY2xhc3M9InN0MiIgZD0iTTEwNi4yLDgwLjZsLTYuOCwxLjJjLTIuMiwwLjQtMy43LDIuMi0zLjcsNC40bDAuMSw3LjZjMCwxLjgsMS4zLDMuNCwzLjEsNGw1LjYsMS42YzEuOSwwLjYsNC0wLjIsNS4xLTEuOQ0KCQlsMy42LTUuOGMwLjgtMS4zLDAuOS0yLjksMC4yLTQuMmwtMi41LTQuNkMxMDkuOSw4MS4yLDEwOC4xLDgwLjMsMTA2LjIsODAuNkwxMDYuMiw4MC42eiIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik03NS40LDExMi43bC00LjktMi4zYy0xLjYtMC43LTMuNS0wLjItNC41LDEuMmwtMy41LDUuMWMtMC45LDEuMi0wLjgsMi45LDAuMSw0bDIuOCwzLjZjMSwxLjIsMi43LDEuNyw0LjIsMQ0KCQlsNS4xLTIuMmMxLjEtMC41LDEuOS0xLjUsMi4xLTIuN2wwLjYtNC4xQzc3LjUsMTE0LjgsNzYuNywxMTMuMyw3NS40LDExMi43TDc1LjQsMTEyLjd6Ii8+DQoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTk5LjIsMzQuOWw0LjIsNi4xYzAuNywxLDIsMS4yLDMsMC42bDcuOC00LjhjMS0wLjYsMS4zLTEuOSwwLjgtMi45bC02LTEwLjJjLTAuOC0xLjQtMi44LTEuNC0zLjctMC4xDQoJCWwtNi4xLDguOUM5OC43LDMzLjMsOTguNywzNC4yLDk5LjIsMzQuOUw5OS4yLDM0Ljl6Ii8+DQoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTg5LjQsMjkuMmwxMi0xMi40YzAuOC0wLjgsMC44LTIuMSwwLTNMOTEuNywzLjVjLTAuOC0wLjgtMi4xLTAuOS0zLjEtMC4xbC04LjIsN2MtMC41LDAuNC0wLjgsMS0wLjgsMS43djkuNw0KCQljMCwwLjYsMC4yLDEuMSwwLjYsMS41bDYsNkM4Ny4yLDMwLjEsODguNiwzMC4xLDg5LjQsMjkuMkw4OS40LDI5LjJ6Ii8+DQoJPHBhdGggY2xhc3M9InN0MyIgZD0iTTkwLjYsMzguOWwyLjItMC45YzEuMy0wLjUsMi43LDAuMiwzLDEuNWwxLDVjMC4zLDEuNS0xLjEsMi44LTIuNiwyLjZsLTIuOS0wLjVjLTEtMC4yLTEuNy0xLTEuNy0xLjkNCgkJbC0wLjItMy42Qzg5LjEsNDAuMiw4OS43LDM5LjMsOTAuNiwzOC45TDkwLjYsMzguOXoiLz4NCgk8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTAzLjgsNTJsMC4xLDAuNGMwLjQsMSwxLjQsMS41LDIuNCwxLjNsNi42LTEuM2MxLjQtMC4zLDIuMi0xLjcsMS42LTNsLTAuNi0xLjVjLTAuNS0xLjEtMS43LTEuNi0yLjktMS4xDQoJCWwtNi4xLDIuNUMxMDMuOSw0OS43LDEwMy40LDUwLjksMTAzLjgsNTJMMTAzLjgsNTJ6Ii8+DQo8L2c+DQo8L3N2Zz4NCg==';
+                imgElement.style.backgroundSize = "50px";
+                //imgElement.style.backgroundPosition = "center";
+                //imgElement.style.backgroundRepeat = "no-repeat";
+            }
+        });
+	},
+    checkIfCookieDecisionMade: function() { // check if the user already decided and if his decisions are up to date (maybe new services were added)
+        this.readEchonetCookieValue();
+        if(this.echonetCookieValue === false) { // decision has never been made
+           return false;
+        }
+        // now also check if decision was made before but the options changed in the meantime
+        for (var k in this.website.cookie_services) {
+            if (this.website.cookie_services.hasOwnProperty(k)) {
+                if (!this.echonetCookieValue.hasOwnProperty(this.website.cookie_services[k].shorttag)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    },
+    readEchonetCookieValue: function() { // reads the cookies Value and writes it into echonetCookieValue
+        var nameEQ = this.echonetCookieName + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) {
+                try {
+                    this.echonetCookieValue = JSON.parse(c.substring(nameEQ.length,c.length));
+                } catch(e) {
+                    this.echonetCookieValue = {};
+                }
+                
+            }
+                
+        }
+    },
+    readSuppressCookieValue: function() { // reads the cookies Value and writes it into echonetCookieValue
+        var nameEQ = this.echonetSuppressCookieName + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) {
+                try {
+                    this.echonetSuppressCookieValue = JSON.parse(c.substring(nameEQ.length,c.length));
+                } catch(e) {
+                    this.echonetSuppressCookieValue = {};
+                }
+                
+            }
+                
+        }
+    },
+    checkIfAllCookiesSet: function(){
+        this.readEchonetCookieValue();
+        if(this.echonetCookieValue !== false) { 
+            var checkall = true;
+            var cookies = this.echonetCookieValue;
+            Object.keys(cookies).forEach(function (x) {
+                if(cookies[x] == false){
+                    checkall = false;
+                }
+            });
+            return checkall;
+        }else{
+            return false;
+        }
+    },
+    toggleDetailView: function() {
+        var toggleElements = document.getElementsByClassName(this.website.class_prefix+"toggleDetailView");
+        var selfECC = this;
+        var hideClass = this.website.class_prefix+"hide";
+        Array.prototype.forEach.call(toggleElements, function(toggleElement, index) {
+            var toggleElement = toggleElements.item(index);    
+            selfECC.toggleClassElement(toggleElement, selfECC.website.class_prefix+"hide");
+        });
+    },
+	isDetailView: function() {
+        var categoriesElement = document.getElementsByClassName(this.website.class_prefix+"categories");
+		var selfECC = this;
+		if(categoriesElement.length > 0) {
+			return !selfECC.hasClassElement(categoriesElement[0], selfECC.website.class_prefix+"hide");
+	   	}
+	   	return false;
+    },
+    toggleClass: function(targetId, classname) {
+        var toggleElements = document.getElementById(targetId);
+        if(toggleElements !== null) {
+            this.toggleClassElement(toggleElements, classname);
+        }
+    },
+    toggleClassElement: function(targetElement, classname) {
+        var classString = targetElement.className;
+        var nameIndex = classString.indexOf(classname);
+        if (nameIndex == -1) {
+            classString += ' ' + classname;
+        }
+        else {
+            classString = classString.substr(0, nameIndex) + classString.substr(nameIndex+classname.length);
+        }
+        targetElement.className = classString;
+    },
+    addClassElement: function(targetElement, classname) {
+        var classString = targetElement.className;
+        var nameIndex = classString.indexOf(classname);
+        if (nameIndex == -1) {
+            classString += ' ' + classname;
+        }
+        targetElement.className = classString;
+    },
+    removeClassElement: function(targetElement, classname) {
+        var classString = targetElement.className;
+        var nameIndex = classString.indexOf(classname);
+        if (nameIndex != -1) {
+            classString = classString.substr(0, nameIndex) + classString.substr(nameIndex+classname.length);
+        }
+        targetElement.className = classString;
+    },
+	hasClassElement:	function (targetElement, classname) {
+		return (' ' + targetElement.className + ' ').indexOf(' ' + classname+ ' ') > -1;
+	},
+	reevaluate: function(){
+		//function to be called when specific elements were loaded asynchronously (like iframes) that need to be evaluated
+		var selfECC = this;
+		selfECC.setIframePlaceholders();
+        selfECC.setImgPlaceholders();
+		if(!selfECC.checkIfCookieDecisionMade()) {
+			//only show Cookie banner in top frame. if this is an iframe of same domain than the top dont
+            /*console.log(self.location.hostname);
+            //console.log(top);
+            //console.log(top.location.hostname);
+            console.log(self);
+            console.log(top);
+            console.log(top.html.baseURI);*/
+            
+			//if(self === top || self.location.hostname != top.location.hostname) {
+				selfECC.showCookieBanner();
+			//}
+		}
+		else {
+			selfECC.unblockThirdPartyScripts();
+		}
+		selfECC.initClassLinks();
+	},
+    suppresscookie: function(){
+        var echonetCookieExpireString = "Fri, 31 Dec 9999 23:59:59 GMT";
+		if(this.website.cookie_lifetime_hours > 0) {
+			var echonetCookieExpireDate = new Date();
+			echonetCookieExpireDate.setTime(echonetCookieExpireDate.getTime()+(this.website.cookie_lifetime_hours*60*60*1000));
+			var echonetCookieExpireString = echonetCookieExpireDate.toGMTString();
+		}
+		//document.cookie = this.echonetSuppressCookieName + "=1; expires=" + echonetCookieExpireString + ";path=/;"+(this.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+this.website.cookie_samesite+";";
+        document.cookie = this.echonetSuppressCookieName + "=1; expires=" + echonetCookieExpireString + ";path=/;"+(this.website.cookie_secure == "1" ? " Secure;" : "")+" SameSite="+this.website.cookie_samesite+";";
+        
+	},
+	initClassLinks:	function () {
+		var selfECC = this;
+		var classname_cookielife_show = "cookielife_show";
+		var anchors = document.getElementsByClassName(classname_cookielife_show);
+		for(var i = 0; i < anchors.length; i++) {
+			var anchor = anchors[i];
+			if(!selfECC.hasClassElement(anchor, classname_cookielife_show+"_initialized")) {
+				selfECC.addClassElement(anchor, classname_cookielife_show+"_initialized");
+			   	anchor.onclick = function() {
+					if(self !== top && self.location.hostname == top.location.hostname) {
+						top.echonetCookieController.showCookieBanner();
+					}
+					else {
+						echonetCookieController.showCookieBanner();
+					}
+				}
+		   	}
+		}
+		var classname_cookielife_reset = "cookielife_reset";
+		var anchors = document.getElementsByClassName(classname_cookielife_reset);
+		for(var i = 0; i < anchors.length; i++) {
+			var anchor = anchors[i];
+			if(!selfECC.hasClassElement(anchor, classname_cookielife_reset+"_initialized")) {
+				selfECC.addClassElement(anchor, classname_cookielife_reset+"_initialized");
+				anchor.onclick = function() {
+					echonetCookieController.decisionReset();
+				}
+			}
+		}
+		var classname_cookielife_select = "cookielife_select"; //opens the view to select services and topics
+		var anchors = document.getElementsByClassName(classname_cookielife_select);
+		for(var i = 0; i < anchors.length; i++) {
+			var anchor = anchors[i];
+			if(!selfECC.hasClassElement(anchor, classname_cookielife_select+"_initialized")) {
+				selfECC.addClassElement(anchor, classname_cookielife_select+"_initialized");
+				anchor.onclick = function() {
+					if(!selfECC.isDetailView()) {
+					   	selfECC.showCookieBanner();
+						selfECC.toggleDetailView();
+				   	}
+				}
+			}
+		}
+		var classname_cookielife_refuse = "cookielife_refuse"; //opens the view to select services and topics
+		var anchors = document.getElementsByClassName(classname_cookielife_refuse);
+		for(var i = 0; i < anchors.length; i++) {
+			var anchor = anchors[i];
+			if(!selfECC.hasClassElement(anchor, classname_cookielife_refuse+"_initialized")) {
+				selfECC.addClassElement(anchor, classname_cookielife_refuse+"_initialized");
+				anchor.onclick = function() {
+					selfECC.decide(false, true); //refuse all
+				}
+			}
+		}
+	}
+};
+
+//finally initialize
+/*$('body').on('click','a.cookielife_supress',function(e){
+    console.log($(this));
+});*/
+/*const supress = document.querySelector(".cookielife_suppress");
+
+supress.onclick = function(e) {
+    console.log("hier");
+    console.log(e.getAttribute('class'));
+}*/
+
+
+
+/*var datenschutz = "";
+var impressum = "";
+var init = false;
+var initd = false, initi = false;
+if(datenschutz.length == 0 && impressum.length == 0){
+    init = true;
+}else{
+    if(datenschutz.length > 1 && datenschutz != window.location.pathname){
+        initd = true;
+    }
+    
+    if(impressum.length > 1 && impressum != window.location.pathname){
+        initi = true;
+    }
+}
+if(init || (initd && initi)){*/
+    echonetCookieController.init();
+//}
+
+    window.onload = function(event) {
+        var lots_of_stuff_already_done = false;
+        
+        document.querySelectorAll('.cookielife_suppress').forEach(function(el){
+          el.addEventListener('click', function(e) {
+                if (lots_of_stuff_already_done) {
+                    lots_of_stuff_already_done = false; // reset flag
+                    return; // let the event bubble away
+                }
+              
+                e.preventDefault();
+                echonetCookieController.suppresscookie();
+                lots_of_stuff_already_done = true; // set flag
+                this.click();
+          });
+        });}; 
+
+
+
+

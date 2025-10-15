@@ -1,0 +1,23 @@
+.adminPageLeft { display: inline-block; vertical-align: top; width: 10vw; width: calc( 250px ); height: 100vh;  position: fixed; top: 0; left: -250px;  background-color: #FFFFFF;z-index: 9999;transition: all 0.35s ease-in-out; }
+.navtoggled .adminPageLeft { left: 0; }
+.adminPageRight { display: inline-block; vertical-align: top; width: 100vw; width: 100% ; margin-left: 0; overflow: auto; position: relative;top:10px; }
+.adminPageTop { width: 100%; height: 75px; position: fixed; top: 0; left: 0;  background-color: #F4F4F4;z-index: 999; }
+.adminPageBottom { width: 100%; padding: 0 20px 40px 20px; }
+.navtoggle  { position: absolute;top: 15px;right: -50px;width: 30px;height: 30px;border-radius: 50%;background: #f4f4f4; padding: 8px 0; }
+.navtoggle span  { position: relative;top: 13px;right: 0;width: 24px;height: 3px;background-color: #333;display: inline-block; text-indent: -999em; }
+.navtoggle span:before { content: ''; display: inline-block; position: absolute;top: -7px;width: 19px; height: 3px; left: 0;background-color: #333;-webkit-transition: all 0.35s ease-in-out;-moz-transition: all 0.35s ease-in-out;-ms-transition: all 0.35s ease-in-out;-o-transition: all 0.35s ease-in-out;transition: all 0.35s ease-in-out; }
+.navtoggle span:after { content: ''; display: inline-block;position: absolute;top: 7px;right: 0;width: 14px; height: 3px; left: 0;background-color: #333;-webkit-transition: all 0.35s ease-in-out;-moz-transition: all 0.35s ease-in-out;-ms-transition: all 0.35s ease-in-out;-o-transition: all 0.35s ease-in-out;transition: all 0.35s ease-in-out; }
+.navtoggled .navtoggle { right: -65px;width: 45px;height: 45px;padding: 8px; }
+.navtoggled .navtoggle span { background-color: transparent; }
+.navtoggled .navtoggle span:before { width: 30px;transform: rotate(45deg);top:0;}
+.navtoggled .navtoggle span:after { width: 30px;transform: rotate(-45deg);top:0;}
+.navoverlay { width: 100vw;height: 100vh;position: fixed;top: 0; left: 0;background-color: rgba(0,0,0,0.5);display: none; }
+.navtoggled .navoverlay { display: block;z-index: 999; }
+
+@media screen and (min-width: 860px) {
+    .navtoggled .navoverlay { display: none;}
+    .navtoggle { display: none; }
+    .adminPageLeft {  left: 0;  }
+    .adminPageRight { display: inline-block; vertical-align: top; width: 90vw; width: calc( 100% - 250px ); margin-left: 10vw; margin-left: calc( 250px );top:40px;  }
+    .adminPageTop { left: 10vw;left: calc( 250px );width: 10vw; width: calc(100% - 250px); }
+}

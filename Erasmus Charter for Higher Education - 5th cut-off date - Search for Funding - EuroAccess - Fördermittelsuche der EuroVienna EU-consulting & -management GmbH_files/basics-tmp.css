@@ -1,0 +1,26 @@
+/*-------------------------------- ERIN ----------------------------------------------*/
+
+@media screen and (min-width: 1024px){
+	/*.results thead.sticky {top: 230px!important;}*/
+}
+
+@media screen and (min-width: 720px) and (max-width: 1023px){
+	/*.results thead.sticky {top: 230px!important;}*/
+}
+
+
+/*#submit_btn .nr-of-checked {top: 11px; right: 10px; }*/
+
+
+/* ERIN 26.04.2024 */
+/*.module_calls.detail ul.topiclogo-list {display: flex;align-items: center; flex-wrap: wrap;}
+.module_calls.detail li.topiclogo img {max-width: 75px;}
+.module_calls.detail li.topiclogo {margin-right: 5px;}*/
+
+
+/* ERIN 27.05.2024 */
+.module_calls #calldeadlineover .subtable {padding: 20px; background-color: #F9F0C8; box-shadow: none; margin-bottom: 20px;}
+.module_calls #calldeadlineover .subtable * {color: #3E3E3E ;}
+
+/* ERIN 03.07.2024 */
+img.tficonimg {margin: 2px 5px;} /*Eine klasse für wysiwyg bilder die es dementsprechend überall geben könnte*/

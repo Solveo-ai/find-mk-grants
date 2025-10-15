@@ -1,0 +1,737 @@
+<html lang="mk" xmlns="http://www.w3.org/1999/xhtml"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+    <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-0KD1WXXDWQ&amp;cx=c&amp;_slc=1"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" language="javascript">
+        var baseUrl = 'https://e-nabavki.gov.mk/';
+        var resourceVersion = '?v=11.782';
+
+        var institutionIntegrationServiceUrl = ':2096/WcfInstitutionIntegrationService.svc/web/';
+
+        if (!window.location.origin) {
+            window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+        }
+    </script>
+
+    <base href="https://e-nabavki.gov.mk/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>
+
+</title><meta charset="utf-8"><link rel="icon" href="favicon.png" type="image/png">
+    <link href="/Styles/lib/bootstrap.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Styles/jasny-bootstrap.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Styles/lib/toastr.min.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Styles/angular-wizard.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Content/css/select2.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Content/css/select2-bootstrap.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Styles/ns-implementation.css?v=11.782" rel="stylesheet" type="text/css">
+    <link href="/Styles/angular-json-tree.css?v=11.782" rel="stylesheet" type="text/css">
+<script src="/JavaScripts/GoogleAnalytics.js" type="text/javascript"></script></head>
+
+
+
+<body ng-app="esjnApp" class="ci-institution-body ng-scope">
+    <div ng-controller="esjnAppMainController" class="ng-scope">
+        <div class="container-fluid institution-grid">
+            <div class="row">
+                <div class="institution-table">
+                    <!-- ngView:  --><div ng-view="" class="ng-scope"><div ng-controller="ciidAnnouncmentsController" class="code ng-scope">
+    <div class="col-xs-12 p0">
+        <div class="inner-content">
+            <h1 label-for="PG_TITLE" ng-bind="PageTitle" class="ng-binding">Огласи</h1>
+            <h2 label-for="PG_TITLE" ng-bind="subscriptionEndNotification" class="ng-binding"></h2>
+        </div>
+    </div>
+    <div class="col-lg-12 p0">
+    </div>
+    <div class="col-lg-12 p0">
+        <div class="filter-box">
+            <div collapse="!isCollapsedFilter" on-enter="" gridname="institution-notices-grid" class="collapse" style="height: 0px;">
+                <div class="filter">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <label label-for="NUMBER OF REQUEST">Број на оглас</label>
+                            <input type="text" ng-model="searchModel.ProcessNumber" place-holder-for="NUMBER OF REQUEST" class="form-control ng-pristine ng-untouched ng-valid" placeholder="Број на оглас" title="Број на оглас">
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <label label-for="PROCEDURE TYPES">Вид на постапка</label>
+                            <select ng-model="searchModel.ProcedureType" class="form-control ng-pristine ng-untouched ng-valid">
+                                <!-- ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Сите
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="5" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Барање за прибирање понуди
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="13" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Набавки од мала вредност
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="14" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Поедноставена отворена постапка
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="1" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Отворена постапка
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="2" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Ограничена постапка
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="4" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Конкурентен дијалог
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="6" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Конкурс за избор на идејно решение
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="15" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Конкурентна постапка со преговарање
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="16" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Партнерство за иновации
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="3" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Постапка со преговарање со претходно објавување на оглас
+                                </option><!-- end ngRepeat: item in TypeOfProcedures --><option ng-repeat="item in TypeOfProcedures" value="9" ng-selected="searchModel.TypeOfProcedure == item.value" class="ng-binding ng-scope">
+                                    Оглас за воспоставување на квалификациски систем
+                                </option><!-- end ngRepeat: item in TypeOfProcedures -->
+                            </select>
+                            <div ng-show="showRequestForProposalSearch" class="ng-hide">
+                                <input style="vertical-align: sub;" id="chk-only-small-bpp" type="checkbox" ng-click="searchModel.BigOnly = false;" ng-model="searchModel.SmallOnly" class="ng-pristine ng-untouched ng-valid">
+                                <label style="margin-right: 20px;" for="chk-only-small-bpp" label-for="PROCUREMENT BELOW 5000 EURO">набавка до 5000 евра</label>
+                                <input style="vertical-align: sub;" id="chk-only-big-bpp" type="checkbox" ng-click="searchModel.SmallOnly = false;" ng-model="searchModel.BigOnly" class="ng-pristine ng-untouched ng-valid">
+                                <label for="chk-only-big-bpp" label-for="PROCUREMENT ABOVE 5000 EURO">набавка над 5000 евра</label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <label label-for="SUBJECT SEARCH">Предмет на договорот</label>
+                            <input type="text" ng-model="searchModel.Subject" place-holder-for="SUBJECT SEARCH" class="form-control ng-pristine ng-untouched ng-valid" placeholder="Предмет на договорот" title="Предмет на договорот">
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-xs-12 hidden-lg hidden-md">
+                            <label label-for="PROCURE_ITEM">Предмет на делот од договорот за јавна набавка</label>
+                            <input type="text" ng-model="searchModel.ProcurementType" place-holder-for="PROCURE_ITEM" class="form-control ng-pristine ng-untouched ng-valid" placeholder="Предмет на делот од договорот за јавна набавка" title="Предмет на делот од договорот за јавна набавка">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+
+                            <label label-for="TYPE OF PROCUREMENT SEARCH">Вид на договорот</label>
+                            <select ng-model="searchModel.ProcurementType" class="form-control ng-pristine ng-untouched ng-valid">
+                                <!-- ngRepeat: item in PublicContractTypes --><option ng-repeat="item in PublicContractTypes" value="" ng-selected="searchModel.TypeOfPublicContract == item.value" class="ng-binding ng-scope">
+                                    Сите
+                                </option><!-- end ngRepeat: item in PublicContractTypes --><option ng-repeat="item in PublicContractTypes" value="Goods" ng-selected="searchModel.TypeOfPublicContract == item.value" class="ng-binding ng-scope">
+                                    Стоки
+                                </option><!-- end ngRepeat: item in PublicContractTypes --><option ng-repeat="item in PublicContractTypes" value="Services" ng-selected="searchModel.TypeOfPublicContract == item.value" class="ng-binding ng-scope">
+                                    Услуги
+                                </option><!-- end ngRepeat: item in PublicContractTypes --><option ng-repeat="item in PublicContractTypes" value="Works" ng-selected="searchModel.TypeOfPublicContract == item.value" class="ng-binding ng-scope">
+                                    Работи
+                                </option><!-- end ngRepeat: item in PublicContractTypes -->
+                            </select>
+
+
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+                            <div class="date">
+                                <label label-for="SEARCH PERIOD FROM">Период за пребарување од</label>
+
+                                <p class="input-group">
+                                    <input type="text" class="form-control input-date ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-date" datepicker-options="{showWeeks:'false'}" datepicker-popup="dd.MM.yyyy" ng-model="searchModel.PeriodFrom" is-open="PeriodFromOpened"><ul class="dropdown-menu ng-valid ng-valid-date-disabled" ng-style="{display: (isOpen &amp;&amp; 'block') || 'none', top: position.top+'px', left: position.left+'px'}" ng-keydown="keydown($event)" datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection()" style="display: none;">
+	<li ng-transclude=""><div ng-switch="datepickerMode" role="application" ng-keydown="keydown($event)" datepicker="" show-weeks="false" class="ng-isolate-scope">
+  <!-- ngSwitchWhen: day --><table role="grid" aria-labelledby="datepicker-10-5890-title" aria-activedescendant="datepicker-10-5890-15" ng-switch-when="day" tabindex="0" class="">
+  <thead>
+    <tr>
+      <th><button type="button" class="btn btn-default btn-sm pull-left" ng-click="move(-1)" tabindex="-1"><i class="glyphicon glyphicon-chevron-left"></i></button></th>
+      <th colspan="5"><button id="datepicker-10-5890-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="btn btn-default btn-sm" ng-click="toggleMode()" tabindex="-1" style="width:100%;"><strong class="ng-binding">October 2025</strong></button></th>
+      <th><button type="button" class="btn btn-default btn-sm pull-right" ng-click="move(1)" tabindex="-1"><i class="glyphicon glyphicon-chevron-right"></i></button></th>
+    </tr>
+    <tr>
+      <th ng-show="showWeeks" class="text-center ng-hide"></th>
+      <!-- ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Sunday" class="ng-binding">Sun</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Monday" class="ng-binding">Mon</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Tuesday" class="ng-binding">Tue</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Wednesday" class="ng-binding">Wed</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Thursday" class="ng-binding">Thu</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Friday" class="ng-binding">Fri</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Saturday" class="ng-binding">Sat</small></th><!-- end ngRepeat: label in labels track by $index -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-0" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">28</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-1" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">29</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-2" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">30</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-3" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">01</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-4" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">02</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-5" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">03</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-6" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">04</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-7" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">05</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-8" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">06</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-9" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">07</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-10" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">08</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-11" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">09</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-12" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">10</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-13" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">11</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-14" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">12</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-15" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm active" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-info">13</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-16" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">14</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-17" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">15</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-18" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">16</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-19" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">17</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-20" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">18</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-21" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">19</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-22" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">20</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-23" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">21</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-24" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">22</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-25" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">23</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-26" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">24</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-27" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">25</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-28" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">26</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-29" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">27</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-30" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">28</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-31" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">29</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-32" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">30</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-33" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">31</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-34" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">01</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-35" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">02</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-36" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">03</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-37" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">04</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-38" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">05</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-39" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">06</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-40" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">07</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-10-5890-41" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">08</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index -->
+  </tbody>
+</table><!-- end ngSwitchWhen: -->
+  <!-- ngSwitchWhen: month -->
+  <!-- ngSwitchWhen: year -->
+</div></li>
+	<!-- ngIf: showButtonBar --><li ng-if="showButtonBar" style="padding:10px 9px 2px" class="ng-scope">
+		<span class="btn-group pull-left">
+			<button type="button" class="btn btn-sm btn-info ng-binding" ng-click="select('today')">Today</button>
+			<button type="button" class="btn btn-sm btn-danger ng-binding" ng-click="select(null)">Clear</button>
+		</span>
+		<button type="button" class="btn btn-sm btn-success pull-right ng-binding" ng-click="close()">Done</button>
+	</li><!-- end ngIf: showButtonBar -->
+</ul>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openPeriodFrom($event)">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="date">
+                                <label label-for="TO">До</label>
+                                <p class="input-group">
+                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-date" datepicker-options="{showWeeks:'false'}" datepicker-popup="dd.MM.yyyy" ng-model="searchModel.PeriodTo" is-open="PeriodToOpened"><ul class="dropdown-menu ng-valid ng-valid-date-disabled" ng-style="{display: (isOpen &amp;&amp; 'block') || 'none', top: position.top+'px', left: position.left+'px'}" ng-keydown="keydown($event)" datepicker-popup-wrap="" ng-model="date" ng-change="dateSelection()" style="display: none;">
+	<li ng-transclude=""><div ng-switch="datepickerMode" role="application" ng-keydown="keydown($event)" datepicker="" show-weeks="false" class="ng-isolate-scope">
+  <!-- ngSwitchWhen: day --><table role="grid" aria-labelledby="datepicker-12-4676-title" aria-activedescendant="datepicker-12-4676-15" ng-switch-when="day" tabindex="0" class="">
+  <thead>
+    <tr>
+      <th><button type="button" class="btn btn-default btn-sm pull-left" ng-click="move(-1)" tabindex="-1"><i class="glyphicon glyphicon-chevron-left"></i></button></th>
+      <th colspan="5"><button id="datepicker-12-4676-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="btn btn-default btn-sm" ng-click="toggleMode()" tabindex="-1" style="width:100%;"><strong class="ng-binding">October 2025</strong></button></th>
+      <th><button type="button" class="btn btn-default btn-sm pull-right" ng-click="move(1)" tabindex="-1"><i class="glyphicon glyphicon-chevron-right"></i></button></th>
+    </tr>
+    <tr>
+      <th ng-show="showWeeks" class="text-center ng-hide"></th>
+      <!-- ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Sunday" class="ng-binding">Sun</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Monday" class="ng-binding">Mon</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Tuesday" class="ng-binding">Tue</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Wednesday" class="ng-binding">Wed</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Thursday" class="ng-binding">Thu</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Friday" class="ng-binding">Fri</small></th><!-- end ngRepeat: label in labels track by $index --><th ng-repeat="label in labels track by $index" class="text-center ng-scope"><small aria-label="Saturday" class="ng-binding">Sat</small></th><!-- end ngRepeat: label in labels track by $index -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-0" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">28</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-1" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">29</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-2" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">30</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-3" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">01</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-4" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">02</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-5" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">03</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-6" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">04</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-7" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">05</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-8" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">06</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-9" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">07</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-10" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">08</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-11" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">09</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-12" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">10</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-13" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">11</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-14" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">12</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-15" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm active" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-info">13</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-16" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">14</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-17" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">15</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-18" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">16</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-19" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">17</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-20" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">18</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-21" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">19</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-22" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">20</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-23" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">21</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-24" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">22</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-25" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">23</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-26" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">24</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-27" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">25</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-28" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">26</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-29" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">27</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-30" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">28</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-31" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">29</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-32" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">30</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-33" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding">31</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-34" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">01</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index --><tr ng-repeat="row in rows track by $index" class="ng-scope">
+      <td ng-show="showWeeks" class="text-center h6 ng-hide"><em class="ng-binding"></em></td>
+      <!-- ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-35" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">02</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-36" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">03</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-37" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">04</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-38" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">05</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-39" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">06</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-40" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">07</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date --><td ng-repeat="dt in row track by dt.date" class="text-center ng-scope" role="gridcell" id="datepicker-12-4676-41" aria-disabled="false">
+        <button type="button" style="width:100%;" class="btn btn-default btn-sm" ng-class="{'btn-info': dt.selected, active: isActive(dt)}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1"><span ng-class="{'text-muted': dt.secondary, 'text-info': dt.current}" class="ng-binding text-muted">08</span></button>
+      </td><!-- end ngRepeat: dt in row track by dt.date -->
+    </tr><!-- end ngRepeat: row in rows track by $index -->
+  </tbody>
+</table><!-- end ngSwitchWhen: -->
+  <!-- ngSwitchWhen: month -->
+  <!-- ngSwitchWhen: year -->
+</div></li>
+	<!-- ngIf: showButtonBar --><li ng-if="showButtonBar" style="padding:10px 9px 2px" class="ng-scope">
+		<span class="btn-group pull-left">
+			<button type="button" class="btn btn-sm btn-info ng-binding" ng-click="select('today')">Today</button>
+			<button type="button" class="btn btn-sm btn-danger ng-binding" ng-click="select(null)">Clear</button>
+		</span>
+		<button type="button" class="btn btn-sm btn-success pull-right ng-binding" ng-click="close()">Done</button>
+	</li><!-- end ngIf: showButtonBar -->
+</ul>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openPeriodTo($event)">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <label label-for="STATUS">Статус</label>
+                            <select ng-model="searchModel.Status" class="form-control ng-pristine ng-untouched ng-valid">
+                                <!-- ngRepeat: item in Statuses --><option ng-repeat="item in Statuses" value="" ng-selected="searchModel.Status == item.value" class="ng-binding ng-scope" selected="selected">
+                                    Сите
+                                </option><!-- end ngRepeat: item in Statuses --><option ng-repeat="item in Statuses" value="1" ng-selected="searchModel.Status == item.value" class="ng-binding ng-scope">
+                                    Тековни
+                                </option><!-- end ngRepeat: item in Statuses --><option ng-repeat="item in Statuses" value="2" ng-selected="searchModel.Status == item.value" class="ng-binding ng-scope">
+                                    Завршени
+                                </option><!-- end ngRepeat: item in Statuses -->
+                            </select>
+                        </div>
+                        <div class="row" style="clear: both">
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <input id="chk-only-with-e-auction" type="checkbox" ng-model="searchModel.EauctionOnly" class="ng-pristine ng-untouched ng-valid">
+                                    <label label-for="AUCTIONS ONLY" for="chk-only-with-e-auction">Е-Аукција</label>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                                    <input id="chk-e-procurement procedures only" type="checkbox" ng-model="searchModel.EprocurementOnly" class="ng-pristine ng-untouched ng-valid">
+                                    <label label-for="ONLY ELECTRONIC PROCEDURES" for="chk-e-procurement procedures only">Само Електронски постапки</label>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <input id="chk-private-partnership-only" type="checkbox" ng-model="searchModel.PrivatePartnershipOnly" class="ng-pristine ng-untouched ng-valid">
+                                    <label label-for="PRIVATE PARTNERSHIP ONLY" for="chk-private-partnership-only">Јавно приватно партнерство</label>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-12 p0">
+                                <div class=" col-lg-6 col-md-12 col-xs-12 pull-right">
+
+                                    <input type="button" label-for-submit="SEARCH" ng-click="filter()" class="btn btn-block btn-default btn-block e-btn " value=" Пребарувај">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="head-collapse docs-down" ng-click="isCollapsedFilter = !isCollapsedFilter" ng-class="{'docs-up': isCollapsedFilter, 'docs-down': !isCollapsedFilter}">
+                <h1>
+                    <img src="../../Images/lupa.png">
+                    <span label-for="SEARCH"> Пребарувај</span>
+                </h1>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-lg-12 p0">
+            <div id="institution-notices-grid_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="table-box"><div class="row"><div class="col-xs-6"></div><div class="col-xs-6"></div></div><div class="table-responsive"><table id="institution-notices-grid" datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="table table-bordered table-striped table-hover ng-isolate-scope dataTable no-footer" role="grid" aria-describedby="institution-notices-grid_info" style="display: table;"><thead><tr role="row"><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 59px;">Број на оглас</th><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 82px;">Договорен орган</th><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 102px;">Предмет на договорот</th><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 84px;">Вид на договорот</th><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 78px;">Вид на постапка</th><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 71px;">Датум на објава</th><th class="sorting" tabindex="0" aria-controls="institution-notices-grid" rowspan="1" colspan="1" style="width: 48px;">Краен рок</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 60px;">Документи</th></tr></thead><tbody></tbody></table></div><div class="row"><div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><div class="dataTables_info" id="institution-notices-grid_info" role="status" aria-live="polite"></div></div><div class="col-lg-7 col-md-7 col-sm-7 col-xs-12"><div class="dataTables_paginate paging_bootstrap" id="institution-notices-grid_paginate"><ul class="pagination"><li class="prev disabled"><a href="#">← Претходна</a></li><li class="next disabled"><a href="#">Следна → </a></li></ul></div></div></div></div></div><h3 style="display: none;">Loading...</h3>
+        </div>
+        <div id="legendGrid" class="content">
+    <label label-for="LEGEND">ЛЕГЕНДА</label>:
+
+    <label class="legendGridLbl" ng-show="LegendGridEauction">
+        <img src="/Images/e-auc.png">
+        <label label-for="TENDER IS AUCTION">е-Аукција</label>;
+    </label>
+
+    <label class="legendGridLbl" ng-show="LegendGridDevidable">
+        <img src="/Images/pie_chart2.png">
+        <label label-for="PROCUREMENT IN LOTS">Делива набавка</label>;
+    </label>
+
+    <label class="legendGridLbl" ng-show="LegendGridLowestPriceLegendGrid">
+        <img src="/Images/arr_down.png">
+        <label label-for="TENDER IS LOWEST PRICE">Најниска цена</label>;
+    </label>
+
+    <label class="legendGridLbl" ng-show="LegendGridPriceQualityRatio">
+        <img src="/Images/price_quality_ratio.png">
+        <label label-for="TENDER_PRICE_QUALITY">Најдобар однос помеѓу цената и квалитетот</label>;
+    </label>
+
+    <label class="legendGridLbl" ng-show="LegendGridCostEffectiveness">
+        <img src="/Images/cost_effectiveness.png">
+        <label label-for="TENDER_COST_EFFECTIVENESS">Трошоците со користење на пристапот на исплатливост</label>;
+    </label>
+
+    <label class="legendGridLbl" ng-show="LegendGridFrameworkAgreemenets">
+        <img src="/Images/framework_agreement.png">
+        <label label-for="ISFRAMEWORKAGREEMENT">Рамковна спогодба</label>;
+    </label>
+
+    <label class="legendGridLbl" ng-show="LegendGridTools">
+        <img src="/Images/o_postapka_red.png">
+        <label label-for="ANNOUNCEMENT.ISCOMPLAINT">Обжалена постапка</label>;
+    </label>
+
+    <label class="legendGridLbl ng-hide" ng-show="LegendGridReDecisioning" style="">
+        <img src="/Images/decision_14.png">
+        <label label-for="ANNOUNCEMENT.SENDFORREDECISIONING">Повторно одлучување</label>;
+    </label>
+
+    <label class="legendGridLbl ng-hide" ng-show="LegendGridTerminatedContract" style="">
+        <img src="/Images/terminated_contract.png">
+        <label label-for="TERMINATED_CONTRACT">Раскинат договор</label>;
+    </label>
+
+    <label class="legendGridLbl ng-hide" ng-show="LegendGridProcedureToSupervisionControl" style="">
+        <img src="/Images/procedure_For_Supervision.png">
+        <label label-for="SENT_TO_SUPERVISION_BY_PROCUREMENT_CONTROL">Постапки на управна контрола врз основа на ризик и црвени знаменца</label>;
+    </label>
+
+</div>
+        <ns-loader show="showLoader" class="ng-isolate-scope"><!-- ngIf: showLoader --><div class="ns-loader-overlay ng-scope" ng-if="showLoader"><!-- ngIf: !loaderText --><div class="loader ng-scope" ng-if="!loaderText"></div><!-- end ngIf: !loaderText --><!-- ngIf: loaderText --></div><!-- end ngIf: showLoader --></ns-loader>
+    </div>
+</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.1.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/jquery-migrate-1.2.1.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/select2.js?v=11.782" type="text/javascript"></script>
+
+    <script src="/Scripts/bootstrap.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/masonry.pkgd.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/jasny-bootstrap.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular-route.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular-sanitize.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular-cookies.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular-animate.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular-touch.min.js?v=11.782" type="text/javascript"></script>
+    <script src="/Scripts/angular-ui-router.min.js?v=11.782"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.js?v=11.782"></script>
+    <script src="/Scripts/jquery.dataTables.js?v=11.782"></script>
+    <script src="/Scripts/angular-data-tables.js?v=11.782"></script>
+    <script src="/Scripts/angular-select2.js?v=11.782"></script>
+    <script src="/Scripts/angular-wizard.js?v=11.782"></script>
+    <script src="/Scripts/underscore.min.js?v=11.782" type="text/javascript"></script>
+
+    <script src="/Scripts/toaster.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/controllers/common/utils.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/models.js?v=11.782" type="text/javascript"></script>
+
+    <script src="/js/app/app.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/acceptTerms.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/announcementPlansPublicController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/annualPlansPublicController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/askquestion.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/attachments.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/banners.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/cancelations.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/changeDateAndTime.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/changePassword.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/ciidAnnouncementPlansController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/ciidAnnouncmentsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/ciidContractsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/ciidRealizedContractsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/completedProcedures.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/compliantsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/concessionsAnnouncements.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/confirmRegistrationController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/continueSubscriptionController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/contractsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/defenceAnnouncementsListController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/DeleteOldGenerateNewProInvoice.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieAcppChangeController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieAcppController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieAnnouncementController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieAnnualPlanController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieAnnualPlanVersionController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieAttachmentController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieCancellationController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieEvidenceController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieNotificationForBidController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossiePriorInformationNoticeController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieQuartalEvidenceController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieRealizedContractController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/dossieTransparencyNotificationController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/eAuctions.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/evidences.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/faq.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/home.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/instructionTemplateFiles.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/internationaldonorannouncements.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/invoicePaymentBlockedVendorController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/lawsuitsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/login.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/negativereference.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/negativereferencecheck.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/newsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/notificationsForACPP.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/notificationsForACPPChange.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/notificationsForBid.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/ongoingEvaluation.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/onlinePaymentController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/otherannouncements.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/planComparementController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/previewDocumentController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/priorInformationNotices.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/procurements.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/PublicAttachmentPreviousChangesController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/realizedContract.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/registerEconomicOperator.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/registeredContractingInstitutions.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/resetPasswordController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/simpleCompetitiveProcedures.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/sitemap.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/technicalDialogAnnouncements.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/tenderWinners.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/transparencyNotificationContracts.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/transparencyNotifications.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/usefulDocuments.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/userManual.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/webLinks.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/welcomePageTextController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/archiveYearController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/attachTenderDocumentLink.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/confirmModal.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/defenceDocumentsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/documentsController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/enums.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/models.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/notices.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/procedureEMarket.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/PublicAppLookupsRepository.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/showDocuments.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/timeController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/uploadBidFileController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/uploadFileController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/uploadFileListResultController.js?v=11.782" type="text/javascript"></script>
+    
+    <script src="/js/app/controllers/common/utils.js?v=11.782" type="text/javascript"></script>
+    
+
+    <script src="/js/app/ci/registerContractingInstitution.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/ci/registerInternationalDonorUser.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/services.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/filters.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/nextsense.directives.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/shareDataServices.js?v=11.782" type="text/javascript"></script>
+    <script src="/js/app/linkDispicherService.js?v=11.782" type="text/javascript"></script>
+
+    <div class="clearfix"></div>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7d4514573d8a4c1eb886e3377787dc72&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+</body></html>

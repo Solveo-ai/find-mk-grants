@@ -1,0 +1,28 @@
+if (moreactionsfunctions === undefined){
+    var moreactionsfunctions = {};
+}
+moreactionsfunctions.function import_call = function (clickedelem,script,id,custommsg){
+    var self = clickedelem;
+    //console.log(self);
+    //console.log(self.closest(".adminList"));
+    //console.log(self.parents(".adminList"));
+    var adminListComponent = $('.adminListActions .importCall'+self.data('itemid')).parents('.adminList');
+    var componentOptions = {"componentname" : "adminAlertMoreaction", "componentcollection" : "admin", "action" : "edit", "async" : 1};
+    componentOptions["_site_id"] = adminListComponent.attr("data-_site_id");
+    if(adminListComponent.attr("data-_navigation_id") != undefined){
+        componentOptions["_navigation_id"] = adminListComponent.attr("data-_navigation_id");   
+    }
+    componentOptions["rdt_config_id"] = adminListComponent.attr("data-rdt_config_id");
+    componentOptions["item_id"] = id;
+    componentOptions["additional_action"] = "importCall";
+    componentOptions["custom_msg"] = $(this).parents('form').find("input[name='custom_msg']").val();
+    componentOptions["formaction"] = script;
+    componentOptions["custom_msg"] = custommsg;
+    
+    componentOptions["admin_token"] = adminListComponent.attr("data-admin_token");
+    componentOptions["admin_timetoken"] = adminListComponent.attr("data-admin_timetoken");
+    
+    
+    //show_echoverlay(createComponent(componentOptions, "div"), "html");
+    show_echoverlay(createComponent(componentOptions, "div"), "html", "auto", "auto", "auto", "_echoverlay_compact");
+}

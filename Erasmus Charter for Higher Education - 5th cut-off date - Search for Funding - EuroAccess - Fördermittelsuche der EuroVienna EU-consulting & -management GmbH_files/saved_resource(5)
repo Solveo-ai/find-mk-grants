@@ -1,0 +1,75 @@
+hr { border-top:1px solid #ccc;background-color:#fff; }
+#e2s-smaller a::before, #e2s-bigger a::before, #e2s-bigger a::after { background-color:#0085A7; }
+#e2s li#e2s-smaller a, #e2s li#e2s-bigger a, #e2s li#e2s-standard a { background-color: #FFFFFF; }
+html { background-color: #fff;color:#009; }
+body *,body *::before, body *::after{border-color: #009 !important}
+#e2s-smaller a::before, #e2s-bigger a::before, #e2s-bigger a::after { background-color:#009; }
+#e2s li#e2s-smaller a, #e2s li#e2s-bigger a, #e2s li#e2s-defaultfont a {  background-color: #fff; color: #009 }
+#e2s > p{color: #009}
+#e2s a { color: #fff; }
+#header { background-color:#fff;}
+#header > .utilities{ background-color:#fff;color:#009;}
+.langnav a.navigation_link{color:#009;}
+.header-button::before, .header-button::after{background-color: #009}
+#breadcrumbNav{border-top: 1px solid; border-bottom: 1px solid; background-color: #fff}
+#logo img{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+#navwrap, .user { background-color:#fff;border-left: 1px solid #009; }
+#navanchor::before, #navanchor::after{background-color: #009}
+#navwrap h2::after,#nav li.nav__element::after{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+#nav-searchform button{border: none !important; background-color: transparent!important; filter:invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+#suchbegriff{color: #009}
+.sticky-nav{background-color: #fff}
+.sticky-nav::after{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.user.profile h2:first-of-type::after{ filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+#nav .nav__element_opener::before, #nav .nav__element_opener::after{background-color: #009}
+#content { background-color: #fff; }
+h1,h2,h3,h4,h5,h6,p,a,li,span,strong,div,label,th,td { color: #009 !important; }
+a.button, a.button:link, a.button:visited, a.button:focus, a.button:hover, a.button:active, a.button:hover, button, button:hover, .secondary-btn, .secondary-btn:hover{background-color: #fff !important; color: #009 !important; border: 1px solid #009 !important;}
+a:focus, a:hover, a:active {color: #009;text-decoration:underline; }
+hr { border-top:1px solid #009;background-color:#fff; }
+.close{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.blue{color: #009 !important}
+body.module_calls .searchform-title-wrap, .module_programs .searchform-title-wrap{background-color: white}
+body.module_calls #searchform-item, body.module_calls #searchform-title, .module_programs #searchform-item, .module_programs #searchform-title{background-color: white}
+#searchform-item, #searchform-title{background-color: #fff; color: #009}
+.searchform-title .help-info{background-color: #fff; color: #009; border: 1px solid #009}
+.searchform-title .help-info::before{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.searchform-title::after{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.searchform-title > h6::after{background-color: #009}
+.searchform-title:hover, .searchform-title.active{background-color: #fff}
+.searchform-item-list{background-color: #fff !important}
+.nr-of-checked{background-color: #fff; border: 1px solid #009}
+#nr-of-advancement-wrap{background-color: #fff; padding: 20px}
+.module_calls #searchform fieldset:not(.submit), body.module_programs #searchform fieldset:not(.submit){border: 1px solid #009!important}
+.searchform-title img.help{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.module_calls .utilities-wrap a.button::before, .module_calls .utilities-wrap a.button::after, .module_programs .utilities-wrap a.button::before, .module_programs .utilities-wrap a.button::after{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.subtable{border: 1px solid}
+thead.sticky{background-color: #fff}
+.module_calls td.actions span{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.module_conf_head, .module_conf_head:not(.module_liste_conf_head)::before, .module_conf_head:not(.module_liste_conf_head)::after{background-color: #fff !important;}
+.module_calls .searchform-title-wrap, body.module_programs .searchform-title-wrap, .module_calls #searchform-item, .module_calls #searchform-title, body.module_programs #searchform-item, body.module_programs #searchform-title{background-color: #fff}
+.readmore{background: linear-gradient(transparent, #fff 70%)}
+div#table-of-contents{background-color: #fff}
+#table-of-contents a::after{background-color: #009}
+.module_thema .short-info, .module_thema > div, .module_thema .projects-wrap::before, .module_thema .projects-wrap::after{background-color: #fff !important}
+.module_thema .short-info{border: 1px solid}
+.sticky-btn.search:hover{background-color: #fff !important}
+.sticky-btn.search::before{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.swiper-pagination > span.active{background-color: #009}
+.swiper-button-prev, .swiper-button-next{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+body.module_article .more{background-color: #fff; border: 1px solid #009}
+.more::after{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.download-item::before{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+.ytp-thumbnail svg path{fill: #fff}
+.module_onepage .cwrap > ul > li::before{background-color: #009; background-image: url("/_assets/css/icon/check_white.svg")}
+.greyfilter{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+ul.faq .listitem summary h3::before, ul.faq .listitem summary h3::after{background-color: #009}
+.select-icon{filter: invert(13%) sepia(67%) saturate(6689%) hue-rotate(244deg) brightness(60%) contrast(133%);}
+form .error-msg, form .error-msg, form .error-msg legend{background-color: #fff}
+input[disabled="disabled"]{background-color: white}
+#footer { background-color: #fff; }
+#footer a,#footer a:link { color:#009; }
+#footer a:focus,#footer a:hover,#footer a:active { color:#009; }
+#cookie-banner { background-color:#fff; }
+input[type="checkbox"]:checked + label.checktxt::before{background-color: #009}
+input, textarea, select{color: #009}

@@ -1,0 +1,470 @@
+@media print {
+  @page {
+    margin: 0.5rem 2cm;
+    padding: 2cm;
+  }
+  *,
+  html,
+  body {
+    box-shadow: none !important;
+    background: none !important;
+    background-color: transparent !important;
+    color: #000 !important;
+  }
+  * {
+    font-family: Segoe UI, sans-serif, arial, helvetica, clean;
+  }
+  h2,
+  .adminFormfieldGroupHeading,
+  .mappingsheading,
+  .mappingsheading > label {
+    font-size: 22px !important;
+    font-weight: 500;
+    margin-top: 20px;
+  }
+  h2.mt0,
+  .adminFormfieldGroupHeading.mt0,
+  .mappingsheading.mt0,
+  .mappingsheading > label.mt0 {
+    margin-top: 0 !important;
+  }
+  h3, h3 label {
+    font-size: 20px !important;
+    font-weight: 500;
+  }
+  /* ----- =display none ----- */
+  .adminPageleft,
+  .adminNavigation,
+  .adminPageTop,
+  .adminAside,
+  .adminSitemapFilter,
+  .simpleplain_overrule,
+  button,
+  .simpleplain img,
+  .adminSitemapNavSettings,
+  .adminPageLeft img,
+  .tooltipopover,
+  .adminSitemapModuleItems img,
+  .adminListColumnCheck,
+  .adminListColumnRank,
+  .adminListColumnMore,
+  a.back,
+  .xdsoft_datepicker,
+  .xdsoft_timepicker,
+  .simpleplain.role-item:not(.showPDF),
+  .simpleplain .itemwrap:not(.showPDF),
+  .formbuttons,
+  .logout,
+  .adminInlineEditEdit,
+  .adminInlineEditCancel,
+  .adminLogLoadMoreButton,
+  .adminNoteAdd,
+  .cke_top,
+  .delwrap,
+  #newBtn,
+  .separator,
+  .mapfilter,
+  .formbuttons,
+  .loadmore,
+  .edit,
+  .delete,
+  .checkmulti,
+  .delete_all,
+  .newmapping,
+  .copymapping_init,
+  .adminLogLoadMoreButton,
+  .adminNoteAdd,
+  .morelink,
+  .adminLogEntryUser,
+  .profilewrap,
+  .adminNoteListItemMore,
+  .adminNoteListItemOptions,
+  .adminNoteRemove,
+  .navtoggle,
+  .myhelp,
+  #xmonthstr,
+  #monthstr,
+  #weekstr,
+  #xweekstr,
+  .inactive,
+  .adminInlineEdit.adminInlineEditFormVisible .adminInlineEditTitle,
+  .adminInlineEdit.adminInlineEditFormVisible .adminInlineEditContent,
+  .fileupload label,
+  .fileupload input,
+  .fileupload + p .checkboxlist.fleft,
+  .helptext,
+  .separator,
+  .separator + .mapwrap,
+  .custom-options,
+  .custom-select,
+  .switch,
+  .switch::before,
+  .hiddenselect,
+  .button,
+  .translato,
+  .chooselang > li,
+  span.lang:not(.active),
+  .deploy,
+  .input.tagit-hidden-field,
+  ul.tagit input[type=text],
+  .uploader,
+  .plupload_wrapper,
+  .editkey,
+  .adminAddLink,
+  .adminNoteCheckBoxLabel {
+    display: none !important;
+  }
+  /* ----- =margin / padding 0 ----- */
+  .adminAreaOverviewConfigLink,
+  .adminAreaOverviewConfigLink .h2 {
+    margin: 0 !important;
+  }
+  /* ----- =pagebreaks ----- */
+  .simpleplain,
+  .itemwrap,
+  .adminListColumns,
+  .adminDashboardComponent,
+  .adminFormfieldGroup .formelement.adminFormfield {
+    page-break-inside: avoid;
+  }
+  .mappingsheading {
+    page-break-after: avoid;
+  }
+  .expired {
+    page-break-before: always;
+  }
+  /* ----- =Headerlogos ----- */
+  .contentlifelogo,
+  .echonetlogo,
+  .qrcode,
+  .WhoPrintsName,
+  .printedAt {
+    display: block !important;
+  }
+  .contentlifelogo {
+    height: 1cm;
+  }
+  .echonetlogo {
+    height: 3mm;
+  }
+  .qrcode {
+    height: 10mm;
+  }
+  .printHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*position: fixed;
+    width: 100%;
+    left: 0*/
+  }
+  /* ----- =adminSitemapNavWrap ----- */
+  .adminSitemapNavWrap {
+    display: flex;
+    margin: 5mm 0;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+  .adminSitemapNavWrap > * {
+    margin-right: 1cm;
+  }
+  .adminSitemapNav_depth1 {
+    margin-left: 1cm;
+  }
+  .adminSitemapNav_depth2 {
+    margin-left: 2cm;
+  }
+  .simpleplain:first-child, .simpleplain.adminAreaOverviewItem, .simpleplain.adminFormfieldGroup {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5mm !important;
+  }
+  .simpleplain .simpleplain {
+    border: none !important;
+    padding: 0 !important;
+  }
+  .simpleplain.adminAreaOverviewItem {
+    padding-bottom: 0 !important;
+  }
+  /* ----- =tables ----- */
+  th {
+    text-align: left !important;
+    padding-top: 1cm;
+  }
+  th,
+  td {
+    padding: 3mm;
+  }
+  /* ----- =other ----- */
+  ol {
+    list-style-type: none;
+  }
+  ol.formelements, ol.adminFormfieldGroup, ol.formbg {
+    padding: 0 !important;
+  }
+  ol.formelements.simpleplain, ol.adminFormfieldGroup.simpleplain, ol.formbg.simpleplain {
+    padding: 5mm !important;
+  }
+  ul.adminStats, ul.adminLogPages, ul.adminLogEntries, ul.adminDashboardComponents, ul.adminNoteList, ul.adminListBody, ul.adminListColumns {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  ul.adminListBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  ul.adminListBody > * {
+    width: 30%;
+    border: 1px solid;
+    margin-right: 5mm;
+    padding: 5mm;
+    page-break-inside: avoid;
+  }
+  ul.tagit {
+    list-style-type: none;
+  }
+  .formelement {
+    width: 100% !important;
+  }
+  .adminFormfield {
+    display: block !important;
+  }
+  .adminFormfield .fieldname {
+    font-weight: bold;
+    margin-right: 2mm;
+  }
+  .adminFormfield.checkbox {
+    position: relative;
+    margin-bottom: 10mm !important;
+  }
+  .select_list,
+  .selected_items {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .selected_items {
+    border: none !important;
+  }
+  .adminBreadcrumbs {
+    margin-bottom: 5mm;
+  }
+  .adminDashboardComponent {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 0 5mm 0;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(50% - 5mm) !important;
+  }
+  .adminDashboardComponent:nth-child(even) {
+    margin-right: 5mm;
+  }
+  .adminDashboardComponent:empty {
+    display: none !important;
+  }
+  .adminDashboardComponent.adminDashboardComponent_col1 {
+    width: calc(50% - 5mm) !important;
+  }
+  .adminDashboardComponent ul li {
+    margin-bottom: 5mm;
+  }
+  .adminDashboardComponent ul + hr {
+    display: none !important;
+  }
+  .adminDashboardComponent .simpleplain h2 {
+    margin-top: 0 !important;
+  }
+  .adminDashboardComponent .simpleplain ul {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .adminLogEntryInfos > p {
+    margin: 0;
+  }
+  .adminWorkload .percentbar {
+    width: 50% !important;
+  }
+  .adminWorkload .bar-wrap {
+    flex-grow: 0 !important;
+  }
+  .adminArticles.short *:not(hr):not(.morelink) {
+    display: block !important;
+  }
+  .adminDashboardComponent_col1 {
+    width: 100% !important;
+  }
+  .adminDashboardComponents,
+  .adminLogPages {
+    list-style-type: none !important;
+  }
+  .adminFormfield.text, .adminFormfield.password, .adminFormfield.date, .adminFormfield.datetime, .adminFormfield.time, .adminFormfield.select, .adminFormfield.decimal, .adminFormfield.decimalrange, .adminFormfield.color, .adminFormfield.radio, .adminFormfield.checkbox, .adminFormfield.tags {
+    display: inline-block !important;
+    width: calc(50% - 7mm) !important;
+    margin-bottom: 5mm;
+  }
+  .adminFormfield.text:nth-child(odd), .adminFormfield.password:nth-child(odd), .adminFormfield.date:nth-child(odd), .adminFormfield.datetime:nth-child(odd), .adminFormfield.time:nth-child(odd), .adminFormfield.select:nth-child(odd), .adminFormfield.decimal:nth-child(odd), .adminFormfield.decimalrange:nth-child(odd), .adminFormfield.color:nth-child(odd), .adminFormfield.radio:nth-child(odd), .adminFormfield.checkbox:nth-child(odd), .adminFormfield.tags:nth-child(odd) {
+    margin-right: 7mm;
+  }
+  .adminFormfield.text input, .adminFormfield.password input, .adminFormfield.date input, .adminFormfield.datetime input, .adminFormfield.time input, .adminFormfield.select input, .adminFormfield.decimal input, .adminFormfield.decimalrange input, .adminFormfield.color input, .adminFormfield.radio input, .adminFormfield.checkbox input, .adminFormfield.tags input {
+    width: 100% !important;
+  }
+  input[type=text],
+  input[type=password],
+  input[type=url],
+  input[type=email],
+  input[type=tel],
+  input[type=search],
+  input[type=number],
+  input[type=date],
+  input[type=week],
+  input[type=datetime],
+  input[type=month],
+  input[type=number],
+  input[type=datetime-local],
+  input[type=time],
+  select,
+  textarea {
+    border: 1px solid !important;
+    padding: 2mm !important;
+  }
+  .adminLogEntryInfos,
+  .adminDashboardComponent {
+    padding: 0;
+  }
+  .adminInlineEdit ol.formbg > .adminFormfield {
+    padding: 0 !important;
+    margin-bottom: 5mm;
+  }
+  textarea.adminNoteCheckBoxBody {
+    height: auto !important;
+    border: none !important;
+    width: 80% !important;
+    min-width: 50% !important;
+    margin-top: 5mm !important;
+    padding: 0 !important;
+  }
+  .adminNoteBodyCheckBox {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .adminNoteBodyCheckBox input {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    width: 5mm !important;
+  }
+  input[type=text].adminNoteTitle,
+  textarea.adminNoteBody,
+  textarea.adminNoteCheckBoxBody {
+    border: none !important;
+  }
+  input[type=text].adminNoteTitle {
+    font-size: 18px !important;
+  }
+  .textareawrap {
+    margin-top: 5mm !important;
+    width: 100% !important;
+  }
+  .textareawrap label {
+    display: block !important;
+  }
+  .textarea {
+    width: 100% !important;
+  }
+  .radiolist {
+    list-style-type: none;
+    margin-top: 3mm;
+    padding: 0 !important;
+  }
+  .radiolist.column3 {
+    -moz-columns: 3;
+         columns: 3;
+  }
+  .radiolist > li {
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: center;
+    margin-bottom: 2mm;
+  }
+  .radiolist > li > * {
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+  .radiolist .radiostyled {
+    display: none !important;
+  }
+  .radiolist .radiostyled + label {
+    margin-left: 2mm;
+  }
+  .radiolist input {
+    width: 5mm !important;
+    height: 5mm !important;
+    margin: 0 !important;
+    max-width: 5mm !important;
+    padding: 0 !important;
+  }
+  .radiolist input:checked + .radiostyled::before {
+    background-color: #000;
+  }
+  .radiolist input + .radiostyled::before {
+    border-radius: 50%;
+  }
+  select {
+    width: 100%;
+  }
+  .switchlabel {
+    position: absolute;
+    left: 0;
+  }
+  .checkbox .checkbox_inner {
+    -moz-columns: 3;
+         columns: 3;
+  }
+  .checkbox .checkbox_inner_roles span.all::after {
+    content: "AUS";
+    margin-left: 2mm;
+  }
+  .checkbox .checkbox_inner_roles li.all input:checked + label > span.all::after {
+    content: "AN";
+  }
+  .mapwrap .selected_items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .mapwrap .selected_items .box {
+    margin-right: 5mm;
+  }
+  .cke_contents {
+    height: auto !important;
+  }
+  .actionSome {
+    font-style: italic;
+  }
+  .actionAll {
+    font-weight: bold;
+  }
+  .role-item .item {
+    border: 1px solid;
+    padding: 2mm;
+  }
+  .value, .key {
+    margin-top: 5mm;
+  }
+  .value label, .key label {
+    display: block !important;
+  }
+  .adminFormfieldCurrentFile {
+    margin-right: 5mm;
+  }
+}

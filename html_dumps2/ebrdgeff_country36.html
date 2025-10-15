@@ -1,0 +1,1023 @@
+
+
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-df17e98e0f51330bddb",applicationID:"487912765"};;/*! For license information please see nr-loader-rum-1.298.0.min.js.LICENSE.txt */
+(()=>{var e,t,r={122:(e,t,r)=>{"use strict";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||"object"!=typeof e)return(0,n.R)(3);if(!t||"object"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),a=0===Object.keys(r).length?e:r;for(let s in a)if(void 0!==e[s])try{if(null===e[s]){r[s]=null;continue}Array.isArray(e[s])&&Array.isArray(t[s])?r[s]=Array.from(new Set([...e[s],...t[s]])):"object"==typeof e[s]&&"object"==typeof t[s]?r[s]=i(e[s],t[s]):r[s]=e[s]}catch(e){r[s]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},555:(e,t,r)=>{"use strict";r.d(t,{D:()=>o,f:()=>s});var n=r(384),i=r(122);const a={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function s(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}const o=e=>(0,i.a)(e,a)},699:(e,t,r)=>{"use strict";r.d(t,{It:()=>i,No:()=>n,qh:()=>s,uh:()=>a});const n=16e3,i=1e6,a="NR_CONTAINER_AGENT",s="SESSION_ERROR"},324:(e,t,r)=>{"use strict";r.d(t,{F3:()=>i,Xs:()=>a,xv:()=>n});const n="1.298.0",i="PROD",a="CDN"},154:(e,t,r)=>{"use strict";r.d(t,{OF:()=>c,RI:()=>i,WN:()=>d,bv:()=>a,gm:()=>s,mw:()=>o,sb:()=>u});var n=r(863);const i="undefined"!=typeof window&&!!window.document,a="undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),s=i?window:"undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),o=Boolean("hidden"===s?.document?.visibilityState),c=/iPad|iPhone|iPod/.test(s.navigator?.userAgent),u=c&&"undefined"==typeof SharedWorker,d=((()=>{const e=s.navigator?.userAgent?.match(/Firefox[/\s](\d+\.\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)())},241:(e,t,r)=>{"use strict";r.d(t,{W:()=>a});var n=r(154);const i="newrelic";function a(e={}){try{n.gm.dispatchEvent(new CustomEvent(i,{detail:e}))}catch(e){}}},687:(e,t,r)=>{"use strict";r.d(t,{Ak:()=>u,Ze:()=>f,x3:()=>d});var n=r(241),i=r(836),a=r(606),s=r(860),o=r(646);const c={};function u(e,t){const r={staged:!1,priority:s.P3[t]||0};l(e),c[e].get(t)||c[e].set(t,r)}function d(e,t){e&&c[e]&&(c[e].get(t)&&c[e].delete(t),p(e,t,!1),c[e].size&&g(e))}function l(e){if(!e)throw new Error("agentIdentifier required");c[e]||(c[e]=new Map)}function f(e="",t="feature",r=!1){if(l(e),!e||!c[e].get(t)||r)return p(e,t);c[e].get(t).staged=!0,g(e)}function g(e){const t=Array.from(c[e]);t.every((([e,t])=>t.staged))&&(t.sort(((e,t)=>e[1].priority-t[1].priority)),t.forEach((([t])=>{c[e].delete(t),p(e,t)})))}function p(e,t,r=!0){const s=e?i.ee.get(e):i.ee,c=a.i.handlers;if(!s.aborted&&s.backlog&&c){if((0,n.W)({agentIdentifier:e,type:"lifecycle",name:"drain",feature:t}),r){const e=s.backlog[t],r=c[t];if(r){for(let t=0;e&&t<e.length;++t)m(e[t],r);Object.entries(r).forEach((([e,t])=>{Object.values(t||{}).forEach((t=>{t[0]?.on&&t[0]?.context()instanceof o.y&&t[0].on(e,t[1])}))}))}}s.isolatedBacklog||delete c[t],s.backlog[t]=null,s.emit("drain-"+t,[])}}function m(e,t){var r=e[1];Object.values(t[r]||{}).forEach((t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],a=e[2];n.apply(i,a)}}))}},836:(e,t,r)=>{"use strict";r.d(t,{P:()=>o,ee:()=>c});var n=r(384),i=r(990),a=r(646),s=r(607);const o="nr@context:".concat(s.W),c=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,a){!1!==a&&(a=!0);if(c.aborted&&!i)return;t&&a&&t.emit(e,r,n);var o=g(n);m(e).forEach((e=>{e.apply(o,r)}));var u=v()[s[e]];u&&u.push([f,e,r,o]);return o},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||"feature",f.aborted)return;Object.entries(e||{}).forEach((([e,n])=>{s[n]=t,t in r||(r[t]=[])}))},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach((e=>{delete f.backlog[e]}))},isBuffering:function(e){return!!v()[s[e]]},debugId:r,backlog:l?{}:t&&"object"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,"aborted",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a.y?e:e?(0,i.I)(e,o,(()=>new a.y(o))):new a.y(o)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,"globalEE"),u=(0,n.Zm)();u.ee||(u.ee=c)},646:(e,t,r)=>{"use strict";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},908:(e,t,r)=>{"use strict";r.d(t,{d:()=>n,p:()=>i});var n=r(836).ee.get("handle");function i(e,t,r,i,a){a?(a.buffer([e],i),a.emit(e,t,r)):(n.buffer([e],i),n.emit(e,t,r))}},606:(e,t,r)=>{"use strict";r.d(t,{i:()=>a});var n=r(908);a.on=s;var i=a.handlers={};function a(e,t,r,a){s(a||n.d,i,e,t,r)}function s(e,t,r,i,a){a||(a="feature"),e||(e=n.d);var s=t[a]=t[a]||{};(s[r]=s[r]||[]).push([e,i])}},878:(e,t,r)=>{"use strict";function n(e,t){return{capture:e,passive:!1,signal:t}}function i(e,t,r=!1,i){window.addEventListener(e,t,n(r,i))}function a(e,t,r=!1,i){document.addEventListener(e,t,n(r,i))}r.d(t,{DD:()=>a,jT:()=>n,sp:()=>i})},607:(e,t,r)=>{"use strict";r.d(t,{W:()=>n});const n=(0,r(566).bz)()},566:(e,t,r)=>{"use strict";r.d(t,{LA:()=>o,bz:()=>s});var n=r(154);const i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";function a(e,t){return e?15&e[t]:16*Math.random()|0}function s(){const e=n.gm?.crypto||n.gm?.msCrypto;let t,r=0;return e&&e.getRandomValues&&(t=e.getRandomValues(new Uint8Array(30))),i.split("").map((e=>"x"===e?a(t,r++).toString(16):"y"===e?(3&a()|8).toString(16):e)).join("")}function o(e){const t=n.gm?.crypto||n.gm?.msCrypto;let r,i=0;t&&t.getRandomValues&&(r=t.getRandomValues(new Uint8Array(e)));const s=[];for(var o=0;o<e;o++)s.push(a(r,i++).toString(16));return s.join("")}},614:(e,t,r)=>{"use strict";r.d(t,{BB:()=>s,H3:()=>n,g:()=>u,iL:()=>c,tS:()=>o,uh:()=>i,wk:()=>a});const n="NRBA",i="SESSION",a=144e5,s=18e5,o={STARTED:"session-started",PAUSE:"session-pause",RESET:"session-reset",RESUME:"session-resume",UPDATE:"session-update"},c={SAME_TAB:"same-tab",CROSS_TAB:"cross-tab"},u={OFF:0,FULL:1,ERROR:2}},863:(e,t,r)=>{"use strict";function n(){return Math.floor(performance.now())}r.d(t,{t:()=>n})},944:(e,t,r)=>{"use strict";r.d(t,{R:()=>i});var n=r(241);function i(e,t){"function"==typeof console.debug&&(console.debug("New Relic Warning: https://github.com/newrelic/newrelic-browser-agent/blob/main/docs/warning-codes.md#".concat(e),t),(0,n.W)({agentIdentifier:null,drained:null,type:"data",name:"warn",feature:"warn",data:{code:e,secondary:t}}))}},701:(e,t,r)=>{"use strict";r.d(t,{B:()=>a,t:()=>s});var n=r(241);const i=new Set,a={};function s(e,t){const r=t.agentIdentifier;a[r]??={},e&&"object"==typeof e&&(i.has(r)||(t.ee.emit("rumresp",[e]),a[r]=e,i.add(r),(0,n.W)({agentIdentifier:r,loaded:!0,drained:!0,type:"lifecycle",name:"load",feature:void 0,data:e})))}},990:(e,t,r)=>{"use strict";r.d(t,{I:()=>i});var n=Object.prototype.hasOwnProperty;function i(e,t,r){if(n.call(e,t))return e[t];var i=r();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:i,writable:!0,enumerable:!1}),i}catch(e){}return e[t]=i,i}},389:(e,t,r)=>{"use strict";function n(e,t=500,r={}){const n=r?.leading||!1;let i;return(...r)=>{n&&void 0===i&&(e.apply(this,r),i=setTimeout((()=>{i=clearTimeout(i)}),t)),n||(clearTimeout(i),i=setTimeout((()=>{e.apply(this,r)}),t))}}function i(e){let t=!1;return(...r)=>{t||(t=!0,e.apply(this,r))}}r.d(t,{J:()=>i,s:()=>n})},910:(e,t,r)=>{"use strict";r.d(t,{i:()=>a});var n=r(944);const i=new Map;function a(...e){return e.every((e=>{if(i.has(e))return i.get(e);const t="function"==typeof e&&e.toString().includes("[native code]");return t||(0,n.R)(64,e?.name||e?.toString()),i.set(e,t),t}))}},289:(e,t,r)=>{"use strict";r.d(t,{GG:()=>a,Qr:()=>o,sB:()=>s});var n=r(878);function i(){return"undefined"==typeof document||"complete"===document.readyState}function a(e,t){if(i())return e();(0,n.sp)("load",e,t)}function s(e){if(i())return e();(0,n.DD)("DOMContentLoaded",e)}function o(e){if(i())return e();(0,n.sp)("popstate",e)}},384:(e,t,r)=>{"use strict";r.d(t,{NT:()=>s,US:()=>d,Zm:()=>o,bQ:()=>u,dV:()=>c,pV:()=>l});var n=r(154),i=r(863),a=r(910);const s={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net"};function o(){return n.gm.NREUM||(n.gm.NREUM={}),void 0===n.gm.newrelic&&(n.gm.newrelic=n.gm.NREUM),n.gm.NREUM}function c(){let e=o();return e.o||(e.o={ST:n.gm.setTimeout,SI:n.gm.setImmediate||n.gm.setInterval,CT:n.gm.clearTimeout,XHR:n.gm.XMLHttpRequest,REQ:n.gm.Request,EV:n.gm.Event,PR:n.gm.Promise,MO:n.gm.MutationObserver,FETCH:n.gm.fetch,WS:n.gm.WebSocket},(0,a.i)(...Object.values(e.o))),e}function u(e,t){let r=o();r.initializedAgents??={},t.initializedAt={ms:(0,i.t)(),date:new Date},r.initializedAgents[e]=t}function d(e,t){o()[e]=t}function l(){return function(){let e=o();const t=e.info||{};e.info={beacon:s.beacon,errorBeacon:s.errorBeacon,...t}}(),function(){let e=o();const t=e.init||{};e.init={...t}}(),c(),function(){let e=o();const t=e.loader_config||{};e.loader_config={...t}}(),o()}},843:(e,t,r)=>{"use strict";r.d(t,{u:()=>i});var n=r(878);function i(e,t=!1,r,i){(0,n.DD)("visibilitychange",(function(){if(t)return void("hidden"===document.visibilityState&&e());e(document.visibilityState)}),r,i)}},773:(e,t,r)=>{"use strict";r.d(t,{z_:()=>a,XG:()=>o,TZ:()=>n,rs:()=>i,xV:()=>s});r(154),r(566),r(384);const n=r(860).K7.metrics,i="sm",a="cm",s="storeSupportabilityMetrics",o="storeEventMetrics"},630:(e,t,r)=>{"use strict";r.d(t,{T:()=>n});const n=r(860).K7.pageViewEvent},782:(e,t,r)=>{"use strict";r.d(t,{T:()=>n});const n=r(860).K7.pageViewTiming},234:(e,t,r)=>{"use strict";r.d(t,{W:()=>a});var n=r(836),i=r(687);class a{constructor(e,t){this.agentIdentifier=e,this.ee=n.ee.get(e),this.featureName=t,this.blocked=!1}deregisterDrain(){(0,i.x3)(this.agentIdentifier,this.featureName)}}},741:(e,t,r)=>{"use strict";r.d(t,{W:()=>a});var n=r(944),i=r(261);class a{#e(e,...t){if(this[e]!==a.prototype[e])return this[e](...t);(0,n.R)(35,e)}addPageAction(e,t){return this.#e(i.hG,e,t)}register(e){return this.#e(i.eY,e)}recordCustomEvent(e,t){return this.#e(i.fF,e,t)}setPageViewName(e,t){return this.#e(i.Fw,e,t)}setCustomAttribute(e,t,r){return this.#e(i.cD,e,t,r)}noticeError(e,t){return this.#e(i.o5,e,t)}setUserId(e){return this.#e(i.Dl,e)}setApplicationVersion(e){return this.#e(i.nb,e)}setErrorHandler(e){return this.#e(i.bt,e)}addRelease(e,t){return this.#e(i.k6,e,t)}log(e,t){return this.#e(i.$9,e,t)}start(){return this.#e(i.d3)}finished(e){return this.#e(i.BL,e)}recordReplay(){return this.#e(i.CH)}pauseReplay(){return this.#e(i.Tb)}addToTrace(e){return this.#e(i.U2,e)}setCurrentRouteName(e){return this.#e(i.PA,e)}interaction(){return this.#e(i.dT)}wrapLogger(e,t,r){return this.#e(i.Wb,e,t,r)}measure(e,t){return this.#e(i.V1,e,t)}}},261:(e,t,r)=>{"use strict";r.d(t,{$9:()=>u,BL:()=>o,CH:()=>g,Dl:()=>_,Fw:()=>y,PA:()=>h,Pl:()=>n,Tb:()=>l,U2:()=>a,V1:()=>k,Wb:()=>x,bt:()=>b,cD:()=>v,d3:()=>w,dT:()=>c,eY:()=>p,fF:()=>f,hG:()=>i,k6:()=>s,nb:()=>m,o5:()=>d});const n="api-",i="addPageAction",a="addToTrace",s="addRelease",o="finished",c="interaction",u="log",d="noticeError",l="pauseReplay",f="recordCustomEvent",g="recordReplay",p="register",m="setApplicationVersion",h="setCurrentRouteName",v="setCustomAttribute",b="setErrorHandler",y="setPageViewName",_="setUserId",w="start",x="wrapLogger",k="measure"},163:(e,t,r)=>{"use strict";r.d(t,{j:()=>E});var n=r(384),i=r(741);var a=r(555);r(860).K7.genericEvents;const s="experimental.marks",o="experimental.measures",c="experimental.resources",u=e=>{if(!e||"string"!=typeof e)return!1;try{document.createDocumentFragment().querySelector(e)}catch{return!1}return!0};var d=r(614),l=r(944),f=r(122);const g="[data-nr-mask]",p=e=>(0,f.a)(e,(()=>{const e={feature_flags:[],experimental:{marks:!1,measures:!1,resources:!1},mask_selector:"*",block_selector:"[data-nr-block]",mask_input_options:{color:!1,date:!1,"datetime-local":!1,email:!1,month:!1,number:!1,range:!1,search:!1,tel:!1,text:!1,time:!1,url:!1,week:!1,textarea:!1,select:!1,password:!0}};return{ajax:{deny_list:void 0,block_internal:!0,enabled:!0,autoStart:!0},api:{allow_registered_children:!0,duplicate_registered_data:!1},distributed_tracing:{enabled:void 0,exclude_newrelic_header:void 0,cors_use_newrelic_header:void 0,cors_use_tracecontext_headers:void 0,allowed_origins:void 0},get feature_flags(){return e.feature_flags},set feature_flags(t){e.feature_flags=t},generic_events:{enabled:!0,autoStart:!0},harvest:{interval:30},jserrors:{enabled:!0,autoStart:!0},logging:{enabled:!0,autoStart:!0},metrics:{enabled:!0,autoStart:!0},obfuscate:void 0,page_action:{enabled:!0},page_view_event:{enabled:!0,autoStart:!0},page_view_timing:{enabled:!0,autoStart:!0},performance:{get capture_marks(){return e.feature_flags.includes(s)||e.experimental.marks},set capture_marks(t){e.experimental.marks=t},get capture_measures(){return e.feature_flags.includes(o)||e.experimental.measures},set capture_measures(t){e.experimental.measures=t},capture_detail:!0,resources:{get enabled(){return e.feature_flags.includes(c)||e.experimental.resources},set enabled(t){e.experimental.resources=t},asset_types:[],first_party_domains:[],ignore_newrelic:!0}},privacy:{cookies_enabled:!0},proxy:{assets:void 0,beacon:void 0},session:{expiresMs:d.wk,inactiveMs:d.BB},session_replay:{autoStart:!0,enabled:!1,preload:!1,sampling_rate:10,error_sampling_rate:100,collect_fonts:!1,inline_images:!1,fix_stylesheets:!0,mask_all_inputs:!0,get mask_text_selector(){return e.mask_selector},set mask_text_selector(t){u(t)?e.mask_selector="".concat(t,",").concat(g):""===t||null===t?e.mask_selector=g:(0,l.R)(5,t)},get block_class(){return"nr-block"},get ignore_class(){return"nr-ignore"},get mask_text_class(){return"nr-mask"},get block_selector(){return e.block_selector},set block_selector(t){u(t)?e.block_selector+=",".concat(t):""!==t&&(0,l.R)(6,t)},get mask_input_options(){return e.mask_input_options},set mask_input_options(t){t&&"object"==typeof t?e.mask_input_options={...t,password:!0}:(0,l.R)(7,t)}},session_trace:{enabled:!0,autoStart:!0},soft_navigations:{enabled:!0,autoStart:!0},spa:{enabled:!0,autoStart:!0},ssl:void 0,user_actions:{enabled:!0,elementAttributes:["id","className","tagName","type"]}}})());var m=r(154),h=r(324);let v=0;const b={buildEnv:h.F3,distMethod:h.Xs,version:h.xv,originTime:m.WN},y={appMetadata:{},customTransaction:void 0,denyList:void 0,disabled:!1,entityManager:void 0,harvester:void 0,isolatedBacklog:!1,isRecording:!1,loaderType:void 0,maxBytes:3e4,obfuscator:void 0,onerror:void 0,ptid:void 0,releaseIds:{},session:void 0,timeKeeper:void 0,jsAttributesMetadata:{bytes:0},get harvestCount(){return++v}},_=e=>{const t=(0,f.a)(e,y),r=Object.keys(b).reduce(((e,t)=>(e[t]={value:b[t],writable:!1,configurable:!0,enumerable:!0},e)),{});return Object.defineProperties(t,r)};var w=r(701);const x=e=>{const t=e.startsWith("http");e+="/",r.p=t?e:"https://"+e};var k=r(836),S=r(241);const A={accountID:void 0,trustKey:void 0,agentID:void 0,licenseKey:void 0,applicationID:void 0,xpid:void 0},R=e=>(0,f.a)(e,A),T=new Set;function E(e,t={},r,s){let{init:o,info:c,loader_config:u,runtime:d={},exposed:l=!0}=t;if(!c){const e=(0,n.pV)();o=e.init,c=e.info,u=e.loader_config}e.init=p(o||{}),e.loader_config=R(u||{}),c.jsAttributes??={},m.bv&&(c.jsAttributes.isWorker=!0),e.info=(0,a.D)(c);const f=e.init,g=[c.beacon,c.errorBeacon];T.has(e.agentIdentifier)||(f.proxy.assets&&(x(f.proxy.assets),g.push(f.proxy.assets)),f.proxy.beacon&&g.push(f.proxy.beacon),function(e){const t=(0,n.pV)();Object.getOwnPropertyNames(i.W.prototype).forEach((r=>{const n=i.W.prototype[r];if("function"!=typeof n||"constructor"===n)return;let a=t[r];e[r]&&!1!==e.exposed&&"micro-agent"!==e.runtime?.loaderType&&(t[r]=(...t)=>{const n=e[r](...t);return a?a(...t):n})}))}(e),(0,n.US)("activatedFeatures",w.B),e.runSoftNavOverSpa&&=!0===f.soft_navigations.enabled&&f.feature_flags.includes("soft_nav")),d.denyList=[...f.ajax.deny_list||[],...f.ajax.block_internal?g:[]],d.ptid=e.agentIdentifier,d.loaderType=r,e.runtime=_(d),T.has(e.agentIdentifier)||(e.ee=k.ee.get(e.agentIdentifier),e.exposed=l,(0,S.W)({agentIdentifier:e.agentIdentifier,drained:!!w.B?.[e.agentIdentifier],type:"lifecycle",name:"initialize",feature:void 0,data:e.config})),T.add(e.agentIdentifier)}},374:(e,t,r)=>{r.nc=(()=>{try{return document?.currentScript?.nonce}catch(e){}return""})()},860:(e,t,r)=>{"use strict";r.d(t,{$J:()=>d,K7:()=>c,P3:()=>u,XX:()=>i,Yy:()=>o,df:()=>a,qY:()=>n,v4:()=>s});const n="events",i="jserrors",a="browser/blobs",s="rum",o="browser/logs",c={ajax:"ajax",genericEvents:"generic_events",jserrors:i,logging:"logging",metrics:"metrics",pageAction:"page_action",pageViewEvent:"page_view_event",pageViewTiming:"page_view_timing",sessionReplay:"session_replay",sessionTrace:"session_trace",softNav:"soft_navigations",spa:"spa"},u={[c.pageViewEvent]:1,[c.pageViewTiming]:2,[c.metrics]:3,[c.jserrors]:4,[c.spa]:5,[c.ajax]:6,[c.sessionTrace]:7,[c.softNav]:8,[c.sessionReplay]:9,[c.logging]:10,[c.genericEvents]:11},d={[c.pageViewEvent]:s,[c.pageViewTiming]:n,[c.ajax]:n,[c.spa]:n,[c.softNav]:n,[c.metrics]:i,[c.jserrors]:i,[c.sessionTrace]:a,[c.sessionReplay]:a,[c.logging]:o,[c.genericEvents]:"ins"}}},n={};function i(e){var t=n[e];if(void 0!==t)return t.exports;var a=n[e]={exports:{}};return r[e](a,a.exports,i),a.exports}i.m=r,i.d=(e,t)=>{for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=e=>Promise.all(Object.keys(i.f).reduce(((t,r)=>(i.f[r](e,t),t)),[])),i.u=e=>"nr-rum-1.298.0.min.js",i.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),e={},t="NRBA-1.298.0.PROD:",i.l=(r,n,a,s)=>{if(e[r])e[r].push(n);else{var o,c;if(void 0!==a)for(var u=document.getElementsByTagName("script"),d=0;d<u.length;d++){var l=u[d];if(l.getAttribute("src")==r||l.getAttribute("data-webpack")==t+a){o=l;break}}if(!o){c=!0;var f={296:"sha512-7r59xFei/wYH/qDe7AmsUKR7NqbaD4hdacClEUAHBqKIhkH+j3LpuCNDcJ6TJ5mHwqOg0To3xAGIeaCDdga6dQ=="};(o=document.createElement("script")).charset="utf-8",o.timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-webpack",t+a),o.src=r,0!==o.src.indexOf(window.location.origin+"/")&&(o.crossOrigin="anonymous"),f[s]&&(o.integrity=f[s])}e[r]=[n];var g=(t,n)=>{o.onerror=o.onload=null,clearTimeout(p);var i=e[r];if(delete e[r],o.parentNode&&o.parentNode.removeChild(o),i&&i.forEach((e=>e(n))),t)return t(n)},p=setTimeout(g.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=g.bind(null,o.onerror),o.onload=g.bind(null,o.onload),c&&document.head.appendChild(o)}},i.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.p="https://js-agent.newrelic.com/",(()=>{var e={374:0,840:0};i.f.j=(t,r)=>{var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var a=new Promise(((r,i)=>n=e[t]=[r,i]));r.push(n[2]=a);var s=i.p+i.u(t),o=new Error;i.l(s,(r=>{if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var a=r&&("load"===r.type?"missing":r.type),s=r&&r.target&&r.target.src;o.message="Loading chunk "+t+" failed.\n("+a+": "+s+")",o.name="ChunkLoadError",o.type=a,o.request=s,n[1](o)}}),"chunk-"+t,t)}};var t=(t,r)=>{var n,a,[s,o,c]=r,u=0;if(s.some((t=>0!==e[t]))){for(n in o)i.o(o,n)&&(i.m[n]=o[n]);if(c)c(i)}for(t&&t(r);u<s.length;u++)a=s[u],i.o(e,a)&&e[a]&&e[a][0](),e[a]=0},r=self["webpackChunk:NRBA-1.298.0.PROD"]=self["webpackChunk:NRBA-1.298.0.PROD"]||[];r.forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r))})(),(()=>{"use strict";i(374);var e=i(566),t=i(741);class r extends t.W{agentIdentifier=(0,e.LA)(16)}var n=i(860);const a=Object.values(n.K7);var s=i(163);var o=i(908),c=i(863),u=i(261),d=i(241),l=i(944),f=i(701),g=i(773);function p(e,t,i,a){const s=a||i;!s||s[e]&&s[e]!==r.prototype[e]||(s[e]=function(){(0,o.p)(g.xV,["API/"+e+"/called"],void 0,n.K7.metrics,i.ee),(0,d.W)({agentIdentifier:i.agentIdentifier,drained:!!f.B?.[i.agentIdentifier],type:"data",name:"api",feature:u.Pl+e,data:{}});try{return t.apply(this,arguments)}catch(e){(0,l.R)(23,e)}})}function m(e,t,r,n,i){const a=e.info;null===r?delete a.jsAttributes[t]:a.jsAttributes[t]=r,(i||null===r)&&(0,o.p)(u.Pl+n,[(0,c.t)(),t,r],void 0,"session",e.ee)}var h=i(687),v=i(234),b=i(289),y=i(154),_=i(384);const w=e=>y.RI&&!0===e?.privacy.cookies_enabled;function x(e){return!!(0,_.dV)().o.MO&&w(e)&&!0===e?.session_trace.enabled}var k=i(389),S=i(699);class A extends v.W{constructor(e,t){super(e.agentIdentifier,t),this.agentRef=e,this.abortHandler=void 0,this.featAggregate=void 0,this.onAggregateImported=void 0,this.deferred=Promise.resolve(),!1===e.init[this.featureName].autoStart?this.deferred=new Promise(((t,r)=>{this.ee.on("manual-start-all",(0,k.J)((()=>{(0,h.Ak)(e.agentIdentifier,this.featureName),t()})))})):(0,h.Ak)(e.agentIdentifier,t)}importAggregator(e,t,r={}){if(this.featAggregate)return;let n;this.onAggregateImported=new Promise((e=>{n=e}));const a=async()=>{let a;await this.deferred;try{if(w(e.init)){const{setupAgentSession:t}=await i.e(296).then(i.bind(i,305));a=t(e)}}catch(e){(0,l.R)(20,e),this.ee.emit("internal-error",[e]),(0,o.p)(S.qh,[e],void 0,this.featureName,this.ee)}try{if(!this.#t(this.featureName,a,e.init))return(0,h.Ze)(this.agentIdentifier,this.featureName),void n(!1);const{Aggregate:i}=await t();this.featAggregate=new i(e,r),e.runtime.harvester.initializedAggregates.push(this.featAggregate),n(!0)}catch(e){(0,l.R)(34,e),this.abortHandler?.(),(0,h.Ze)(this.agentIdentifier,this.featureName,!0),n(!1),this.ee&&this.ee.abort()}};y.RI?(0,b.GG)((()=>a()),!0):a()}#t(e,t,r){if(this.blocked)return!1;switch(e){case n.K7.sessionReplay:return x(r)&&!!t;case n.K7.sessionTrace:return!!t;default:return!0}}}var R=i(630),T=i(614);class E extends A{static featureName=R.T;constructor(e){var t;super(e,R.T),this.setupInspectionEvents(e.agentIdentifier),t=e,p(u.Fw,(function(e,r){"string"==typeof e&&("/"!==e.charAt(0)&&(e="/"+e),t.runtime.customTransaction=(r||"http://custom.transaction")+e,(0,o.p)(u.Pl+u.Fw,[(0,c.t)()],void 0,void 0,t.ee))}),t),this.ee.on("api-send-rum",((e,t)=>(0,o.p)("send-rum",[e,t],void 0,this.featureName,this.ee))),this.importAggregator(e,(()=>i.e(296).then(i.bind(i,108))))}setupInspectionEvents(e){const t=(t,r)=>{t&&(0,d.W)({agentIdentifier:e,timeStamp:t.timeStamp,loaded:"complete"===t.target.readyState,type:"window",name:r,data:t.target.location+""})};(0,b.sB)((e=>{t(e,"DOMContentLoaded")})),(0,b.GG)((e=>{t(e,"load")})),(0,b.Qr)((e=>{t(e,"navigate")})),this.ee.on(T.tS.UPDATE,((t,r)=>{(0,d.W)({agentIdentifier:e,type:"lifecycle",name:"session",data:r})}))}}var N=i(843),I=i(878),j=i(782);class O extends A{static featureName=j.T;constructor(e){super(e,j.T),y.RI&&((0,N.u)((()=>(0,o.p)("docHidden",[(0,c.t)()],void 0,j.T,this.ee)),!0),(0,I.sp)("pagehide",(()=>(0,o.p)("winPagehide",[(0,c.t)()],void 0,j.T,this.ee))),this.importAggregator(e,(()=>i.e(296).then(i.bind(i,350)))))}}class P extends A{static featureName=g.TZ;constructor(e){super(e,g.TZ),y.RI&&document.addEventListener("securitypolicyviolation",(e=>{(0,o.p)(g.xV,["Generic/CSPViolation/Detected"],void 0,this.featureName,this.ee)})),this.importAggregator(e,(()=>i.e(296).then(i.bind(i,373))))}}new class extends r{constructor(e){var t;(super(),y.gm)?(this.features={},(0,_.bQ)(this.agentIdentifier,this),this.desiredFeatures=new Set(e.features||[]),this.desiredFeatures.add(E),this.runSoftNavOverSpa=[...this.desiredFeatures].some((e=>e.featureName===n.K7.softNav)),(0,s.j)(this,e,e.loaderType||"agent"),t=this,p(u.cD,(function(e,r,n=!1){if("string"==typeof e){if(["string","number","boolean"].includes(typeof r)||null===r)return m(t,e,r,u.cD,n);(0,l.R)(40,typeof r)}else(0,l.R)(39,typeof e)}),t),function(e){p(u.Dl,(function(t){if("string"==typeof t||null===t)return m(e,"enduser.id",t,u.Dl,!0);(0,l.R)(41,typeof t)}),e)}(this),function(e){p(u.nb,(function(t){if("string"==typeof t||null===t)return m(e,"application.version",t,u.nb,!1);(0,l.R)(42,typeof t)}),e)}(this),function(e){p(u.d3,(function(){e.ee.emit("manual-start-all")}),e)}(this),this.run()):(0,l.R)(21)}get config(){return{info:this.info,init:this.init,loader_config:this.loader_config,runtime:this.runtime}}get api(){return this}run(){try{const e=function(e){const t={};return a.forEach((r=>{t[r]=!!e[r]?.enabled})),t}(this.init),t=[...this.desiredFeatures];t.sort(((e,t)=>n.P3[e.featureName]-n.P3[t.featureName])),t.forEach((t=>{if(!e[t.featureName]&&t.featureName!==n.K7.pageViewEvent)return;if(this.runSoftNavOverSpa&&t.featureName===n.K7.spa)return;if(!this.runSoftNavOverSpa&&t.featureName===n.K7.softNav)return;const r=function(e){switch(e){case n.K7.ajax:return[n.K7.jserrors];case n.K7.sessionTrace:return[n.K7.ajax,n.K7.pageViewEvent];case n.K7.sessionReplay:return[n.K7.sessionTrace];case n.K7.pageViewTiming:return[n.K7.pageViewEvent];default:return[]}}(t.featureName).filter((e=>!(e in this.features)));r.length>0&&(0,l.R)(36,{targetFeature:t.featureName,missingDependencies:r}),this.features[t.featureName]=new t(this)}))}catch(e){(0,l.R)(22,e);for(const e in this.features)this.features[e].abortHandler?.();const t=(0,_.Zm)();delete t.initializedAgents[this.agentIdentifier]?.features,delete this.sharedAggregator;return t.ee.get(this.agentIdentifier).abort(),!1}}}({features:[E,O,P],loaderType:"lite"})})()})();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<!--/ Open Graphite Start /-->
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="" />
+<meta property="og:url" content="https://ebrdgeff.com" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="" />
+<meta property="og:image" content="" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+
+<meta itemtype="" />
+<meta itemprop="description" content="" />
+<meta itemprop="image" content="" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://ebrdgeff.com" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:site" content="" />
+<!--/ Open Graphite End /-->
+
+<title>GEFF &#8211; Welcome to the Green Economy Financing Facility</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel='dns-prefetch' href='//static.addtoany.com' />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/ebrdgeff.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.3"}};
+/*! This file is auto-generated */
+!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link rel='stylesheet' id='h5ab-print-font-awesome-css' href='https://ebrdgeff.com/wp-content/plugins/print-post-and-page/css/font-awesome.min.css?ver=6.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='h5ab-print-css-css' href='https://ebrdgeff.com/wp-content/plugins/print-post-and-page/css/h5ab-print.min.css?ver=6.8.3' type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://ebrdgeff.com/wp-includes/css/dist/block-library/style.min.css?ver=6.8.3' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='cookie-law-info-css' href='https://ebrdgeff.com/wp-content/plugins/cookie-law-info/legacy/public/css/cookie-law-info-public.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css' href='https://ebrdgeff.com/wp-content/plugins/cookie-law-info/legacy/public/css/cookie-law-info-gdpr.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='foundation-css' href='https://ebrdgeff.com/wp-content/themes/geff/css/foundation.min.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='swiper-css' href='https://ebrdgeff.com/wp-content/themes/geff/css/swiper.min.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css' href='https://ebrdgeff.com/wp-content/themes/geff/style.css?ver=6.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='addtoany-css' href='https://ebrdgeff.com/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' type='text/css' media='all' />
+<script type="text/javascript" src="https://ebrdgeff.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="addtoany-core-js-before">
+/* <![CDATA[ */
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+/* ]]> */
+</script>
+<script type="text/javascript" defer src="https://static.addtoany.com/menu/page.js" id="addtoany-core-js"></script>
+<script type="text/javascript" defer src="https://ebrdgeff.com/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1" id="addtoany-jquery-js"></script>
+<script type="text/javascript" id="cookie-law-info-js-extra">
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[],"non_necessary_cookies":[],"ccpaEnabled":"","ccpaRegionBased":"","ccpaBarEnabled":"","strictlyEnabled":["necessary","obligatoire"],"ccpaType":"gdpr","js_blocking":"","custom_integration":"","triggerDomRefresh":"","secure_cookies":""};
+var cli_cookiebar_settings = {"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#17a096","border_on":"","button_1_button_colour":"#17a096","button_1_button_hover":"#128078","button_1_link_colour":"#fff","button_1_as_button":"1","button_1_new_win":"","button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":"","button_2_hidebar":"1","button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":"1","button_3_new_win":"","button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":"1","button_7_button_colour":"#61a229","button_7_button_hover":"#4e8221","button_7_link_colour":"#fff","button_7_as_button":"1","button_7_new_win":"","font_family":"inherit","header_fix":"1","notify_animate_hide":"1","notify_animate_show":"","notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"top","scroll_close":"","scroll_close_reload":"","accept_close_reload":"","reject_close_reload":"","showagain_tab":"","showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":"","show_once":"10000","logging_on":"","as_popup":"","popup_overlay":"1","bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"};
+var log_object = {"ajax_url":"https:\/\/ebrdgeff.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/plugins/cookie-law-info/legacy/public/js/cookie-law-info-public.js?ver=3.3.5" id="cookie-law-info-js"></script>
+<link rel="https://api.w.org/" href="https://ebrdgeff.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ebrdgeff.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.8.3" />
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+@media print {
+  .header.small {
+    top: 0;
+  }
+}</style>
+<!-- end Simple Custom CSS and JS -->
+<style>
+.qtranxs_flag_en {background-image: url(https://ebrdgeff.com/wp-content/plugins/qtranslate-xt-3.15.2/flags/gb.png); background-repeat: no-repeat;}
+</style>
+<link hreflang="en" href="https://ebrdgeff.com/en/?country%5B%5D=36" rel="alternate" />
+<link hreflang="x-default" href="https://ebrdgeff.com/?country%5B%5D=36" rel="alternate" />
+<meta name="generator" content="qTranslate-XT 3.15.2" />
+ 
+<!— Google Analytics —>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+if(document.querySelectorAll('link[href="https://ebrdgeff.com/?p=3099"]').length === 1) {
+	console.log('logging tajikistan');
+	ga('create', 'UA-113450735-2', 'auto');	
+} else {
+	console.log('logging default');
+	ga('create', 'UA-113450735-1', 'auto');	
+}
+
+ga('send', 'pageview');
+</script>
+<!— End Google Analytics —>
+ 
+<link rel="shortcut icon" type="image/png" href="https://ebrdgeff.com/wp-content/uploads/2020/07/ms-icon-310x310-1.png" />
+</head>
+<body data-rsssl=1>
+    <div class="container">
+    <div class="header">
+        <div class="lang-box">
+            <div class="row">
+                <div class="large-12 medium-12 small-12 columns">
+                    <span class="small-search-icon"><img src="https://ebrdgeff.com/wp-content/themes/geff/img/search_w.png"></span>
+                    <span class="lang-link l-sel">en</span>                </div>
+            </div>
+        </div>
+        <div class="grey-box" style="position: relative;">
+            <div class="row menu-box">
+                <div class="large-12 medium-12 small-12 columns menu-bar">
+                    <div class="large-4 medium-6 small-5 columns logo">
+                        <a href="https://ebrdgeff.com">
+                                                        <img src="https://ebrdgeff.com/wp-content/uploads/2017/04/GEFF_EBRD_Logo_pos_RGB.png" class="logo-big"> 
+				
+
+				
+                            <img src="https://ebrdgeff.com/wp-content/uploads/2017/04/GEFF_Logo_withoutclaim_pos_RGB-500x139.png" class="logo-mob">
+                            <p>Where finance and green technologies meet<p>
+                        </a>
+                    </div>
+                    <div class="large-8 medium-6 small-7 columns menu">
+                        <ul id="menu-main-menu" class=""><li id="menu-item-1238" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1238"><a href="#">GEFF Facilities</a></li>
+<li id="menu-item-1026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1026"><a href="https://ebrdgeff.com/about-seff/">About GEFF</a></li>
+<li id="menu-item-1025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1025"><a href="https://ebrdgeff.com/about-the-ebrd/">About the EBRD</a></li>
+</ul>
+                        <ul>
+                            <li class="menu-item burger"></li>
+                                                        <li class="menu-item twitter-icon"><a href="https://twitter.com/EBRDgreen" class="soc-link" target="_blank"><img src="https://ebrdgeff.com/wp-content/themes/geff/img/twitter_top.png"></a></li>
+                                                        <li class="menu-item search-icon"><form action="/index.php" method="post"><img src="https://ebrdgeff.com/wp-content/themes/geff/img/search.jpg"><input type="text" name="s" id="search" placeholder="WHAT ARE YOU SEARCHING FOR?"><div class="close-search"></div></form></li>
+                        </ul>
+                        <!-- Countries section -->
+                        <section class="countries-container row">
+                            <div class="countries-container-frame">
+                                <div class="large-3 medium-3 small-6 columns">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <li id="nav_menu-2" class="widget widget_nav_menu"><div class="menu-seff-facilities-megamenu-column-1-container"><ul id="menu-seff-facilities-megamenu-column-1" class="menu"><li id="menu-item-2700" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2700"><a href="https://ebrdgeff.com/albania/">Albania</a></li>
+<li id="menu-item-1219" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1219"><a href="https://ebrdgeff.com/armenia_facilities">Armenia</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1220"><a href="https://ebrdgeff.com/azerbajan">Azerbaijan</a></li>
+<li id="menu-item-1221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1221"><a href="https://ebrdgeff.com/belarus">Belarus</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1222"><a href="https://ebrdgeff.com/ba_facilities">Bosnia and Herzegovina</a></li>
+<li id="menu-item-1242" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1242"><a href="https://ebrdgeff.com/bulgaria_facilities">Bulgaria</a></li>
+<li id="menu-item-1243" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1243"><a href="https://ebrdgeff.com/croatia_facilities">Croatia</a></li>
+<li id="menu-item-3904" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3904"><a href="https://ebrdgeff.com/egypt_facilities/">Egypt</a></li>
+</ul></div></li>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="large-3 medium-3 small-6 columns">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <li id="nav_menu-3" class="widget widget_nav_menu"><div class="menu-seff-facilities-megamenu-column-2-container"><ul id="menu-seff-facilities-megamenu-column-2" class="menu"><li id="menu-item-2962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2962"><a href="https://ebrdgeff.com/georgia_facilities/">Georgia</a></li>
+<li id="menu-item-4535" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4535"><a href="https://ebrdgeff.com/jordan/">Jordan</a></li>
+<li id="menu-item-1244" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><a href="https://ebrdgeff.com/hungary">Hungary</a></li>
+<li id="menu-item-4484" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4484"><a href="https://ebrdgeff.com/kazakhstan_facilities/">Kazakhstan</a></li>
+<li id="menu-item-1246" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1246"><a href="https://ebrdgeff.com/kosovo_facilities">Kosovo</a></li>
+<li id="menu-item-2950" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2950"><a href="https://ebrdgeff.com/lebanon">Lebanon</a></li>
+<li id="menu-item-2772" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2772"><a href="https://ebrdgeff.com/kyrgyz-republic_facilities/">Kyrgyz Republic</a></li>
+<li id="menu-item-3905" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3905"><a href="https://ebrdgeff.com/moldova_facilities/">Moldova</a></li>
+</ul></div></li>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div><div class="large-3 medium-3 small-6 columns">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <li id="nav_menu-4" class="widget widget_nav_menu"><div class="menu-seff-facilities-megamenu-column-3-container"><ul id="menu-seff-facilities-megamenu-column-3" class="menu"><li id="menu-item-4506" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4506"><a href="https://ebrdgeff.com/mongolia_facilities/">Mongolia</a></li>
+<li id="menu-item-3750" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3750"><a href="https://ebrdgeff.com/montenegro_facilities/">Montenegro</a></li>
+<li id="menu-item-1250" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1250"><a href="https://ebrdgeff.com/morocco_facilities">Morocco</a></li>
+<li id="menu-item-2771" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2771"><a href="https://ebrdgeff.com/macedonia_facilities/">North Macedonia</a></li>
+<li id="menu-item-1251" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1251"><a href="https://ebrdgeff.com/poland_facilities">Poland</a></li>
+<li id="menu-item-2836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2836"><a href="https://ebrdgeff.com/romania_facilities/">Romania</a></li>
+<li id="menu-item-3906" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3906"><a href="https://ebrdgeff.com/russia_facilities/">Russia</a></li>
+</ul></div></li>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div><div class="large-3 medium-3 small-6 columns">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <li id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-seff-facilities-megamenu-column-4-container"><ul id="menu-seff-facilities-megamenu-column-4" class="menu"><li id="menu-item-1233" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1233"><a href="https://ebrdgeff.com/serbia_facilities">Serbia</a></li>
+<li id="menu-item-1234" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1234"><a href="https://ebrdgeff.com/slovak-republic_facilities">Slovak Republic</a></li>
+<li id="menu-item-3104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3104"><a href="https://ebrdgeff.com/tajikistan/">Tajikistan</a></li>
+<li id="menu-item-3903" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3903"><a href="https://ebrdgeff.com/tunisia_facilities/">Tunisia</a></li>
+<li id="menu-item-1236" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1236"><a href="https://ebrdgeff.com/turkiye_facilities">Türkiye</a></li>
+<li id="menu-item-1237" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1237"><a href="https://ebrdgeff.com/ukraine_facilities">Ukraine</a></li>
+<li id="menu-item-4709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4709"><a href="https://ebrdgeff.com/uzbekistan_facilities/">Uzbekistan</a></li>
+</ul></div></li>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End .countries-container-frame -->
+                        </section><!-- End .countries -->
+                    </div>
+                </div>
+                <div class="small-12 columns mob-menu">
+                    <ul id="menu-main-menu-1" class=""><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1238"><a href="#">GEFF Facilities</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1026"><a href="https://ebrdgeff.com/about-seff/">About GEFF</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1025"><a href="https://ebrdgeff.com/about-the-ebrd/">About the EBRD</a></li>
+</ul>                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="header-placeholder"></div>
+    
+    				
+			<!-- Title section -->
+			<section class="title-container row">
+				<div class="large-offset-1 large-10 small-12 columns">
+					<h1>Green Economy Financing Facilities</h1>
+                    <h3 style="text-align: center">Combining technical knowledge with finance to help clients invest in high performing technologies. Screen latest news and success stories below or find Facility in your country through GEFF Facilities.</h3>
+				</div>
+			</section><!-- End .title-container -->
+
+<br>
+
+			<!-- Section news posts -->
+			<section class="news-posts row">
+                <div class="large-4 medium-4 small-12 columns">
+                    <div class="filter-box">
+                        <div class="filter-head">
+                            Filter By
+                        </div>
+                        <form action="https://ebrdgeff.com" method="get" id="filter-form">
+                        <div class="faq-box-2">                        
+                            
+                            <div class="faq-2">
+                                <div class="qu">Technology</div>
+                                <div class="an-box">
+                                    <div class="an">
+                                        <div class="search-options-box">
+                                            Search for a technology
+                                            <input type="text" id="search-1" data-id="1">
+                                        </div>
+                                                                                <div class="checkbox-box">
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="197" id="topic1" data-name="buildings"><label for="topic1">Buildings</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="450" id="topic2" data-name="building materials"><label for="topic2" class="child-option">Building materials</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="235" id="topic3" data-name="heat distribution"><label for="topic3" class="child-option">Heat distribution</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="245" id="topic4" data-name="hvac"><label for="topic4" class="child-option">HVAC</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="210" id="topic5" data-name="led lighting"><label for="topic5" class="child-option">LED lighting</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="201" id="topic6" data-name="thermal insulation"><label for="topic6" class="child-option">Thermal insulation</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="200" id="topic7" data-name="windows"><label for="topic7" class="child-option">Windows</label></div>
+                                                                                        </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="266" id="topic8" data-name="heat and electric production"><label for="topic8">Heat and electric production</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="352" id="topic9" data-name="boiler"><label for="topic9" class="child-option">Boiler</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="267" id="topic10" data-name="combined heat and power (chp)"><label for="topic10" class="child-option">Combined heat and power (CHP)</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="270" id="topic11" data-name="heat recovery"><label for="topic11" class="child-option">Heat recovery</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="350" id="topic12" data-name="reactive power compensation"><label for="topic12" class="child-option">Reactive power compensation</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="351" id="topic13" data-name="transformer"><label for="topic13" class="child-option">Transformer</label></div>
+                                                                                        </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="447" id="topic14" data-name="land management"><label for="topic14">Land management</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="448" id="topic15" data-name="greenhouse"><label for="topic15" class="child-option">Greenhouse</label></div>
+                                                                                        </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="217" id="topic16" data-name="process equipment"><label for="topic16">Process equipment</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="248" id="topic17" data-name="automation equipment"><label for="topic17" class="child-option">Automation equipment</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="283" id="topic18" data-name="compressors"><label for="topic18" class="child-option">Compressors</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="279" id="topic19" data-name="control systems"><label for="topic19" class="child-option">Control systems</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="268" id="topic20" data-name="cooling"><label for="topic20" class="child-option">Cooling</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="322" id="topic21" data-name="economizer"><label for="topic21" class="child-option">Economizer</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="275" id="topic22" data-name="heat exchangers"><label for="topic22" class="child-option">Heat exchangers</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="257" id="topic23" data-name="moulding"><label for="topic23" class="child-option">Moulding</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="247" id="topic24" data-name="oven/ furnace"><label for="topic24" class="child-option">Oven/ furnace</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="282" id="topic25" data-name="packaging"><label for="topic25" class="child-option">Packaging</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="254" id="topic26" data-name="printing"><label for="topic26" class="child-option">Printing</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="278" id="topic27" data-name="pumps"><label for="topic27" class="child-option">Pumps</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="246" id="topic28" data-name="refrigeration"><label for="topic28" class="child-option">Refrigeration</label></div>
+                                                                                        </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="183" id="topic29" data-name="renewable energy"><label for="topic29">Renewable energy</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="250" id="topic30" data-name="biofuel systems"><label for="topic30" class="child-option">Biofuel systems</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="240" id="topic31" data-name="biogas boiler/ chp"><label for="topic31" class="child-option">Biogas boiler/ CHP</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="192" id="topic32" data-name="biomass unit"><label for="topic32" class="child-option">Biomass unit</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="449" id="topic33" data-name="energy storage"><label for="topic33" class="child-option">Energy storage</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="211" id="topic34" data-name="heat pump"><label for="topic34" class="child-option">Heat pump</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="249" id="topic35" data-name="hydropower installations"><label for="topic35" class="child-option">Hydropower installations</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="220" id="topic36" data-name="solar photovoltaic systems"><label for="topic36" class="child-option">Solar photovoltaic systems</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="212" id="topic37" data-name="solar water heaters"><label for="topic37" class="child-option">Solar water heaters</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="184" id="topic38" data-name="wind power installation"><label for="topic38" class="child-option">Wind power installation</label></div>
+                                                                                        </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="207" id="topic39" data-name="vehicles and transport"><label for="topic39">Vehicles and transport</label></div>
+                                                                                        </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-1" name="tech[]" value="255" id="topic40" data-name="water efficiency"><label for="topic40">Water efficiency</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-1 child" name="tech[]" value="287" id="topic41" data-name="drip irrigation system"><label for="topic41" class="child-option">Drip irrigation system</label></div>
+                                                                                        </div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-2">
+                                <div class="qu">Sector</div>
+                                <div class="an-box">
+                                    <div class="an">
+                                        <div class="search-options-box">
+                                            Search for a sector
+                                            <input type="text" id="search-2" data-id="2">
+                                        </div>
+                                                                                <div class="checkbox-box">
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="485" id="sector1" data-name="a - agriculture"><label for="sector1">A - Agriculture</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="167" id="sector2" data-name="a - agriculture, forestry, fishing"><label for="sector2">A - Agriculture, forestry, fishing</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="173" id="sector3" data-name="a1 - crops, animal production"><label for="sector3" class="child-option">A1 - Crops, animal production</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="175" id="sector4" data-name="a2 - forestry and logging"><label for="sector4" class="child-option">A2 - Forestry and logging</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="489" id="sector5" data-name="animal production"><label for="sector5">animal production</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="168" id="sector6" data-name="b - mining and quarrying"><label for="sector6">B - Mining and quarrying</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="169" id="sector7" data-name="c - manufacturing"><label for="sector7">C - Manufacturing</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="209" id="sector8" data-name="c10 - food products"><label for="sector8" class="child-option">C10 - Food products</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="243" id="sector9" data-name="c11 - beverages"><label for="sector9" class="child-option">C11 - Beverages</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="225" id="sector10" data-name="c13 - textiles"><label for="sector10" class="child-option">C13 - Textiles</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="346" id="sector11" data-name="c14 – wearing apparel"><label for="sector11" class="child-option">C14 – Wearing apparel</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="368" id="sector12" data-name="c16 - wood"><label for="sector12" class="child-option">C16 - Wood</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="317" id="sector13" data-name="c17 - manufacture of paper and paper products"><label for="sector13" class="child-option">C17 - Manufacture of paper and paper products</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="253" id="sector14" data-name="c18 - printing"><label for="sector14" class="child-option">C18 - Printing</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="216" id="sector15" data-name="c20 - chemicals"><label for="sector15" class="child-option">C20 - Chemicals</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="320" id="sector16" data-name="c21 - pharmaceutical products"><label for="sector16" class="child-option">C21 - Pharmaceutical products</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="219" id="sector17" data-name="c22 - rubber and plastic products"><label for="sector17" class="child-option">C22 - Rubber and plastic products</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="241" id="sector18" data-name="c23 - non-metallic mineral products"><label for="sector18" class="child-option">C23 - Non-metallic mineral products</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="222" id="sector19" data-name="c25 - fabricated metal products"><label for="sector19" class="child-option">C25 - Fabricated metal products</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="218" id="sector20" data-name="c27 - electric equipment"><label for="sector20" class="child-option">C27 - Electric equipment</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="221" id="sector21" data-name="c28 - machinery and equipment"><label for="sector21" class="child-option">C28 - Machinery and equipment</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="215" id="sector22" data-name="c29 - manufacture of motor vehicles"><label for="sector22" class="child-option">C29 - Manufacture of motor vehicles</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="273" id="sector23" data-name="c31 - manufacture of furniture"><label for="sector23" class="child-option">C31 - Manufacture of furniture</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="271" id="sector24" data-name="c32 - other manufacturing"><label for="sector24" class="child-option">C32 - Other manufacturing</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="490" id="sector25" data-name="d - electricity"><label for="sector25">D - Electricity</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="170" id="sector26" data-name="d - electricity, gas, steam and air conditioning supply"><label for="sector26">D - Electricity, gas, steam and air conditioning supply</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="172" id="sector27" data-name="f - construction"><label for="sector27">F - Construction</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="487" id="sector28" data-name="fishing"><label for="sector28">fishing</label></div>
+                                                                                            <div class="cb-child"><input type="checkbox" class="cb-2 child" name="sector[]" value="488" id="sector29" data-name="a1 - crops"><label for="sector29" class="child-option">A1 - Crops</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="486" id="sector30" data-name="forestry"><label for="sector30">forestry</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="244" id="sector31" data-name="g - wholesale and retail trade; repair of motor vehicles"><label for="sector31">G - Wholesale and retail trade; repair of motor vehicles</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="491" id="sector32" data-name="gas"><label for="sector32">gas</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="324" id="sector33" data-name="h - transporting and storage"><label for="sector33">H - Transporting and storage</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="333" id="sector34" data-name="i - accommodation and food services"><label for="sector34">I - Accommodation and food services</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="334" id="sector35" data-name="j - information and communication"><label for="sector35">J - Information and communication</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="336" id="sector36" data-name="l - real estate"><label for="sector36">L - Real estate</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="337" id="sector37" data-name="n - administrative and support services"><label for="sector37">N - Administrative and support services</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="338" id="sector38" data-name="p - education"><label for="sector38">P - Education</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="339" id="sector39" data-name="q - human health and social work"><label for="sector39">Q - Human health and social work</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="342" id="sector40" data-name="r - arts entertainment and recreation"><label for="sector40">R - Arts entertainment and recreation</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="234" id="sector41" data-name="s - other services activities"><label for="sector41">S - Other services activities</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="492" id="sector42" data-name="steam and air conditioning supply"><label for="sector42">steam and air conditioning supply</label></div>
+                                                                                            </div>
+                                                                                        <div>
+                                                <div><input type="checkbox" class="cb-2" name="sector[]" value="343" id="sector43" data-name="t - activities of households as employers"><label for="sector43">T - Activities of households as employers</label></div>
+                                                                                            </div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-2">
+                                <div class="qu">Value</div>
+                                <div class="an-box show-overflow">
+                                    <div class="an row">
+                                        <div class="large-12 medium-12 small-12 columns nopad">
+                                            <div class="search-options-box">
+                                            Show results where project value is:
+                                            </div>
+                                            <div class="select-box">
+                                                <div class="sb-title">
+                                                    <div class="sb-option">Please select</div>
+                                                </div>
+                                                <div class="sb-options">
+                                                    <input type="radio" id="v1" name="value" value="1"><label for="v1">Between</label>
+                                                    <input type="radio" id="v2" name="value" value="2"><label for="v2">Greater than</label>
+                                                    <input type="radio" id="v3" name="value" value="3"><label for="v3">Less than</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-6 medium-6 small-12 columns nopad value-1-box">
+                                            <div class="search-options-box">
+                                            The amount of
+                                            </div>
+                                            <div class="select-box">
+                                                <div class="sb-title">
+                                                    <div class="sb-option">Please select</div>
+                                                </div>
+                                                <div class="sb-options">
+                                                    <input type="radio" id="v11" name="value-1" value="0.01"><label for="v11">€0</label>
+                                                    <input type="radio" id="v12" name="value-1" value="1000"><label for="v12">€1000</label>
+                                                    <input type="radio" id="v13" name="value-1" value="5000"><label for="v13">€5000</label>
+                                                    <input type="radio" id="v14" name="value-1" value="25000"><label for="v14">€25,000</label>
+                                                    <input type="radio" id="v15" name="value-1" value="250000"><label for="v15">€250,000</label>
+                                                    <input type="radio" id="v16" name="value-1" value="1000000"><label for="v16">€1m</label>
+                                                    <input type="radio" id="v17" name="value-1" value="2500000"><label for="v17">€2.5m</label>
+                                                    <input type="radio" id="v18" name="value-1" value="5000000"><label for="v18">€5m</label>
+                                                    <input type="radio" id="v19" name="value-1" value="10000000"><label for="v19">€10m</label>
+                                                    <input type="radio" id="v110" name="value-1" value="50000000"><label for="v110">€50m</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="large-6 medium-6 small-12 columns nopad value-2-box">
+                                            <div class="search-options-box">
+                                            and
+                                            </div>
+                                            <div class="select-box">
+                                                <div class="sb-title">
+                                                    <div class="sb-option">Please select</div>
+                                                </div>
+                                                <div class="sb-options">
+                                                    <input type="radio" id="v22" name="value-2" value="1000"><label for="v22">€1000</label>
+                                                    <input type="radio" id="v23" name="value-2" value="5000"><label for="v23">€5000</label>
+                                                    <input type="radio" id="v24" name="value-2" value="25000"><label for="v24">€25,000</label>
+                                                    <input type="radio" id="v25" name="value-2" value="250000"><label for="v25">€250,000</label>
+                                                    <input type="radio" id="v26" name="value-2" value="1000000"><label for="v26">€1m</label>
+                                                    <input type="radio" id="v27" name="value-2" value="2500000"><label for="v27">€2.5m</label>
+                                                    <input type="radio" id="v28" name="value-2" value="5000000"><label for="v28">€5m</label>
+                                                    <input type="radio" id="v29" name="value-2" value="10000000"><label for="v29">€10m</label>
+                                                    <input type="radio" id="v210" name="value-2" value="50000000"><label for="v210">€50m</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-2 open-b pre-opened">
+                                <div class="qu">Country</div>
+                                <div class="an-box">
+                                    <div class="an">
+                                        <div class="search-options-box">
+                                            Search for a country
+                                            <input type="text" id="search-3" data-id="3">
+                                        </div>
+                                                                                <div class="checkbox-box">
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="379" id="country1" data-name="albania"><label for="country1">Albania</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="29" id="country2" data-name="armenia"><label for="country2">Armenia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="30" id="country3" data-name="azerbaijan"><label for="country3">Azerbaijan</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="32" id="country4" data-name="belarus"><label for="country4">Belarus</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="33" id="country5" data-name="bosnia and herzegovina"><label for="country5">Bosnia and Herzegovina</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="34" id="country6" data-name="bulgaria"><label for="country6">Bulgaria</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="35" id="country7" data-name="croatia"><label for="country7">Croatia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="24" id="country8" data-name="egypt"><label for="country8">Egypt</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="31" id="country9" data-name="georgia"><label for="country9">Georgia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="37" id="country10" data-name="hungary"><label for="country10">Hungary</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="371" id="country11" data-name="jordan"><label for="country11">Jordan</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="38" id="country12" data-name="kazakhstan"><label for="country12">Kazakhstan</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="39" id="country13" data-name="kosovo"><label for="country13">Kosovo</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="26" id="country14" data-name="kyrgyz republic"><label for="country14">Kyrgyz Republic</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="378" id="country15" data-name="lebanon"><label for="country15">Lebanon</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="40" id="country16" data-name="moldova"><label for="country16">Moldova</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="41" id="country17" data-name="mongolia"><label for="country17">Mongolia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="42" id="country18" data-name="montenegro"><label for="country18">Montenegro</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="43" id="country19" data-name="morocco"><label for="country19">Morocco</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="36" id="country20" data-name="north macedonia"><label for="country20">North Macedonia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="44" id="country21" data-name="poland"><label for="country21">Poland</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="25" id="country22" data-name="romania"><label for="country22">Romania</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="45" id="country23" data-name="russia"><label for="country23">Russia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="46" id="country24" data-name="serbia"><label for="country24">Serbia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="47" id="country25" data-name="slovak republic"><label for="country25">Slovak Republic</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="48" id="country26" data-name="slovenia"><label for="country26">Slovenia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="49" id="country27" data-name="tajikistan"><label for="country27">Tajikistan</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="506" id="country28" data-name="tunisia"><label for="country28">Tunisia</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="23" id="country29" data-name="türkiye"><label for="country29">Türkiye</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="28" id="country30" data-name="ukraine"><label for="country30">Ukraine</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="1" id="country31" data-name="uncategorised"><label for="country31">Uncategorised</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="380" id="country32" data-name="uzbekistan"><label for="country32">Uzbekistan</label></div>
+                                                                                        <div><input type="checkbox" class="cb-3" name="country[]" value="50" id="country33" data-name="western balkans"><label for="country33">Western Balkans</label></div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-2">
+                                <div class="qu">Beneficiary</div>
+                                <div class="an-box">
+                                    <div class="an">
+                                        <div class="search-options-box">
+                                            Search for a beneficiary
+                                            <input type="text" id="search-4" data-id="4">
+                                        </div>
+                                                                                <div class="checkbox-box">
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="189" id="beneficiary1" data-name="corporate"><label for="beneficiary1">Corporate</label></div>
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="326" id="beneficiary2" data-name="escos"><label for="beneficiary2">ESCOs</label></div>
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="199" id="beneficiary3" data-name="households"><label for="beneficiary3">Households</label></div>
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="355" id="beneficiary4" data-name="housing association"><label for="beneficiary4">Housing association</label></div>
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="325" id="beneficiary5" data-name="public entity"><label for="beneficiary5">Public entity</label></div>
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="193" id="beneficiary6" data-name="sme"><label for="beneficiary6">SME</label></div>
+                                                                                        <div><input type="checkbox" class="cb-4" name="bene[]" value="276" id="beneficiary7" data-name="suppliers and producers"><label for="beneficiary7">Suppliers and producers</label></div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-2">
+                                <div class="qu">Donor</div>
+                                <div class="an-box">
+                                    <div class="an">
+                                        <div class="search-options-box">
+                                            Search for a donor
+                                            <input type="text" id="search-5" data-id="5">
+                                        </div>
+                                                                                <div class="checkbox-box">
+                                                                                        <div><input type="checkbox" class="cb-5" name="donor[]" value="372" id="donor1" data-name="bilateral"><label for="donor1">Bilateral</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="347" id="donor2" data-name="agence française de développement (afd)"><label for="donor2" class="child-option">Agence Française de Développement (AFD)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="230" id="donor3" data-name="austria"><label for="donor3" class="child-option">Austria</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="367" id="donor4" data-name="bulgaria"><label for="donor4" class="child-option">Bulgaria</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="356" id="donor5" data-name="canada"><label for="donor5" class="child-option">Canada</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="277" id="donor6" data-name="czech republic"><label for="donor6" class="child-option">Czech Republic</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="312" id="donor7" data-name="european investment bank (eib)"><label for="donor7" class="child-option">European Investment Bank (EIB)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="357" id="donor8" data-name="finland"><label for="donor8" class="child-option">Finland</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="365" id="donor9" data-name="france"><label for="donor9" class="child-option">France</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="318" id="donor10" data-name="germany"><label for="donor10" class="child-option">Germany</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="358" id="donor11" data-name="ireland"><label for="donor11" class="child-option">Ireland</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="366" id="donor12" data-name="italy"><label for="donor12" class="child-option">Italy</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="332" id="donor13" data-name="japan"><label for="donor13" class="child-option">Japan</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="360" id="donor14" data-name="luxembourg"><label for="donor14" class="child-option">Luxembourg</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="361" id="donor15" data-name="netherlands"><label for="donor15" class="child-option">Netherlands</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="331" id="donor16" data-name="norway"><label for="donor16" class="child-option">Norway</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="252" id="donor17" data-name="poland"><label for="donor17" class="child-option">Poland</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="546" id="donor18" data-name="republic of türkiye ministry of treasury and finance"><label for="donor18" class="child-option">Republic of Türkiye Ministry of Treasury and Finance</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="344" id="donor19" data-name="slovak republic"><label for="donor19" class="child-option">Slovak Republic</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="381" id="donor20" data-name="south korea"><label for="donor20" class="child-option">South Korea</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="345" id="donor21" data-name="spain"><label for="donor21" class="child-option">Spain</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="231" id="donor22" data-name="sweden"><label for="donor22" class="child-option">Sweden</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="362" id="donor23" data-name="switzerland"><label for="donor23" class="child-option">Switzerland</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="363" id="donor24" data-name="taipei china"><label for="donor24" class="child-option">Taipei China</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="504" id="donor25" data-name="taiwanicdf"><label for="donor25" class="child-option">TaiwanICDF</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="286" id="donor26" data-name="uk"><label for="donor26" class="child-option">UK</label></div>
+                                                                                        <div><input type="checkbox" class="cb-5" name="donor[]" value="374" id="donor27" data-name="multi-donor funds"><label for="donor27">Multi-donor funds</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="348" id="donor28" data-name="eastern europe energy efficiency and environment partnership fund (e5p)"><label for="donor28" class="child-option">Eastern Europe Energy Efficiency and Environment Partnership Fund (E5P)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="315" id="donor29" data-name="ebrd early transition countries (etc) fund"><label for="donor29" class="child-option">EBRD Early Transition Countries (ETC) Fund</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="195" id="donor30" data-name="ebrd shareholder special fund (ssf)"><label for="donor30" class="child-option">EBRD Shareholder Special Fund (SSF)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="206" id="donor31" data-name="ebrd southern and eastern mediterranean (semed) multi-donor account"><label for="donor31" class="child-option">EBRD Southern and Eastern Mediterranean (SEMED) Multi-Donor Account</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="548" id="donor32" data-name="global environment facility (gef)"><label for="donor32" class="child-option">Global Environment Facility (GEF)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="284" id="donor33" data-name="kozloduy international decommissioning support fund (kidsf)"><label for="donor33" class="child-option">Kozloduy International Decommissioning Support Fund (KIDSF)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="328" id="donor34" data-name="nuclear safety funds (nsf)"><label for="donor34" class="child-option">Nuclear Safety Funds (NSF)</label></div>
+                                                                                        <div><input type="checkbox" class="cb-5" name="donor[]" value="373" id="donor35" data-name="multilateral"><label for="donor35">Multilateral</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="330" id="donor36" data-name="clean technology fund (ctf)"><label for="donor36" class="child-option">Clean Technology Fund (CTF)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="285" id="donor37" data-name="climate investment funds (cif)"><label for="donor37" class="child-option">Climate Investment Funds (CIF)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="191" id="donor38" data-name="european union (eu)"><label for="donor38" class="child-option">European Union (EU)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="370" id="donor39" data-name="green climate fund (gcf)"><label for="donor39" class="child-option">Green Climate Fund (GCF)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="203" id="donor40" data-name="international climate initiative (ici)"><label for="donor40" class="child-option">International Climate Initiative (ICI)</label></div>
+                                                                                            <div><input type="checkbox" class="cb-5" name="donor[]" value="369" id="donor41" data-name="western balkans investment framework (wbif)"><label for="donor41" class="child-option">Western Balkans Investment Framework (WBIF)</label></div>
+                                                                                        <div><input type="checkbox" class="cb-5" name="donor[]" value="549" id="donor42" data-name="republic of türkiye ministry of treasury and finance"><label for="donor42">Republic of Türkiye Ministry of Treasury and Finance</label></div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-2">
+                                <div class="qu">Content Type</div>
+                                <div class="an-box">
+                                    <div class="an">
+                                        <div class="checkbox-box">
+                                            <div>
+                                                <div><input type="checkbox" class="cb-1" name="content_type[]" value="projects" id="ct-1"><label for="ct-1">Case Studies</label></div>
+                                                <div><input type="checkbox" class="cb-1" name="content_type[]" value="post" id="ct-2"><label for="ct-2">News</label></div>
+                                               <div><input type="checkbox" class="cb-1" name="content_type[]" value="video" id="ct-3"><label for="ct-3">Video</label> </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><button id="reset-filter">Reset</button><button id="apply-filter">Apply</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="large-8 medium-8 small-12 columns nopad frontpage-grid">
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36">
+                    <a href="https://ebrdgeff.com/projects/confectionary-company-upgrades-its-technologies-to-save-energy-and-enhance-product-quality/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2022/02/evropa-ad-460x259.png" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">18 Feb 2022</span>
+                            <h2>Confectionary company in North Macedonia saves energy and improves product quality</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36 cat-50 tag-99 tag-462 tag-16 tag-17 tag-12">
+                    <a href="https://ebrdgeff.com/ebrd-eu-and-donors-support-smes-and-green-homes-in-north-macedonia/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2021/01/ebrdgeff-photo-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">11 Jan 2021</span>
+                            <h2>EBRD, EU and donors support SMEs and green homes in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36 cat-50 tag-99 tag-62 tag-462 tag-16 tag-17">
+                    <a href="https://ebrdgeff.com/ebrd-and-komercijalna-banka-skopje-promote-green-investments-in-north-macedonia/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/12/home-solar-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">30 Dec 2020</span>
+                            <h2>EBRD and Komercijalna Banka Skopje promote green investments in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-379 cat-29 cat-30 cat-32 cat-33 cat-34 cat-35 cat-24 cat-31 cat-37 cat-371 cat-38 cat-39 cat-26 cat-378 cat-40 cat-41 cat-42 cat-43 cat-36 cat-44 cat-25 cat-46 cat-47 cat-48 cat-49 cat-23 cat-28 cat-380 cat-50">
+                    <a href="https://ebrdgeff.com/unwto-supports-ebrds-web-tool-for-green-technologies/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/09/1395276278784-1-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">25 Sep 2020</span>
+                            <h2>UNWTO supports EBRD’s web tool for green technologies</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36 tag-461 tag-462 tag-463 tag-464 tag-465 tag-134">
+                    <a href="https://ebrdgeff.com/projects/building-an-energy-efficient-home-in-north-macedonia/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/09/energy-efficient-home-mkd-cover-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">29 Jul 2020</span>
+                            <h2>Building an energy efficient home in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-379 cat-29 cat-30 cat-32 cat-33 cat-34 cat-35 cat-24 cat-31 cat-37 cat-371 cat-38 cat-39 cat-26 cat-378 cat-40 cat-41 cat-42 cat-43 cat-36 cat-44 cat-25 cat-45 cat-46 cat-47 cat-48 cat-49 cat-23 cat-28 cat-1 cat-380 cat-50">
+                    <a href="https://ebrdgeff.com/ebrd-launches-mobile-app-promoting-green-technologies/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/09/GEFF_app_pr1-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">28 Jul 2020</span>
+                            <h2>EBRD launches mobile app promoting green technologies</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36 tag-461 tag-462 tag-463 tag-464 tag-465 tag-134">
+                    <a href="https://ebrdgeff.com/projects/homeowner-in-north-macedonia-keeps-his-home-warm-with-energy-efficient-investments/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/07/Cover-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">15 Jul 2020</span>
+                            <h2>Homeowner in North Macedonia keeps his home warm with energy efficient investments</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/new-ebrd-green-finance-in-north-macedonia-in-time-of-coronavirus-crisis/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/04/A-oh-bank-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">27 Apr 2020</span>
+                            <h2>New EBRD green finance in North Macedonia in time of coronavirus crisis</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-379 cat-33 cat-39 cat-36 cat-46 cat-50">
+                    <a href="https://ebrdgeff.com/keeping-residential-energy-bills-low-during-coronavirus-pandemic/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/04/Janakievski-460x259.png" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">17 Apr 2020</span>
+                            <h2>Keeping residential energy bills low during coronavirus pandemic</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/ebrd-to-boost-green-buildings-and-mortgage-finance-in-north-macedonia/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2020/02/geff-loan-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">24 Feb 2020</span>
+                            <h2>EBRD to boost green buildings and mortgage finance in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/households-in-north-macedonia-benefit-from-improved-energy-efficiency/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2019/10/N-macedonia-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">22 Oct 2019</span>
+                            <h2>Households in North Macedonia benefit from improved energy efficiency</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/ebrd-strengthens-green-finance-in-north-macedonia/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2019/09/macedonia-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">16 Jun 2019</span>
+                            <h2>EBRD strengthens green finance in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-33 cat-39 cat-36 cat-46">
+                    <a href="https://ebrdgeff.com/making-a-difference-to-air-quality-in-the-western-balkans/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2018/10/serbia-2-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">05 Jun 2019</span>
+                            <h2>Making a difference to air quality in the Western Balkans</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/ebrd-launches-energy-efficiency-programme-for-macedonian-homes/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2018/04/pic-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">24 Apr 2018</span>
+                            <h2>EBRD launches energy efficiency programme for Macedonian homes</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/new-ebrd-financing-to-turkeys-isbank-4-2-14/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2018/01/281207-Macedonia-460x259.png" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">28 Dec 2017</span>
+                            <h2>Ohridska Banka Société Générale joins Macedonian green efforts</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts post cat-36">
+                    <a href="https://ebrdgeff.com/new-ebrd-financing-to-turkeys-isbank-2/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2017/12/centrala-750х354px-460x259.png" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-news">NEWS</span>                            <span class="date">12 Dec 2017</span>
+                            <h2>EBRD partners with Sparkasse Bank Makedonija to finance energy saving home improvements</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36">
+                    <a href="https://ebrdgeff.com/projects/boosting-hydro-power-in-fyr-macedonia/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2015/08/Waterfall_PR1-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">12 Jun 2017</span>
+                            <h2>Boosting hydro power in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36">
+                    <a href="https://ebrdgeff.com/projects/macedonian-pharmaceuticals-company-undergoes-refurbishment/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2015/11/pharma.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">12 Jun 2016</span>
+                            <h2>North Macedonian pharmaceuticals company undergoes refurbishment</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36">
+                    <a href="https://ebrdgeff.com/projects/pharmaceutical-company-in-fyr-macedonia-invests-in-better-working-conditions-for-its-employees/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2017/06/Webseff_Macedonia_Pharma.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">01 Dec 2015</span>
+                            <h2>Pharmaceutical company in North Macedonia invests in better working conditions for its employees</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36 cat-50 tag-313">
+                    <a href="https://ebrdgeff.com/projects/boosting-energy-efficiency-for-glass-production-in-egypt-4-3/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2018/01/printing.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">01 Nov 2015</span>
+                            <h2>Energy efficient printing business in North Macedonia</h2>
+                        </div>
+                    </a>
+				</div>
+                                <div class="large-6 medium-6 columns news-post filter-posts projects cat-36">
+                    <a href="https://ebrdgeff.com/projects/macedonian-property-developer-reconstructs-a-student-dormitory-with-energy-efficiency-in-mind/">
+                        <div class="image-container">
+                            <img class="lazy" data-original="https://ebrdgeff.com/wp-content/uploads/2018/07/construction-460x259.jpg" width="640" height="180">
+                        </div>
+                        <div class="text-container">
+                            <span class="np-pt np-project">CASE STUDY</span>                            <span class="date">24 Jul 2015</span>
+                            <h2>North Macedonian property developer reconstructs a student dormitory with energy-efficiency in mind</h2>
+                        </div>
+                    </a>
+				</div>
+                                </div>
+			</section><!-- End. .news-posts -->
+
+    <footer>
+        <div class="row">
+            <div class="large-12 medium-12 small-12 columns fmenu-box">
+                                <div class="large-2 medium-4 small-6 columns fmenu">
+                  <!--  <h3>3</h3> -->
+                                    </div>
+                                <div class="large-2 medium-4 small-6 columns fmenu">
+                  <!--  <h3>2</h3> -->
+                                    </div>
+                                <div class="large-2 medium-4 small-6 columns fmenu">
+                  <!--  <h3>1</h3> -->
+                                    </div>
+                                <div class="large-2 medium-4 small-6 columns fmenu">
+                  <!--  <h3>Footer Menu 4</h3> -->
+                                    </div>
+                                <div class="large-2 medium-4 small-6 columns fmenu">
+                  <!--  <h3>Footer Menu 5</h3> -->
+                                    </div>
+                                <div class="large-2 medium-4 small-6 columns fmenu">
+                                        <img src="https://ebrdgeff.com/wp-content/uploads/2017/01/logo2.png"><br><br>
+                    <a href="http://www.ebrd.com"><img src="/wp-content/themes/geff/img/EBRD_logo_long.png"></a>
+                    
+              
+                    <div class="soc-links">Follow us: <a href="https://twitter.com/EBRDgreen" class="soc-link" target="_blank"><img src="https://ebrdgeff.com/wp-content/themes/geff/img/twitter.png"></a></div>
+               		
+                </div>
+            </div>
+            <div class="large-12 medium-12 small-12 columns copyright">
+                            </div>
+        </div>
+    </footer>
+    </div>
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/geff\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<!--googleoff: all--><div id="cookie-law-info-bar" data-nosnippet="true"><span>By using this site, you confirm that you accept our Terms and Conditions as well as our Cookies Policy <a role='button' data-cli_action="accept" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button wt-cli-accept-btn">Accept</a> <a href="/cookies/" id="CONSTANT_OPEN_URL" target="_blank" class="cli-plugin-main-link">Read More</a></span></div><div id="cookie-law-info-again" data-nosnippet="true"><span id="cookie_hdr_showagain">Privacy &amp; Cookies Policy</span></div><div class="cli-modal" data-nosnippet="true" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+	<div class="cli-modal-content cli-bar-popup">
+		  <button type="button" class="cli-modal-close" id="cliModalClose">
+			<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+			<span class="wt-cli-sr-only">Close</span>
+		  </button>
+		  <div class="cli-modal-body">
+			<div class="cli-container-fluid cli-tab-container">
+	<div class="cli-row">
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+			<div class="cli-privacy-overview">
+				<h4>Privacy Overview</h4>				<div class="cli-privacy-content">
+					<div class="cli-privacy-content-text">This website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may affect your browsing experience.</div>
+				</div>
+				<a class="cli-privacy-readmore" aria-label="Show more" role="button" data-readmore-text="Show more" data-readless-text="Show less"></a>			</div>
+		</div>
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+												<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab">
+								Necessary							</a>
+															<div class="wt-cli-necessary-checkbox">
+									<input type="checkbox" class="cli-user-preference-checkbox"  id="wt-cli-checkbox-necessary" data-id="checkbox-necessary" checked="checked"  />
+									<label class="form-check-label" for="wt-cli-checkbox-necessary">Necessary</label>
+								</div>
+								<span class="cli-necessary-caption">Always Enabled</span>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="necessary">
+								<div class="wt-cli-cookie-description">
+									Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="non-necessary" data-toggle="cli-toggle-tab">
+								Non-necessary							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-non-necessary" class="cli-user-preference-checkbox"  data-id="checkbox-non-necessary" checked='checked' />
+									<label for="wt-cli-checkbox-non-necessary" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Non-necessary</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="non-necessary">
+								<div class="wt-cli-cookie-description">
+									Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.								</div>
+							</div>
+						</div>
+					</div>
+										</div>
+	</div>
+</div>
+		  </div>
+		  <div class="cli-modal-footer">
+			<div class="wt-cli-element cli-container-fluid cli-tab-container">
+				<div class="cli-row">
+					<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+						<div class="cli-tab-footer wt-cli-privacy-overview-actions">
+						
+															<a id="wt-cli-privacy-save-btn" role="button" tabindex="0" data-cli-action="accept" class="wt-cli-privacy-btn cli_setting_save_button wt-cli-privacy-accept-btn cli-btn">SAVE &amp; ACCEPT</a>
+													</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<!--googleon: all--><script type="text/javascript" id="h5ab-print-js-js-extra">
+/* <![CDATA[ */
+var h5abPrintSettings = {"customCSS":"Print page"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/plugins/print-post-and-page/js/h5ab-print.min.js?ver=6.8.3" id="h5ab-print-js-js"></script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/themes/geff/js/vendor/what-input.js?ver=1" id="whatinput-js"></script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/themes/geff/js/vendor/foundation.min.js?ver=6.2" id="foundation-js"></script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/themes/geff/js/swiper.jquery.min.js?ver=1" id="swiper-js"></script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/themes/geff/js/jquery.lazyload.min.js?ver=1" id="lazyload-js"></script>
+<script type="text/javascript" src="https://ebrdgeff.com/wp-content/themes/geff/js/script.js?ver=1" id="script-js"></script>
+
+<script>
+
+jQuery(document).ready(function($){
+
+    sessionStorage.setItem('h5ab-print-article', '<div id="h5ab-print-content"><h1>North Macedonian property developer reconstructs a student dormitory with energy-efficiency in mind</h1>' + "<p>VIA, a North Macedonian developer of residential and non-residential buildings was selected by the government to reconstruct one of the buildings of a student dormitory, \u2018Goce Delcev\u2019, located in Skopje. The developer saw an opportunity to lower energy consumption through some of the reconstruction activities and approached contacted a Partner Financial Institution to secure a WebSEFF loan.<\/p>\n<p>The WebSEFF team performed the analysis of the investment, its technical-economic parameters and risks to make sure the investment leads to sufficient energy savings and reduction of CO2 emissions.<\/p>\n<p>VIA secured a loan from WebSEFF that financed 38% (\u20ac 477,000) of the total investment of \u20ac 1.2 million. As part of the WebSEFF loan, EU provided an incentive of \u20ac 47,000. The loan went towards implementing a number of energy efficient measures including the replacement of the existing windows and doors; application of thermal insulation to the roof and floors; replacement of heating system and lighting; replacement of elevators, refrigerators and cookers.<\/p>\n<p>The investment resulted in annual energy savings of 3,930 MWh and annual reduction of CO2 by around 2,160 tones. The annual financial savings amounted to around \u20ac 113,700<\/p>\n<p>This facility was developed by the <a href=\"http:\/\/www.ebrd.com\/news\/2016\/ebrd-funds-residential-energy-efficiency-in-kyrgyz-republic-with-fmcc.html\">European Bank for Reconstruction and Development<\/a> (EBRD) and is supported by the EU and the <a href=\"https:\/\/www.wbif.eu\/\">Western Balkans Investment Framework<\/a> (WBIF).<\/p>\n" + '</div>');
+
+    $.strRemove = function(theTarget, theString) {
+        return $("<div/>").append(
+            $(theTarget, theString).remove().end()
+        ).html();
+    };
+
+    var articleStr = sessionStorage.getItem('h5ab-print-article');
+    var removeArr = ['video','audio','script','iframe'];
+
+    $.each(removeArr, function(index, value){
+        var processedCode = $.strRemove(value, articleStr);
+        articleStr = processedCode;
+    });
+    
+    var fullPrintContent = articleStr;
+    sessionStorage.setItem('h5ab-print-article', fullPrintContent);
+    
+});
+
+</script> 
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-df17e98e0f51330bddb","applicationID":"487912765","transactionName":"YFJWZxdWCBFYUxZcXFkYdVARXgkMFlYQWl1DGkRSAlI=","queueTime":0,"applicationTime":437,"atts":"TBVVEV9MGx8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html> 

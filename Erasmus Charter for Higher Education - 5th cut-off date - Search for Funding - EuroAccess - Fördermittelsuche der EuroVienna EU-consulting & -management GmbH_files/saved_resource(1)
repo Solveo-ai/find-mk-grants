@@ -1,0 +1,332 @@
+/*	easy2see
+* @author: mario corradini // corradini@echonet.at
+* @version: 1.0 2014-04-23
+* @depencies: jquery
+* @usage:
+easy2see.initialize({
+txtplus: 'e2s-bigger',
+txtminus: 'e2s-smaller',
+txtmax: 8,
+txtmin: 0,
+url: window.location.pathname
+});
+* @info: esy2see Textvergrößerung ohne Seitenrelaod. Body CSS Klasse wird ausgetauscht und zusätzlich ein AJAX request abgesetzt.
+*/
+var e2sclass;
+var easy2see = {
+sheme: ['default','black','yellow','white','blue'],
+lang : {
+de : {
+noplus : 'Sie haben bereits die größte Zoomstufe erreicht!',
+nominus : 'Sie haben bereits die kleineste Zoomstufe erreicht!',
+samecolor : 'Diese Farbe ist bereits ausgewählt!'
+},
+en : {
+noplus : 'no plus',
+nominus : 'no minus',
+samecolor : 'Diese Farbe ist bereits ausgewählt!'
+}
+},
+options: {
+txtplus: 'e2s-bigger',
+txtminus: 'e2s-smaller',
+txtmax: 8,
+txtmin: 0,
+txtdefault: 1,
+txtsize: 62.5,
+txtstep: 5,
+canchor: 'e2s-',
+clink: 'link-',
+url: window.location.pathname,
+jsUpdate : false
+},
+initialize: function(options) {
+this.options = $.extend( {}, this.options, options );
+var lang = document.getElementsByTagName('HTML')[0].getAttribute('lang');
+if(lang == "en") {
+this.txt = this.lang.en;
+} else {
+this.txt = this.lang.de;
+}
+this.bodyelement = $('body')[0];
+this.bodyobj = $('body');
+e2sclass = this;
+_initSize();
+_initColor();
+}
+}
+function _initSize(){
+//console.log('e2s init');
+e2sclass.plus = $("#"+e2sclass.options.txtplus);
+e2sclass.minus = $("#"+e2sclass.options.txtminus);
+if(!e2sclass.plus || !e2sclass.minus) {return false;}
+//alert(e2sclass.bodyelement);
+var size = e2sclass.bodyelement.className.indexOf('size');
+if(size > -1) {
+e2sclass.txtdefault = parseInt(e2sclass.bodyelement.className.slice((size+4), (size+5)));
+if(e2sclass.txtdefault == e2sclass.options.txtdefault) {
+e2sclass.txtsize = e2sclass.options.txtsize;
+} else if(e2sclass.txtdefault < e2sclass.options.txtdefault) {
+var diff = e2sclass.options.txtdefault - e2sclass.txtdefault;
+diff = diff*e2sclass.options.txtstep;
+e2sclass.txtsize = e2sclass.options.txtsize-diff;
+} else if(e2sclass.txtdefault > e2sclass.options.txtdefault) {
+var diff = e2sclass.txtdefault-e2sclass.options.txtdefault;
+diff = diff*e2sclass.options.txtstep;
+e2sclass.txtsize = e2sclass.options.txtsize+diff;
+}
+e2sclass.plus.on("click",function(e){
+e.preventDefault();
+if(e2sclass.txtdefault < e2sclass.options.txtmax) {
+_changeSize(e2sclass.txtdefault,e2sclass.txtdefault+1);
+} else {
+alert(e2sclass.txt.noplus);
+}
+});
+e2sclass.minus.on("click",function(e){
+e.preventDefault();
+if(e2sclass.txtdefault > e2sclass.options.txtmin) {
+_changeSize(e2sclass.txtdefault,e2sclass.txtdefault-1);
+} else {
+alert(e2sclass.txt.nominus);
+}
+});
+}
+}
+function _changeSize(from,to){
+if(from < to) {
+var param = 'plus';
+var newtxtsize = e2sclass.txtsize+e2sclass.options.txtstep;
+} else {
+var param = 'minus';
+var newtxtsize = e2sclass.txtsize-e2sclass.options.txtstep;
+}
+var ajaxdata = new Object();
+ajaxdata.font = to;
+_request(ajaxdata);
+e2sclass.bodyobj.removeClass('size'+from).addClass('size'+to);
+e2sclass.txtdefault = newtxtsize;
+if(e2sclass.options.jsUpdate) {
+e2sclass.options.jsUpdate();
+}
+e2sclass.txtdefault = to;
+}
+function _initColor(){
+$.each(e2sclass.sheme, function(index,color) {
+var elA = $("#"+e2sclass.options.canchor+color).find('a');
+elA.data({"color" : color });
+var elI = $("#"+e2sclass.options.clink+color)[0];
+elA.on("click",function(e){
+e.preventDefault();
+var el = $(this);
+//console.log(color, elA.data('color'), el.data('color'));
+if(el.data('color') != e2sclass.color) {
+var ajaxdata = new Object();
+ajaxdata.css = el.data('color');
+_request(ajaxdata);
+_colorImages(el.data('color'),e2sclass.color);
+$("#"+e2sclass.options.clink+e2sclass.color)[0].disabled = true;
+$("#"+e2sclass.options.clink+e2sclass.color).attr("rel","alternate stylesheet");
+e2sclass.bodyobj.removeClass(e2sclass.color).addClass(el.data('color'));
+$("#"+e2sclass.options.clink+el.data('color'))[0].disabled = false;
+$("#"+e2sclass.options.clink+el.data('color')).attr("rel","stylesheet");
+e2sclass.color = el.data('color');
+//disable site-colors css wenn e2s Farbe aktiviert wird
+/*if(el.data('color') == "default") {
+$("#site-colors")[0].disabled = false;
+}
+else {
+$("#site-colors")[0].disabled = true;
+}*/
+//IE + Edge workaround
+if(navigator.appName == 'Microsoft Internet Explorer' || (navigator.appName == 'Netscape' && navigator.userAgent.indexOf('.NET') !== -1) ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv 11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)){
+//console.log("IE");
+url=window.location.href;
+index = url.indexOf('?');
+if(index == -1){
+index = url.indexOf('#');
+}
+if(index != -1){
+url = url.substring(0, index);
+}
+window.location.href=url;
+}
+if($('#map').length){
+initMap();
+}else if($('#googlemap').length){
+var map;
+var latitude = $('.googlemap_lat').text();
+var longitude = $('.googlemap_lon').text();
+var info = $('.googlemap_info').text();
+var myLatLng = {lat: latitude, lng: longitude};
+map = new google.maps.Map(document.getElementById('googlemap'), {
+center: myLatLng,
+zoom: 16
+});
+var bounds = new google.maps.LatLngBounds();
+var marker = new google.maps.Marker({
+position: new google.maps.LatLng(latitude, longitude),
+map: map,
+icon: "/assets/content/"+e2sclass.color+"/marker_logo.png",
+});
+bounds.extend(marker.position);
+var infowindow = new google.maps.InfoWindow({
+content: "<div class='mapinfo'>"+info+"</div>",
+maxWidth:100
+});
+marker.addListener('click', function() {
+infowindow.open(map, marker);
+});
+map.setCenter(marker.position);
+}
+} else {
+alert(e2sclass.txt.samecolor);
+}
+});
+elI.disabled = true;
+if(e2sclass.bodyobj.hasClass(color)) {
+elI.disabled = false;
+e2sclass.color = color;
+}
+});
+}
+function _colorImages(ncolor,ocolor){
+var images = $('img, input[type=image]');
+images.each(function(index, img) {
+var src = img.src;
+if(src.indexOf(ocolor)) {
+var newsrc = src.replace(ocolor+'/', ncolor+'/');
+newsrc = newsrc.replace('-'+ocolor, '-'+ncolor);
+img.src = newsrc;
+}
+});
+}
+function _request(ajaxdata){
+$.ajax({
+type: "GET",
+url: e2sclass.options.url,
+data: ajaxdata
+/*success: function (response) {
+console.info(response);
+},
+error: function (xhr, ajaxOptions, thrownError) {
+alert(xhr.status);
+alert(thrownError);
+}*/
+});
+}
+function _changeMapColor(color){
+var id = "";
+var c = "#0085a7";
+switch(color){
+case 'default': c = "#0085a7";
+break;
+case 'yellow': c = "#fc0";
+break;
+case 'black': c = "#000";
+break;
+case 'blue': c = "#009";
+break;
+case 'white': c = "#fff";
+break;
+}
+if($( "#googlemap" ).length){
+id = 'googlemap';
+}
+else if($( "#map" ).length){
+id = 'map';
+}
+var myLatLng = {lat: 48.210033, lng: 16.363449};
+if(id.length > 0){
+map = new google.maps.Map(document.getElementById(id), {
+center: myLatLng,
+zoom: 10,
+styles: [
+{elementType: 'geometry', stylers: [{color: c}]},
+{elementType: 'labels.text.stroke', stylers: [{color: c}]},
+{elementType: 'labels.text.fill', stylers: [{color: c}]},
+{
+featureType: 'administrative.locality',
+elementType: 'labels.text.fill',
+stylers: [{color: '#d59563'}]
+},
+{
+featureType: 'poi',
+elementType: 'labels.text.fill',
+stylers: [{color: '#d59563'}]
+},
+{
+featureType: 'poi.park',
+elementType: 'geometry',
+stylers: [{color: '#263c3f'}]
+},
+{
+featureType: 'poi.park',
+elementType: 'labels.text.fill',
+stylers: [{color: '#6b9a76'}]
+},
+{
+featureType: 'road',
+elementType: 'geometry',
+stylers: [{color: '#38414e'}]
+},
+{
+featureType: 'road',
+elementType: 'geometry.stroke',
+stylers: [{color: '#212a37'}]
+},
+{
+featureType: 'road',
+elementType: 'labels.text.fill',
+stylers: [{color: '#9ca5b3'}]
+},
+{
+featureType: 'road.highway',
+elementType: 'geometry',
+stylers: [{color: '#746855'}]
+},
+{
+featureType: 'road.highway',
+elementType: 'geometry.stroke',
+stylers: [{color: '#1f2835'}]
+},
+{
+featureType: 'road.highway',
+elementType: 'labels.text.fill',
+stylers: [{color: '#f3d19c'}]
+},
+{
+featureType: 'transit',
+elementType: 'geometry',
+stylers: [{color: '#2f3948'}]
+},
+{
+featureType: 'transit.station',
+elementType: 'labels.text.fill',
+stylers: [{color: '#d59563'}]
+},
+{
+featureType: 'water',
+elementType: 'geometry',
+stylers: [{color: '#17263c'}]
+},
+{
+featureType: 'water',
+elementType: 'labels.text.fill',
+stylers: [{color: '#515c6d'}]
+},
+{
+featureType: 'water',
+elementType: 'labels.text.stroke',
+stylers: [{color: '#17263c'}]
+}
+]
+});
+}
+}
+easy2see.initialize({
+txtplus: 'e2s-bigger',
+txtminus: 'e2s-smaller',
+txtmax: 7,
+txtmin: 1
+});

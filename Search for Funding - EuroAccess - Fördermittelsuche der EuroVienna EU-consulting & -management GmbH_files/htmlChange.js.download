@@ -1,0 +1,77 @@
+var htmlChangedFunctions = [];
+var htmlChangedState = "waiting"; // can also be "running", and "runagain" --> running means it is currently running and runagain means it is running and was called during that time so it should run again once finished
+var htmlChangedLog = false;
+var htmlChangedDelay = 100; // delay for htmlChanged() function after new function is added by addHtmlChanged()
+var htmlChangedTimeout;
+var completed =0;
+
+function addHtmlChanged(functionname){
+  clearTimeout(htmlChangedTimeout);
+	if (typeof window[functionname] === "function") { 
+	   htmlChangedFunctions.push(functionname);
+		if(htmlChangedLog) console.log("added " + functionname + " to the stack of functions for htmlChanged");
+	}
+	else {
+		throw {name : "NotImplementedError", message : "tried to add function " + functionname + "() to the function stack that should be called once html changed (using addHtmlChanged()) but it seems like " + functionname + "() isn't even a function"}; 
+	}
+  htmlChangedTimeout=setTimeout(htmlChanged, htmlChangedDelay);
+  //htmlChanged();
+}
+
+function htmlChanged(){
+    //the states are here to ensure that htmlChanged only runs once at each given moment. if it is called while already running this might cause problems so it just waits for itself to finish and then calls itself if it was called during its own runtime
+    if(htmlChangedState == "waiting") {
+        htmlChangedState = "running";
+        if(htmlChangedLog) console.log("htmlChanged executing ");
+        for (var i = 0; i < htmlChangedFunctions.length; i++) {
+            if (typeof window[htmlChangedFunctions[i]] === "function") { 
+                window[htmlChangedFunctions[i]]();
+            }
+            else {
+                throw {name : "NotImplementedError", message : "htmlChanged() function tried to call " + htmlChangedFunctions[i] + "() but it seems like " + htmlChangedFunctions[i] + "() isn't even a function"}; 
+            }
+        }
+        if(htmlChangedLog) console.log("htmlChanged finished executing and state is " + htmlChangedState);
+        if(htmlChangedState == "runagain") {
+            htmlChangedState = "waiting";
+            htmlChanged();
+        }
+        else {
+            htmlChangedState = "waiting";
+        }
+        
+    }
+    else if(htmlChangedState == "running") {
+        htmlChangedState = "runagain";
+        if(htmlChangedLog) console.log("htmlChanged is currently running. Another run will be performed when finished");
+    }
+    else if(htmlChangedState == "runagain") {
+        if(htmlChangedLog) console.log("htmlChanged is currently running and another run is already queued");
+    }
+	
+	$(document).find('input.tagit').each(function(){
+        var ronly = false;
+        if($(this).prop('readonly') == true){
+            ronly = true;   
+        }
+        $(this).tagit({
+            allowSpaces:true,
+            readOnly:ronly,
+            singleField:true,
+            singleFieldDelimiter:"::"
+        });
+    });
+    
+    $('.adminFormfield').each(function(){
+        if($(this).attr('data-_language_id') !== undefined){
+            if($(this).attr('data-_language_id') != "de"){
+                $(this).hide();   
+            }
+        }
+    });
+	
+}
+
+$('document').ready(function(){
+  htmlChanged();
+});

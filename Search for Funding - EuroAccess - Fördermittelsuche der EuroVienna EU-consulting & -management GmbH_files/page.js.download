@@ -1,0 +1,15 @@
+$(function(){
+    $('.navtoggle').on('click',function(e){
+        e.preventDefault();
+        
+        $('body').toggleClass('navtoggled');
+        //$('.adminPageRight').toggleClass('navtoggle');
+    });
+    
+    $(window).on('resize', function(){
+        //toggleAdminSearch();
+        if($(window).width() >= 860){
+           $('body').removeClass('navtoggled');
+        }
+    });
+});

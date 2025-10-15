@@ -1,0 +1,195 @@
+// Parser for E-Nabavki opportunities
+// Extracts opportunities from static HTML dump of e-nabavki.gov.mk
+const cheerio = require('cheerio');
+
+function parseENabavki(html, source) {
+  const $ = cheerio.load(html);
+  const grants = [];
+
+  // Find all tender listings - using broad selectors since the site has multiple layouts
+  $('div[ng-repeat], .tender-item, [data-tender-id], .grid-row, tr:has(td)').each((i, el) => {
+    // Skip header rows or empty containers
+    if ($(el).find('th').length || !$(el).text().trim()) return;
+    
+    // Title and URL
+    let title = '';
+    let url = '';
+    
+    // First try finding a link - titles are usually links
+    const links = $(el).find('a');
+    links.each((j, link) => {
+      const linkText = $(link).text().trim();
+      const href = $(link).attr('href');
+      if (linkText && href && (
+        href.includes('tender') || 
+        href.includes('announcement') || 
+        href.includes('notice') ||
+        href.includes('oglas')
+      )) {
+        title = linkText;
+        url = href;
+        return false; // break the loop
+      }
+    });
+
+    // If no suitable link found, look for title in other elements
+    if (!title) {
+      ['[ng-bind*="title"], [ng-bind*="subject"], .tender-title, .title, td'].forEach(selector => {
+        if (!title) {
+          const el = $(el).find(selector).first();
+          if (el.length) {
+            title = el.text().trim();
+          }
+        }
+      });
+    }
+
+    // Skip if no title found
+    if (!title) return;
+
+    // Make URL absolute if relative
+    if (url && !url.startsWith('http')) {
+      url = 'https://e-nabavki.gov.mk' + (url.startsWith('/') ? '' : '/') + url;
+    }
+
+    // Description - collect all relevant text content
+    let description = '';
+    const relevantText = new Set(); // Use Set to avoid duplicates
+
+    // Look for description in various places
+    $(el).find('[ng-bind*="description"], [ng-bind*="details"], .description, .details, td').each((i, el) => {
+      const text = $(el).text().trim();
+      if (text && text !== title && !text.match(/^\d{1,2}\.\d{1,2}\.\d{4}$/)) { // Skip if just a date
+        relevantText.add(text);
+      }
+    });
+
+    description = Array.from(relevantText).join('\\n');
+
+    // Deadline - look for dates in various formats
+    let deadline = null;
+    const dateFormats = [
+      { 
+        regex: /(\d{2})\.(\d{2})\.(\d{4})\s*(?:во|at|до)?\s*(\d{1,2})?:?(\d{2})?/i,
+        transform: (m) => ({
+          date: `${m[3]}-${m[2]}-${m[1]}`,
+          hasTime: m[4] !== undefined,
+          hours: m[4] || '23',
+          minutes: m[5] || '59'
+        })
+      },
+      {
+        regex: /(\d{4})-(\d{2})-(\d{2})(?:T|\s+)(\d{2}):(\d{2})/,
+        transform: (m) => ({
+          date: `${m[1]}-${m[2]}-${m[3]}`,
+          hasTime: true,
+          hours: m[4],
+          minutes: m[5]
+        })
+      }
+    ];
+
+    // Search for dates in deadline-specific elements first
+    const dateElements = $(el).find('[ng-bind*="deadline"], [ng-bind*="date"], .deadline, [data-label*="deadline"], [data-label*="date"]');
+    let dateText = dateElements.first().text().trim();
+    
+    // If no specific deadline element, try to find dates in the description
+    if (!dateText) {
+      const allText = description;
+      dateFormats.some(format => {
+        const match = allText.match(format.regex);
+        if (match) {
+          dateText = match[0];
+          return true;
+        }
+      });
+    }
+
+    if (dateText) {
+      for (const format of dateFormats) {
+        const match = dateText.match(format.regex);
+        if (match) {
+          const { date, hasTime, hours, minutes } = format.transform(match);
+          deadline = `${date}T${hours}:${minutes}:00Z`;
+          break;
+        }
+      }
+    }
+
+    // Amount and currency
+    let amount = null;
+    let currency = null;
+
+    // Look for monetary values with currency symbols/codes
+    const amountRegex = /(?:€|EUR|MKD|ден\.?|денари)?\s*([\d.,]+)\s*(?:€|EUR|MKD|ден\.?|денари)?/i;
+    
+    // Try finding amount in specific elements first
+    ['[ng-bind*="amount"], [ng-bind*="value"], .amount, [data-label*="value"], td'].some(selector => {
+      const el = $(el).find(selector);
+      if (el.length) {
+        const text = el.text().trim();
+        const match = text.match(amountRegex);
+        if (match) {
+          amount = parseFloat(match[1].replace(/,/g, ''));
+          const lcText = text.toLowerCase();
+          if (lcText.includes('ден') || lcText.includes('mkd')) {
+            currency = 'MKD';
+          } else if (lcText.includes('eur') || text.includes('€')) {
+            currency = 'EUR';
+          }
+          return true;
+        }
+      }
+    });
+
+    // Default to MKD if currency not found (e-nabavki is primarily in MKD)
+    if (amount && !currency) {
+      currency = 'MKD';
+    }
+
+    // Type/Category/Status
+    const typeEl = $(el).find('.tender-type, .announcement-type, td:nth-child(6)');
+    const statusEl = $(el).find('.status, .tender-status');
+    
+    // Collect tags
+    const tags = new Set();
+    if (typeEl.length) {
+      tags.add(typeEl.text().trim());
+    }
+    if (statusEl.length) {
+      tags.add(statusEl.text().trim());
+    }
+    // Add default tag for this source
+    tags.add('E-Nabavki');
+
+    if (title) {
+      // Generate content hash
+      const hash = require('crypto').createHash('sha256');
+      hash.update(title + (url || '') + (description || ''));
+      const content_hash = hash.digest('hex');
+
+      grants.push({
+        title,
+        description,
+        deadline,
+        source_id: source.id,
+        source_url: source.url,
+        url,
+        amount,
+        currency,
+        type: 'tenders',  // E-Nabavki mostly contains tenders
+        tags: Array.from(tags),
+        content_hash,
+        raw_html: $(el).html(),
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      });
+    }
+  });
+
+  return grants;
+}
+
+module.exports = {
+  parseENabavki
+};

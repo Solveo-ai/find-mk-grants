@@ -30,12 +30,12 @@ const Footer = () => {
             >
               Извори
             </Link>
-            <a 
-              href="mailto:contact@fundingmacedonia.mk" 
+            <Link
+              to="/contact"
               className="text-caption hover:text-primary transition-colors"
             >
               Контакт
-            </a>
+            </Link>
           </nav>
           
           {/* Social Media Space (placeholder for future) */}
