@@ -3,11 +3,6 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "npm install",
   "framework": null,
-  "functions": {
-    "supabase/functions/**/*.ts": {
-      "runtime": "@vercel/node"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",

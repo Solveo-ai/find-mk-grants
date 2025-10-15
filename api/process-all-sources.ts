@@ -6,10 +6,12 @@ const corsHeaders = {
 };
 
 export default async function handler(req: any, res: any) {
+  // Vercel Functions use Node.js runtime by default
+  // Set headers for CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'authorization, x-client-info, apikey, content-type');
   // Handle CORS
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'authorization, x-client-info, apikey, content-type');
     res.status(200).end();
     return;
   }
@@ -63,8 +65,6 @@ export default async function handler(req: any, res: any) {
       }
     }
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'authorization, x-client-info, apikey, content-type');
     res.status(200).json({ success: true, processed: sources.length });
 
   } catch (error) {
