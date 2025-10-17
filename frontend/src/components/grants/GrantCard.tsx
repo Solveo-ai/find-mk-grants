@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, DollarSign, ExternalLink, Tag, Star } from "lucide-react";
+import { Calendar, DollarSign, ExternalLink, Tag, Star, Building2, Award, Users } from "lucide-react";
 import { Grant } from "@/hooks/useGrants";
 import { useState, useEffect } from "react";
 import { cleanTitle } from "@/lib/utils";
@@ -91,6 +91,65 @@ const GrantCard = ({ grant }: GrantCardProps) => {
      }
    };
 
+   const calculateDaysRemaining = (deadline?: string) => {
+     if (!deadline) return null;
+     try {
+       const deadlineDate = new Date(deadline);
+       const today = new Date();
+       const diffTime = deadlineDate.getTime() - today.getTime();
+       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+       if (diffDays < 0) return "Истечено";
+       if (diffDays === 0) return "Денес";
+       if (diffDays === 1) return "1 ден";
+       return `${diffDays} дена`;
+     } catch (error) {
+       console.warn('Error calculating days remaining:', deadline, error);
+       return null;
+     }
+   };
+
+   const getSourceDisplayName = (sourceId?: string) => {
+     if (!sourceId) return 'Нема информација';
+
+     // Map common source IDs to display names
+     const sourceMap: Record<string, string> = {
+       'giz': 'GIZ',
+       'undp': 'UNDP',
+       'world-bank': 'World Bank',
+       'ebrd': 'EBRD',
+       'eib': 'EIB',
+       'usaid': 'USAID',
+       'euro-access': 'EuroAccess',
+       'webalkans': 'WebAlkans',
+       'pcb': 'ProCredit Bank',
+       'na': 'НА за Европски Прашања',
+       'mtsp': 'Министерство за труд и социјална политика',
+       'economy': 'Министерство за економија',
+       'mtsp.gov.mk': 'Министерство за труд и социјална политика',
+       'economy.gov.mk': 'Министерство за економија',
+       'na.org.mk': 'НА за Европски Прашања',
+       'www.pcb.mk': 'ProCredit Bank',
+       'ebrdgeff.com': 'EBRD Green Economy Financing Facility',
+       'ausschreibungen.giz.de': 'GIZ',
+       'procurement-notices.undp.org': 'UNDP',
+       'eib.org': 'European Investment Bank',
+       'developmentaid.org': 'DevelopmentAid',
+       'tendersontime.com': 'TendersOnTime',
+       'tenderimpulse.com': 'TenderImpulse',
+       'tenderi.mk': 'Tenderi.mk',
+       'slvesnik.com.mk': 'Сл. весник',
+       'redi-ngo.eu': 'REDI NGO',
+       'biddetail.com': 'BidDetail',
+       'ceedhub.mk': 'CEED Hub',
+       'impactventures.mk': 'Impact Ventures',
+       'ec.europa.eu': 'Европска Комисија',
+       'e-nabavki.gov.mk': 'Електронски набавки'
+     };
+
+     return sourceMap[sourceId] || sourceId;
+   };
+
   return (
     <Card className="h-full hover:shadow-card transition-all duration-300 group">
       <CardHeader className="pb-3">
@@ -112,19 +171,48 @@ const GrantCard = ({ grant }: GrantCardProps) => {
 
       <CardContent className="pb-3">
         <div className="space-y-3">
-          {grant.amount && (
+          {/* Source */}
+          <div className="flex items-center gap-2 text-caption">
+            <Building2 className="w-4 h-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Извор:</span>
+            <span className="font-medium">{getSourceDisplayName(grant.source_id)}</span>
+          </div>
+
+          {/* Budget */}
+          <div className="flex items-center gap-2 text-caption">
+            <DollarSign className="w-4 h-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Буџет:</span>
+            <span className="font-medium">
+              {grant.amount ? formatCurrency(grant.amount, grant.currency) : 'Нема информација'}
+            </span>
+          </div>
+
+          {/* Deadline */}
+          <div className="flex items-center gap-2 text-caption">
+            <Calendar className="w-4 h-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Рок:</span>
+            <span className="font-medium">
+              {grant.deadline ? formatDate(grant.deadline) : 'Нема информација'}
+            </span>
+          </div>
+
+          {/* Days Remaining */}
+          {grant.deadline && calculateDaysRemaining(grant.deadline) && (
             <div className="flex items-center gap-2 text-caption">
-              <DollarSign className="w-4 h-4 text-muted-foreground" />
-              <span>{formatCurrency(grant.amount, grant.currency)}</span>
+              <Award className="w-4 h-4 text-muted-foreground" />
+              <span className="text-muted-foreground">Остануваат:</span>
+              <span className="font-medium text-warning">
+                {calculateDaysRemaining(grant.deadline)}
+              </span>
             </div>
           )}
 
-          {grant.deadline && (
-            <div className="flex items-center gap-2 text-caption">
-              <Calendar className="w-4 h-4 text-muted-foreground" />
-              <span>Рок: {formatDate(grant.deadline)}</span>
-            </div>
-          )}
+          {/* Type */}
+          <div className="flex items-center gap-2 text-caption">
+            <Users className="w-4 h-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Тип:</span>
+            <span className="font-medium">{getTypeLabel(grant.type)}</span>
+          </div>
         </div>
 
         {grant.tags && grant.tags.length > 0 && (
