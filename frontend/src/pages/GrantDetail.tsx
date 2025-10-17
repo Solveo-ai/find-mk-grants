@@ -1,5 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useOpportunity } from '@/hooks/useOpportunities';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/lib/supabase';
+import { translateToMacedonian } from '@/lib/translate';
 import Navigation from '@/components/layout/Navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +13,30 @@ import { cleanTitle } from '@/lib/utils';
 const GrantDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data: grant, isLoading, error } = useOpportunity(id || '');
+
+  const { data: grant, isLoading, error } = useQuery({
+    queryKey: ['grant', id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('grants')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) throw error;
+
+      // Translate to Macedonian
+      const translatedGrant = {
+        ...data,
+        title: await translateToMacedonian(data.title || '', 'de'),
+        description: await translateToMacedonian(data.description || '', 'de'),
+      };
+
+      return translatedGrant;
+    },
+    enabled: !!id
+  });
+
   const [isStarred, setIsStarred] = useState(false);
 
   useEffect(() => {
@@ -73,29 +98,30 @@ const GrantDetail = () => {
     }
   };
 
-  const getStatusColor = (status: string | undefined) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
-      case "open":
+      case "Отворено":
         return "bg-success text-success-foreground";
-      case "closed":
+      case "Затворено":
         return "bg-destructive text-destructive-foreground";
-      case "upcoming":
+      case "Претстои":
         return "bg-warning text-warning-foreground";
       default:
         return "bg-muted text-muted-foreground";
     }
   };
 
-  const getStatusText = (status: string | undefined) => {
-    switch (status) {
-      case "open":
-        return "Отворено";
-      case "closed":
-        return "Затворено";
-      case "upcoming":
-        return "Претстои";
-      default:
-        return status || "Непознато";
+  const getStatusText = (deadline?: string) => {
+    if (!deadline) return 'Претстои';
+    try {
+      const now = new Date();
+      const deadlineDate = new Date(deadline);
+      if (isNaN(deadlineDate.getTime())) return 'Претстои';
+      if (deadlineDate > now) return 'Отворено';
+      return 'Затворено';
+    } catch (error) {
+      console.warn('Error parsing deadline:', deadline, error);
+      return 'Претстои';
     }
   };
 
@@ -127,6 +153,47 @@ const GrantDetail = () => {
       default:
         return type || "Можност";
     }
+  };
+
+  const getSourceDisplayName = (sourceId?: string) => {
+    if (!sourceId) return 'Нема информација';
+
+    // Map common source IDs to display names
+    const sourceMap: Record<string, string> = {
+      'giz': 'GIZ',
+      'undp': 'UNDP',
+      'world-bank': 'World Bank',
+      'ebrd': 'EBRD',
+      'eib': 'EIB',
+      'usaid': 'USAID',
+      'euro-access': 'EuroAccess',
+      'webalkans': 'WebAlkans',
+      'pcb': 'ProCredit Bank',
+      'na': 'НА за Европски Прашања',
+      'mtsp': 'Министерство за труд и социјална политика',
+      'economy': 'Министерство за економија',
+      'mtsp.gov.mk': 'Министерство за труд и социјална политика',
+      'economy.gov.mk': 'Министерство за економија',
+      'na.org.mk': 'НА за Европски Прашања',
+      'www.pcb.mk': 'ProCredit Bank',
+      'ebrdgeff.com': 'EBRD Green Economy Financing Facility',
+      'ausschreibungen.giz.de': 'GIZ',
+      'procurement-notices.undp.org': 'UNDP',
+      'eib.org': 'European Investment Bank',
+      'developmentaid.org': 'DevelopmentAid',
+      'tendersontime.com': 'TendersOnTime',
+      'tenderimpulse.com': 'TenderImpulse',
+      'tenderi.mk': 'Tenderi.mk',
+      'slvesnik.com.mk': 'Сл. весник',
+      'redi-ngo.eu': 'REDI NGO',
+      'biddetail.com': 'BidDetail',
+      'ceedhub.mk': 'CEED Hub',
+      'impactventures.mk': 'Impact Ventures',
+      'ec.europa.eu': 'Европска Комисија',
+      'e-nabavki.gov.mk': 'Електронски набавки'
+    };
+
+    return sourceMap[sourceId] || sourceId;
   };
 
   if (isLoading) {
@@ -208,11 +275,13 @@ const GrantDetail = () => {
               </h1>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Badge className={getStatusColor(grant.status)}>
-                {getStatusText(grant.status)}
+              <Badge className={getStatusColor(getStatusText(grant.deadline))}>
+                {getStatusText(grant.deadline)}
               </Badge>
               <Badge variant="outline">{getTypeLabel(grant.type)}</Badge>
-              {grant.sector && <Badge variant="outline">{grant.sector}</Badge>}
+              {grant.tags && grant.tags.length > 0 && (
+                <Badge variant="outline">{grant.tags[0]}</Badge>
+              )}
             </div>
           </div>
         </div>
@@ -238,7 +307,7 @@ const GrantDetail = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center py-3 border-b">
               <span className="font-medium text-muted-foreground">Извор</span>
-              <span className="font-semibold">{grant.source || "Нема информација"}</span>
+              <span className="font-semibold">{getSourceDisplayName(grant.source_id) || "Нема информација"}</span>
             </div>
 
             <div className="flex justify-between items-center py-3 border-b">
@@ -262,24 +331,29 @@ const GrantDetail = () => {
               </div>
             )}
 
-            {grant.budget && (
+            {grant.amount && (
               <div className="flex justify-between items-center py-3 border-b">
                 <span className="font-medium text-muted-foreground">Буџет</span>
-                <span className="font-semibold">{grant.budget}</span>
+                <span className="font-semibold">
+                  {new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: grant.currency || 'USD',
+                  }).format(grant.amount)}
+                </span>
               </div>
             )}
 
-            {grant.sector && (
+            {grant.tags && grant.tags.length > 0 && (
               <div className="flex justify-between items-center py-3 border-b">
                 <span className="font-medium text-muted-foreground">Сектор</span>
-                <span className="font-semibold">{grant.sector}</span>
+                <span className="font-semibold">{grant.tags[0]}</span>
               </div>
             )}
 
             <div className="flex justify-between items-center py-3 border-b">
               <span className="font-medium text-muted-foreground">Статус</span>
-              <Badge className={getStatusColor(grant.status)}>
-                {getStatusText(grant.status)}
+              <Badge className={getStatusColor(getStatusText(grant.deadline))}>
+                {getStatusText(grant.deadline)}
               </Badge>
             </div>
           </div>
@@ -293,67 +367,24 @@ const GrantDetail = () => {
           </h3>
 
           <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
-            {grant.full_description || grant.description || "Нема информација"}
+            {grant.description || "Нема информација"}
           </div>
         </section>
 
-        {/* Eligibility */}
-        {grant.eligibility && (
-          <section id="eligibility" className="bg-card border rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <Users className="w-5 h-5" />
-              Критериуми за аплицирање
-            </h3>
-
-            <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
-              {grant.eligibility}
-            </div>
-          </section>
-        )}
-
-        {/* Application Process */}
-        {grant.application_process && (
-          <section id="additional" className="bg-card border rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              Процес на аплицирање
-            </h3>
-
-            <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
-              {grant.application_process}
-            </div>
-          </section>
-        )}
-
-        {/* Additional Information */}
-        {(grant.contact_info || grant.total_budget || grant.applicants_count) && (
+        {/* Tags */}
+        {grant.tags && grant.tags.length > 0 && (
           <section className="bg-card border rounded-lg p-6 mb-6">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <FileText className="w-5 h-5" />
-              Дополнителни информации
+              <Award className="w-5 h-5" />
+              Категории
             </h3>
 
-            <div className="space-y-4">
-              {grant.total_budget && (
-                <div>
-                  <div className="text-sm text-muted-foreground">Вкупен буџет на програмата</div>
-                  <div className="font-semibold">{grant.total_budget}</div>
-                </div>
-              )}
-
-              {grant.contact_info && (
-                <div>
-                  <div className="text-sm text-muted-foreground">Контакт за информации</div>
-                  <div className="text-sm">{grant.contact_info}</div>
-                </div>
-              )}
-
-              {grant.applicants_count && (
-                <div>
-                  <div className="text-sm text-muted-foreground">Број на апликанти</div>
-                  <div className="font-semibold">{grant.applicants_count}</div>
-                </div>
-              )}
+            <div className="flex flex-wrap gap-2">
+              {grant.tags.map((tag, index) => (
+                <Badge key={index} variant="outline" className="text-sm">
+                  {tag}
+                </Badge>
+              ))}
             </div>
           </section>
         )}
@@ -369,14 +400,14 @@ const GrantDetail = () => {
         </div>
 
         {/* Original Source Link */}
-        {grant.source_url && (
+        {grant.url && (
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 text-center">
             <h3 className="text-lg font-semibold mb-3">Види ја оригиналната објава</h3>
             <p className="text-muted-foreground mb-4">
               За повеќе детали и официјални информации, посетете ја оригиналната страница.
             </p>
             <Button
-              onClick={() => window.open(grant.source_url, '_blank')}
+              onClick={() => window.open(grant.url, '_blank')}
               className="bg-primary hover:bg-primary/90"
             >
               Види ја оригиналната објава
