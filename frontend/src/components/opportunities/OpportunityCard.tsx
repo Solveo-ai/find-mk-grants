@@ -62,6 +62,9 @@ const OpportunityCard = ({
     }
     localStorage.setItem('starredGrants', JSON.stringify(newStarredGrants));
     setIsStarred(!isStarred);
+
+    // Dispatch custom event to update navigation badge
+    window.dispatchEvent(new Event('starredGrantsChanged'));
   };
 
   const getStatusColor = (status: string) => {

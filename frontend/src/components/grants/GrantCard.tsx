@@ -42,6 +42,9 @@ const GrantCard = ({ grant }: GrantCardProps) => {
     }
     localStorage.setItem('starredGrants', JSON.stringify(newStarredGrants));
     setIsStarred(!isStarred);
+
+    // Dispatch custom event to update navigation badge
+    window.dispatchEvent(new Event('starredGrantsChanged'));
   };
 
     const formatCurrency = (amount?: number, currency?: string) => {
