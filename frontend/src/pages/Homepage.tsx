@@ -144,7 +144,7 @@ const Homepage = () => {
                 </div>
               )}
               {/* Real-time Grants Feed (tenders, grants, etc) */}
-              <GrantsFeed limit={200} order="created_at" direction="desc" type={selectedType} sector={selectedSector} search={searchQuery} />
+              <GrantsFeed limit={200} order="random" direction="desc" type={selectedType} sector={selectedSector} search={searchQuery} />
               {opportunities.length === 0 && (searchQuery || selectedType.length > 0 || selectedSector.length > 0) && (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground text-lg mb-4">

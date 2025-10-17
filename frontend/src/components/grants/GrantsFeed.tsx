@@ -8,22 +8,22 @@ import { AlertCircle } from "lucide-react";
 import { matchesTransliterated } from "@/lib/transliteration";
 
 interface GrantsFeedProps {
-  limit?: number;
-  order?: 'created_at' | 'updated_at' | 'deadline';
-  direction?: 'asc' | 'desc';
-  type?: string[];
-  sector?: string[];
-  search?: string;
-}
+   limit?: number;
+   order?: 'created_at' | 'updated_at' | 'deadline' | 'random';
+   direction?: 'asc' | 'desc';
+   type?: string[];
+   sector?: string[];
+   search?: string;
+ }
 
-const GrantsFeed = ({
-  limit = 200,
-  order = 'created_at',
-  direction = 'desc',
-  type,
-  sector,
-  search
-}: GrantsFeedProps) => {
+ const GrantsFeed = ({
+   limit = 200,
+   order = 'random',
+   direction = 'desc',
+   type,
+   sector,
+   search
+ }: GrantsFeedProps) => {
   const { data: allGrants, isLoading, error } = useRealtimeGrants({
     limit,
     order,

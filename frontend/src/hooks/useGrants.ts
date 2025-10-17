@@ -3,6 +3,16 @@ import { useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { translateToMacedonian } from '@/lib/translate';
 
+// Fisher-Yates shuffle algorithm to randomize array order
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 export interface Grant {
    id: string;
    source_id: string;
@@ -33,61 +43,75 @@ export interface GrantSource {
  }
 
 export const useGrants = (options: {
-    limit?: number;
-    order?: 'created_at' | 'updated_at' | 'deadline';
-    direction?: 'asc' | 'desc';
-    type?: string[];
-} = {}) => {
-    const { limit = 500, order = 'created_at', direction = 'desc', type } = options;
+     limit?: number;
+     order?: 'created_at' | 'updated_at' | 'deadline' | 'random';
+     direction?: 'asc' | 'desc';
+     type?: string[];
+ } = {}) => {
+     const { limit = 500, order = 'random', direction = 'desc', type } = options;
 
-   const query = useQuery({
-      queryKey: ['grants', { limit, order, direction, type }],
-      queryFn: async () => {
-        let query = supabase
-          .from('grants')
-          .select('*')
-          .order(order, { ascending: direction === 'asc' });
+    const query = useQuery({
+       queryKey: ['grants', { limit, order, direction, type }],
+       queryFn: async () => {
+         let query = supabase
+           .from('grants')
+           .select('*');
 
-        if (limit) {
-          query = query.limit(limit);
-        }
+         // Use random ordering to mix grants from different sources
+         if (order === 'random') {
+           query = query.order('created_at', { ascending: false }); // First order by date
+           // Note: Supabase doesn't support RANDOM() in order(), so we'll shuffle client-side
+         } else {
+           query = query.order(order, { ascending: direction === 'asc' });
+         }
 
-        if (type && type.length > 0) {
-          query = query.in('type', type);
-        }
+         if (limit) {
+           query = query.limit(limit);
+         }
 
-        const { data, error } = await query;
-        if (error) throw error;
+         if (type && type.length > 0) {
+           query = query.in('type', type);
+         }
 
-        // Translate grant titles and descriptions to Macedonian
-        const translatedGrants = await Promise.all(
-          (data as Grant[]).map(async (grant) => ({
-            ...grant,
-            title: await translateToMacedonian(grant.title || '', 'de'), // Try German first, fallback to English
-            description: await translateToMacedonian(grant.description || '', 'de'), // Try German first, fallback to English
-          }))
-        );
+         const { data, error } = await query;
+         if (error) throw error;
 
-        return translatedGrants;
-      },
-      refetchInterval: 10000, // Refetch every 10 seconds for near real-time updates
-      refetchOnWindowFocus: true,
-    });
+         let processedGrants = data as Grant[];
 
-   return query;
-};
+         // Shuffle the results to mix grants from different sources
+         if (order === 'random') {
+           processedGrants = shuffleArray(processedGrants);
+         }
+
+         // Translate grant titles and descriptions to Macedonian
+         const translatedGrants = await Promise.all(
+           processedGrants.map(async (grant) => ({
+             ...grant,
+             title: await translateToMacedonian(grant.title || '', 'de'), // Try German first, fallback to English
+             description: await translateToMacedonian(grant.description || '', 'de'), // Try German first, fallback to English
+           }))
+         );
+
+         return translatedGrants;
+       },
+       refetchInterval: 10000, // Refetch every 10 seconds for near real-time updates
+       refetchOnWindowFocus: true,
+     });
+
+    return query;
+ };
 
 export const useRealtimeGrants = (options: {
-    limit?: number;
-    order?: 'created_at' | 'updated_at' | 'deadline';
-    direction?: 'asc' | 'desc';
-    type?: string[];
-} = {}) => {
-    const queryClient = useQueryClient();
-    const { limit = 500, order = 'created_at', direction = 'desc', type } = options;
+     limit?: number;
+     order?: 'created_at' | 'updated_at' | 'deadline' | 'random';
+     direction?: 'asc' | 'desc';
+     type?: string[];
+ } = {}) => {
+     const queryClient = useQueryClient();
+     const { limit = 500, order = 'random', direction = 'desc', type } = options;
 
-   // Initial query
-   const query = useGrants(options);
+    // Initial query
+    const query = useGrants(options);
 
   useEffect(() => {
     // Subscribe to realtime changes
