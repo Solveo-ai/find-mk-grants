@@ -5,81 +5,69 @@ const fs = require('fs');
 
 // Enhanced keyword extraction function for Macedonian content
 function extractKeywords(title, description = '', source = '') {
-  const text = `${title} ${description} ${source}`.toLowerCase();
+  const fullText = `${title} ${description}`.toLowerCase();
   const keywords = [];
 
-  // Macedonian keyword mappings for different categories
-  const keywordMappings = {
-    // Sector keywords
-    'екологија': ['екологија', 'заштита на животната средина', 'климатски промени', 'зелена енергија', 'обновливи извори', 'одржлив развој', 'екосистем', 'загадување', 'рециклирање', 'биодиверзитет'],
-    'образование': ['образование', 'училиште', 'универзитет', 'студент', 'настава', 'курс', 'обука', 'дигитално образование', 'високо образование', 'професионално образование'],
-    'земјоделство': ['земјоделство', 'селска економија', 'храна', 'земјоделски производи', 'селски развој', 'агрикултура', 'фермер', 'прехрана', 'селски туризам'],
-    'здравство': ['здравство', 'здравствена заштита', 'медицина', 'болница', 'здравствена нега', 'превенција', 'здравствена едукација', 'психично здравје'],
-    'технологија': ['технологија', 'дигитализација', 'информациски технологии', 'интернет', 'софтвер', 'апликација', 'веб', 'дигитална трансформација', 'кибер безбедност'],
-    'туризам': ['туризам', 'туристички', 'патување', 'хотели', 'културно наследство', 'природни атракции', 'туристички оператори'],
-    'инфраструктура': ['инфраструктура', 'патишта', 'железница', 'комуникации', 'водоснабдување', 'енергетска инфраструктура', 'градско планирање'],
-    'енергија': ['енергија', 'електрична енергија', 'газ', 'нафта', 'обновливи извори', 'енергетска ефикасност', 'зелена енергија'],
-    'истражување': ['истражување', 'наука', 'иновации', 'развој', 'технолошки развој', 'научни истражувања', 'лабораторија'],
-    'млади': ['млади', 'младински', 'студент', 'млад претприемач', 'младинска работа', 'младински организации'],
-    'култура': ['култура', 'културно наследство', 'уметност', 'музеј', 'театар', 'музика', 'филм', 'културни институции'],
-    'претприемништво': ['претприемништво', 'претприемач', 'стартап', 'бизнис', 'компанија', 'иновации', 'пазар', 'економски развој'],
-    'социјална заштита': ['социјална заштита', 'социјални услуги', 'ранливи групи', 'инклузивност', 'социјална интеграција', 'заштита на деца'],
-    'спорт': ['спорт', 'спортски', 'рекреација', 'физичка активност', 'спортски клубови', 'олимписки'],
-    'транспорт': ['транспорт', 'саобраќај', 'патен сообраќај', 'јавен превоз', 'железнички транспорт', 'воздушен транспорт'],
+  // Macedonian stop words to filter out
+  const stopWords = [
+    'и', 'во', 'на', 'за', 'со', 'од', 'до', 'по', 'при', 'преку', 'како', 'да', 'не', 'се', 'го', 'ја', 'ги', 'е', 'има', 'имаат', 'беше', 'биде', 'бидат'
+  ];
 
-    // Funding type keywords
-    'грант': ['грант', 'финансирање', 'финансиска поддршка', 'европски фондови', 'ипа', 'хоризонт европа', 'еразмус'],
-    'тендер': ['тендер', 'јавна набавка', 'конкурс', 'повикување за понуди', 'процедура за јавна набавка'],
-    'кредит': ['кредит', 'заем', 'финансирање', 'банкарски производи', 'микрокредит', 'инвестициски кредит'],
-    'приватно финансирање': ['приватно финансирање', 'инвестиции', 'венчур капитал', 'бизнис ангели', 'инвеститори'],
+  // Extract meaningful words from title and description
+  const words = fullText.split(/\s+/).filter(word => {
+    // Remove punctuation and numbers
+    const cleanWord = word.replace(/[^\p{L}]/gu, '');
+    // Keep words that are 3+ characters, not stop words, and meaningful
+    return cleanWord.length >= 3 && !stopWords.includes(cleanWord.toLowerCase());
+  });
 
-    // Target audience keywords
-    'мсп': ['мали и средни претпријатија', 'мсп', 'претпријатија', 'бизнис', 'компании', 'фирми'],
-    'нво': ['нво', 'невладини организации', 'граѓански организации', 'цивилно општество', 'асоцијации'],
-    'универзитет': ['универзитет', 'факултет', 'високо образование', 'академска институција', 'научна институција'],
-    'стартап': ['стартап', 'нова компанија', 'нова бизнис идеја', 'инновациски компании', 'технолошки стартап'],
-    'јавен сектор': ['јавен сектор', 'државни институции', 'локална самоуправа', 'министерства', 'општини'],
-
-    // Geographic keywords
-    'европа': ['европа', 'европска унија', 'еу', 'европски', 'западен балкан', 'балкан'],
-    'македонија': ['македонија', 'северна македонија', 'мк', 'македонски', 'локални'],
-    'балкан': ['балкан', 'западен балкан', 'регионален', 'балкански држави'],
-    'африка': ['африка', 'африкански', 'развиените земји'],
-    'азия': ['азija', 'азиски', 'далечен исток']
-  };
-
-  // Check each category and add matching keywords
-  for (const [category, terms] of Object.entries(keywordMappings)) {
-    for (const term of terms) {
-      if (text.includes(term.toLowerCase())) {
-        // Add the category name as keyword (in Macedonian)
-        if (!keywords.includes(category)) {
-          keywords.push(category);
-        }
-        break; // Only add category once per match
-      }
+  // Count word frequency
+  const wordCount = {};
+  words.forEach(word => {
+    const cleanWord = word.replace(/[^\p{L}]/gu, '').toLowerCase();
+    if (cleanWord) {
+      wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
     }
+  });
+
+  // Get most frequent meaningful words
+  const sortedWords = Object.entries(wordCount)
+    .sort(([,a], [,b]) => b - a)
+    .map(([word]) => word);
+
+  // Add the most relevant words from the content
+  const contentKeywords = sortedWords.slice(0, 3);
+
+  // Add some contextual keywords based on common grant terms
+  const contextualKeywords = [];
+
+  // Check for funding types
+  if (fullText.includes('грант') || fullText.includes('финансирање')) {
+    contextualKeywords.push('грант');
+  }
+  if (fullText.includes('тендер') || fullText.includes('набавка') || fullText.includes('конкурс')) {
+    contextualKeywords.push('тендер');
+  }
+  if (fullText.includes('кредит') || fullText.includes('заем')) {
+    contextualKeywords.push('кредит');
   }
 
-  // Additional logic: extract specific terms from title
-  const titleWords = title.toLowerCase().split(/\s+/);
-  const importantWords = ['иновации', 'развој', 'технологија', 'образование', 'здравство', 'екологија', 'енергија', 'туризам', 'култура', 'спорт'];
-
-  for (const word of titleWords) {
-    if (importantWords.includes(word) && !keywords.includes(word)) {
-      keywords.push(word);
-    }
+  // Check for target audiences
+  if (fullText.includes('млади') || fullText.includes('студент')) {
+    contextualKeywords.push('млади');
+  }
+  if (fullText.includes('претпријатија') || fullText.includes('компани')) {
+    contextualKeywords.push('претприемништво');
+  }
+  if (fullText.includes('нво') || fullText.includes('организации')) {
+    contextualKeywords.push('нво');
   }
 
-  // Limit to 3-5 keywords and prioritize the most relevant ones
-  const priorityOrder = ['грант', 'тендер', 'кредит', 'приватно финансирање', 'екологија', 'образование', 'технологија', 'здравство', 'земјоделство', 'енергија', 'млади', 'претприемништво', 'мсп', 'нво'];
+  // Combine content keywords with contextual ones
+  const allKeywords = [...contentKeywords, ...contextualKeywords];
 
-  const prioritizedKeywords = keywords.filter(k => priorityOrder.includes(k))
-    .sort((a, b) => priorityOrder.indexOf(a) - priorityOrder.indexOf(b));
-
-  const remainingKeywords = keywords.filter(k => !priorityOrder.includes(k));
-
-  return [...prioritizedKeywords, ...remainingKeywords].slice(0, 5);
+  // Remove duplicates and limit to 5 keywords
+  return [...new Set(allKeywords)].slice(0, 5);
 }
 
 function parseSeeLegal(html, source) {
