@@ -247,7 +247,7 @@ const GrantCard = ({ grant }: GrantCardProps) => {
             className="px-3"
             asChild
           >
-            <a href={grant.url} target="_blank" rel="noopener noreferrer">
+            <a href={`/grant/${grant.id}`} target="_self">
               <ExternalLink className="w-4 h-4" />
             </a>
           </Button>
