@@ -193,27 +193,16 @@ const OpportunityCard = ({
             <Star className={`w-4 h-4 mr-2 ${isStarred ? 'fill-current' : ''}`} />
             {isStarred ? "Зачувано" : "Зачувај"}
           </Button>
-          {url ? (
-            <Button
-              variant="outline"
-              size="sm"
-              className="px-3"
-              asChild
-            >
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </Button>
-          ) : (
-            <Button
-              variant="outline"
-              size="sm"
-              className="px-3"
-              disabled
-            >
+          <Button
+            variant="outline"
+            size="sm"
+            className="px-3"
+            asChild
+          >
+            <Link to={`/grant/${id}`}>
               <ExternalLink className="w-4 h-4" />
-            </Button>
-          )}
+            </Link>
+          </Button>
         </div>
       </CardFooter>
     </Card>
