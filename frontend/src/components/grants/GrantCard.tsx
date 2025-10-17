@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, DollarSign, ExternalLink, Tag, Star } from "lucide-react";
 import { Grant } from "@/hooks/useGrants";
 import { useState, useEffect } from "react";
+import { cleanTitle } from "@/lib/utils";
 
 interface GrantCardProps {
   grant: Grant;
@@ -95,7 +96,7 @@ const GrantCard = ({ grant }: GrantCardProps) => {
       <CardHeader className="pb-3">
         <div className="flex justify-between items-start gap-3">
           <h3 className="text-card-title group-hover:text-primary transition-colors line-clamp-2">
-            {grant.title}
+            {cleanTitle(grant.title)}
           </h3>
           <div className="flex flex-col gap-1 shrink-0">
             <Badge variant="secondary" className="text-xs">

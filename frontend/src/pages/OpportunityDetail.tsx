@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Euro, Building2, ExternalLink, Users, FileText, Clock } from "lucide-react";
 import { useOpportunity } from "@/hooks/useOpportunities";
+import { cleanTitle } from "@/lib/utils";
 
 
 const OpportunityDetail = () => {
@@ -76,7 +77,7 @@ const OpportunityDetail = () => {
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
             <div>
               <h1 className="text-hero text-foreground mb-3">
-                  {opportunity.title}
+                  {cleanTitle(opportunity.title)}
                 </h1>
                 <div className="flex flex-wrap gap-2">
                   <Badge className={getStatusColor(opportunity.status || 'open')}>

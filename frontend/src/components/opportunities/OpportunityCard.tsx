@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
 import { Calendar, Euro, Building2, ExternalLink, Award, Users, Star } from "lucide-react";
 import { useState, useEffect } from "react";
+import { cleanTitle } from "@/lib/utils";
 
 interface OpportunityCardProps {
   id: string;
@@ -129,7 +130,7 @@ const OpportunityCard = ({
             {getTypeIcon(type)}
             <Link to={`/opportunity/${id}`}>
               <h3 className="text-card-title group-hover:text-primary transition-colors line-clamp-2 cursor-pointer">
-                {title}
+                {cleanTitle(title)}
               </h3>
             </Link>
           </div>

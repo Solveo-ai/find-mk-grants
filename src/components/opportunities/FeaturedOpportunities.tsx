@@ -1,5 +1,6 @@
 import OpportunityCard from "./OpportunityCard";
 import { Star } from "lucide-react";
+import { cleanTitle } from "@/lib/utils";
 
 // Mock featured opportunities data
 const featuredOpportunities = [
@@ -98,7 +99,7 @@ const FeaturedOpportunities = () => {
                   {/* Header */}
                   <div className="mb-4">
                     <h3 className="text-card-title group-hover:text-primary transition-colors mb-2 line-clamp-2">
-                      {opportunity.title}
+                      {cleanTitle(opportunity.title)}
                     </h3>
                     <p className="text-caption line-clamp-3 mb-3">
                       {opportunity.description}
