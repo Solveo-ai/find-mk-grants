@@ -131,7 +131,7 @@ const OpportunityCard = ({
         <div className="flex justify-between items-start gap-3">
           <div className="flex items-center gap-2">
             {getTypeIcon(type)}
-            <Link to={`/opportunity/${id}`}>
+            <Link to={`/grant/${id}`}>
               <h3 className="text-card-title group-hover:text-primary transition-colors line-clamp-2 cursor-pointer">
                 {cleanTitle(title)}
               </h3>
