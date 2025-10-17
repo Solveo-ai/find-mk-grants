@@ -842,18 +842,102 @@ export function classifyGrantType(title: string, description?: string): string {
 }
 
 export function normalizeGrant(grant: Grant, source: Source): Omit<Grant, 'tags'> & { tags: string[]; type: string } {
-   const type = grant.type || classifyGrantType(grant.title, grant.description);
+    const type = grant.type || classifyGrantType(grant.title, grant.description);
 
-   return {
-     title: grant.title.trim(),
-     url: grant.url,
-     description: grant.description?.trim(),
-     deadline: grant.deadline ? new Date(grant.deadline).toISOString() : undefined,
-     amount: grant.amount,
-     currency: grant.currency || 'USD',
-     type,
-     tags: grant.tags || []
-   };
+    // Extract meaningful keywords from title, description, and source
+    const extractedTags = extractKeywords(grant.title, grant.description, source.url);
+
+    // Combine existing tags with extracted ones, remove duplicates
+    const allTags = [...new Set([...(grant.tags || []), ...extractedTags])];
+
+    return {
+      title: grant.title.trim(),
+      url: grant.url,
+      description: grant.description?.trim(),
+      deadline: grant.deadline ? new Date(grant.deadline).toISOString() : undefined,
+      amount: grant.amount,
+      currency: grant.currency || 'USD',
+      type,
+      tags: allTags
+    };
+}
+
+export function extractKeywords(title: string, description?: string, source?: string): string[] {
+  const text = `${title} ${description || ''} ${source || ''}`.toLowerCase();
+  const keywords: string[] = [];
+
+  // Macedonian keyword mappings for different categories
+  const keywordMappings = {
+    // Sector keywords
+    'екологија': ['екологија', 'заштита на животната средина', 'климатски промени', 'зелена енергија', 'обновливи извори', 'одржлив развој', 'екосистем', 'загадување', 'рециклирање', 'биодиверзитет'],
+    'образование': ['образование', 'училиште', 'универзитет', 'студент', 'настава', 'курс', 'обука', 'дигитално образование', 'високо образование', 'професионално образование'],
+    'земјоделство': ['земјоделство', 'селска економија', 'храна', 'земјоделски производи', 'селски развој', 'агрикултура', 'фермер', 'прехрана', 'селски туризам'],
+    'здравство': ['здравство', 'здравствена заштита', 'медицина', 'болница', 'здравствена нега', 'превенција', 'здравствена едукација', 'психично здравје'],
+    'технологија': ['технологија', 'дигитализација', 'информациски технологии', 'интернет', 'софтвер', 'апликација', 'веб', 'дигитална трансформација', 'кибер безбедност'],
+    'туризам': ['туризам', 'туристички', 'патување', 'хотели', 'културно наследство', 'природни атракции', 'туристички оператори'],
+    'инфраструктура': ['инфраструктура', 'патишта', 'железница', 'комуникации', 'водоснабдување', 'енергетска инфраструктура', 'градско планирање'],
+    'енергија': ['енергија', 'електрична енергија', 'газ', 'нафта', 'обновливи извори', 'енергетска ефикасност', 'зелена енергија'],
+    'истражување': ['истражување', 'наука', 'иновации', 'развој', 'технолошки развој', 'научни истражувања', 'лабораторија'],
+    'млади': ['млади', 'младински', 'студент', 'млад претприемач', 'младинска работа', 'младински организации'],
+    'култура': ['култура', 'културно наследство', 'уметност', 'музеј', 'театар', 'музика', 'филм', 'културни институции'],
+    'претприемништво': ['претприемништво', 'претприемач', 'стартап', 'бизнис', 'компанија', 'иновации', 'пазар', 'економски развој'],
+    'социјална заштита': ['социјална заштита', 'социјални услуги', 'ранливи групи', 'инклузивност', 'социјална интеграција', 'заштита на деца'],
+    'спорт': ['спорт', 'спортски', 'рекреација', 'физичка активност', 'спортски клубови', 'олимписки'],
+    'транспорт': ['транспорт', 'саобраќај', 'патен сообраќај', 'јавен превоз', 'железнички транспорт', 'воздушен транспорт'],
+
+    // Funding type keywords
+    'грант': ['грант', 'финансирање', 'финансиска поддршка', 'европски фондови', 'ипа', 'хоризонт европа', 'еразмус'],
+    'тендер': ['тендер', 'јавна набавка', 'конкурс', 'повикување за понуди', 'процедура за јавна набавка'],
+    'кредит': ['кредит', 'заем', 'финансирање', 'банкарски производи', 'микрокредит', 'инвестициски кредит'],
+    'приватно финансирање': ['приватно финансирање', 'инвестиции', 'венчур капитал', 'бизнис ангели', 'инвеститори'],
+
+    // Target audience keywords
+    'мсп': ['мали и средни претпријатија', 'мсп', 'претпријатија', 'бизнис', 'компании', 'фирми'],
+    'нво': ['нво', 'невладини организации', 'граѓански организации', 'цивилно општество', 'асоцијации'],
+    'универзитет': ['универзитет', 'факултет', 'високо образование', 'академска институција', 'научна институција'],
+    'стартап': ['стартап', 'нова компанија', 'нова бизнис идеја', 'инновациски компании', 'технолошки стартап'],
+    'јавен сектор': ['јавен сектор', 'државни институции', 'локална самоуправа', 'министерства', 'општини'],
+
+    // Geographic keywords
+    'европа': ['европа', 'европска унија', 'еу', 'европски', 'западен балкан', 'балкан'],
+    'македонија': ['македонија', 'северна македонија', 'мк', 'македонски', 'локални'],
+    'балкан': ['балкан', 'западен балкан', 'регионален', 'балкански држави'],
+    'африка': ['африка', 'африкански', 'развиените земји'],
+    'азия': ['азija', 'азиски', 'далечен исток']
+  };
+
+  // Check each category and add matching keywords
+  for (const [category, terms] of Object.entries(keywordMappings)) {
+    for (const term of terms) {
+      if (text.includes(term.toLowerCase())) {
+        // Add the category name as keyword (in Macedonian)
+        if (!keywords.includes(category)) {
+          keywords.push(category);
+        }
+        break; // Only add category once per match
+      }
+    }
+  }
+
+  // Additional logic: extract specific terms from title
+  const titleWords = title.toLowerCase().split(/\s+/);
+  const importantWords = ['иновации', 'развој', 'технологија', 'образование', 'здравство', 'екологија', 'енергија', 'туризам', 'култура', 'спорт'];
+
+  for (const word of titleWords) {
+    if (importantWords.includes(word) && !keywords.includes(word)) {
+      keywords.push(word);
+    }
+  }
+
+  // Limit to 3-5 keywords and prioritize the most relevant ones
+  const priorityOrder = ['грант', 'тендер', 'кредит', 'приватно финансирање', 'екологија', 'образование', 'технологија', 'здравство', 'земјоделство', 'енергија', 'млади', 'претприемништво', 'мсп', 'нво'];
+
+  const prioritizedKeywords = keywords.filter(k => priorityOrder.includes(k))
+    .sort((a, b) => priorityOrder.indexOf(a) - priorityOrder.indexOf(b));
+
+  const remainingKeywords = keywords.filter(k => !priorityOrder.includes(k));
+
+  return [...prioritizedKeywords, ...remainingKeywords].slice(0, 5);
 }
 
 export async function computeContentHash(title: string, url: string, deadline?: string, sourceUrl?: string): Promise<string> {
