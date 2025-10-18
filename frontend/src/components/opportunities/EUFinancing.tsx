@@ -4,8 +4,13 @@ import { Star, ExternalLink, Clock, Building, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { translateToMacedonian } from '@/lib/translate';
+import { matchesTransliterated } from '@/lib/transliteration';
 
-const EUFinancing = () => {
+interface EUFinancingProps {
+  searchQuery?: string;
+}
+
+const EUFinancing = ({ searchQuery }: EUFinancingProps) => {
   const { grants, loading, error, hasMore, loadMore } = useEuroAccessGrants(8);
   const navigate = useNavigate();
   const [starredGrants, setStarredGrants] = useState<any[]>([]);
@@ -18,8 +23,20 @@ const EUFinancing = () => {
 
   // EU grants are now translated in the useEuroAccessGrants hook, so we can use them directly
   useEffect(() => {
-    setTranslatedGrants(grants);
-  }, [grants]);
+    let filteredGrants = grants;
+
+    // Filter grants based on search query
+    if (searchQuery) {
+      filteredGrants = grants.filter(grant => {
+        const titleMatch = matchesTransliterated(searchQuery, grant.title || '');
+        const descMatch = matchesTransliterated(searchQuery, grant.description || '');
+        const programMatch = matchesTransliterated(searchQuery, grant.funding_program || '');
+        return titleMatch || descMatch || programMatch;
+      });
+    }
+
+    setTranslatedGrants(filteredGrants);
+  }, [grants, searchQuery]);
 
   const toggleStar = (grant: EuroAccessGrant, e: React.MouseEvent) => {
     e.preventDefault();

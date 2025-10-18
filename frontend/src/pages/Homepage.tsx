@@ -11,6 +11,7 @@ import { useAvailableGrantsCount } from "@/hooks/useAvailableGrantsCount";
 import { useGrants } from "@/hooks/useGrants";
 import { useEuroAccessGrants } from "@/hooks/useEuroAccessGrants";
 import GrantsFeed from "@/components/grants/GrantsFeed";
+import { matchesTransliterated } from "@/lib/transliteration";
 
 
 const Homepage = () => {
@@ -30,6 +31,15 @@ const Homepage = () => {
   const { data: privateFundingData } = useGrants({ limit: 1000, type: ['private-funding'] });
   const { data: loansData } = useGrants({ limit: 1000, type: ['loans'] });
   const { grants: euGrants } = useEuroAccessGrants(1000); // Get all EU grants for count
+
+  // Filter EU grants based on search query
+  const filteredEuGrants = euGrants.filter(grant => {
+    if (!searchQuery) return true;
+    const titleMatch = matchesTransliterated(searchQuery, grant.title || '');
+    const descMatch = matchesTransliterated(searchQuery, grant.description || '');
+    const programMatch = matchesTransliterated(searchQuery, grant.funding_program || '');
+    return titleMatch || descMatch || programMatch;
+  });
 
   const categoryCounts = {
     grants: grantsData?.filter(g => g.type === 'grants').length || 0,
@@ -161,7 +171,7 @@ const Homepage = () => {
       </section>
 
       {/* EU Financing */}
-      <EUFinancing />
+      <EUFinancing searchQuery={searchQuery} />
     </div>
   );
 };
