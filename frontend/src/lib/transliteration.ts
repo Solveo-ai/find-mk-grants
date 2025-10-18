@@ -130,6 +130,46 @@ function addDiacriticAlternates(text: string): string[] {
 }
 
 /**
+ * Bilingual synonyms to bridge common English ↔ Macedonian search terms
+ */
+const BILINGUAL_SYNONYMS: { en: string[]; mk: string[] }[] = [
+  { en: ['grant','grants'], mk: ['грант','грантови'] },
+  { en: ['fund','funds','funding','finance','financing'], mk: ['фонд','фондови','финансии','финансирање'] },
+  { en: ['tender','tenders','procurement'], mk: ['тендер','тендери','јавна набавка','набавки'] },
+  { en: ['loan','loans','credit','credits'], mk: ['кредит','кредити','заем','заеми'] },
+  { en: ['program','programme','call','calls'], mk: ['програма','повик','повици'] },
+];
+
+/**
+ * Expand strings with bilingual synonyms (adds both EN and MK variants and their transliterations)
+ */
+function expandWithSynonyms(inputs: string[]): string[] {
+  const out = new Set<string>();
+  for (const s of inputs) {
+    const l = s.toLowerCase();
+    out.add(l);
+    for (const pair of BILINGUAL_SYNONYMS) {
+      const hasEn = pair.en.some(k => l.includes(k));
+      const hasMk = pair.mk.some(k => l.includes(k));
+      if (hasEn || hasMk) {
+        // Add all synonyms in both languages, and their script-variants
+        for (const en of pair.en) {
+          out.add(en);
+          out.add(latinToCyrillicText(en));
+          out.add(cyrillicToLatinText(en));
+        }
+        for (const mk of pair.mk) {
+          out.add(mk);
+          out.add(latinToCyrillicText(mk));
+          out.add(cyrillicToLatinText(mk));
+        }
+      }
+    }
+  }
+  return Array.from(out);
+}
+
+/**
  * Normalizes text for better search matching by handling common variations
  */
 function normalizeForSearch(text: string): string {
@@ -182,8 +222,24 @@ export function matchesTransliterated(searchTerm: string, text: string): boolean
       set.add(removeDiacritics(v));
     }
   };
+  // Initial normalize/diacritics
   enrich(candidatesSearch);
   enrich(candidatesText);
+
+  // Expand with bilingual synonyms
+  const addSynonymsToSet = (set: Set<string>) => {
+    const expanded = expandWithSynonyms(Array.from(set));
+    for (const v of expanded) {
+      set.add(v);
+      // Also add transliteration and normalized versions of each synonym
+      set.add(cyrillicToLatinText(v));
+      set.add(latinToCyrillicText(v));
+      set.add(removeDiacritics(v));
+      set.add(normalizeForSearch(v));
+    }
+  };
+  addSynonymsToSet(candidatesSearch);
+  addSynonymsToSet(candidatesText);
 
   // Cross-compare all variants
   for (const t of candidatesText) {

@@ -52,11 +52,27 @@ interface GrantsFeedProps {
       const hasMatchingSector = grant.tags?.some(tag => sector.includes(tag));
       if (!hasMatchingSector) return false;
     }
-    // Search filter with transliteration support (Cyrillic ↔ Latin)
+    // Search filter with transliteration support (Cyrillic ↔ Latin) and type keywords
     if (search) {
       const titleMatch = matchesTransliterated(search, grant.title || '');
       const descMatch = matchesTransliterated(search, grant.description || '');
-      if (!titleMatch && !descMatch) return false;
+
+      // Treat common keywords as type-intent to avoid missing matches after translation
+      const s = (search || '').toLowerCase();
+      const isGrantQuery    = (/\bgrant\b|\bgrants\b|грант|грантови/i).test(s);
+      const isTenderQuery   = (/\btender\b|\btenders\b|тендер|тендери/i).test(s);
+      const isLoanQuery     = (/\bloan\b|\bloans\b|\bcredit\b|\bcredits\b|кредит|кредити|заем|заеми/i).test(s);
+      const isInvestorQuery = (/investor|investors|investment|инвеститор|инвеститори|инвестиции/i).test(s);
+
+      // Be resilient to type naming/casing from different sources
+      const typeVal = (grant.type || '').toLowerCase().trim();
+      const typeMatch =
+        (isGrantQuery    && (typeVal.includes('grant') || typeVal.includes('eu'))) ||
+        (isTenderQuery   &&  typeVal.includes('tender')) ||
+        (isLoanQuery     && (typeVal.includes('loan') || typeVal.includes('credit'))) ||
+        (isInvestorQuery && (typeVal.includes('private') || typeVal.includes('invest')));
+
+      if (!titleMatch && !descMatch && !typeMatch) return false;
     }
     return true;
   });
