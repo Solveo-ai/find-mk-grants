@@ -31,22 +31,25 @@ const EUFinancing = ({ searchQuery }: EUFinancingProps) => {
         const titleMatch = matchesTransliterated(searchQuery, grant.title || '');
         const descMatch = matchesTransliterated(searchQuery, grant.description || '');
         const programMatch = matchesTransliterated(searchQuery, grant.funding_program || '');
-
+ 
         // Keyword → type intent (so queries like "grant", "tender", "loan" still surface items)
         const s = (searchQuery || '').toLowerCase();
         const isGrantQuery    = (/\bgrant\b|\bgrants\b|грант|грантови/i).test(s);
         const isTenderQuery   = (/\btender\b|\btenders\b|тендер|тендери/i).test(s);
         const isLoanQuery     = (/\bloan\b|\bloans\b|\bcredit\b|\bcredits\b|кредит|кредити|заем|заеми/i).test(s);
         const isInvestorQuery = (/investor|investors|investment|инвеститор|инвеститори|инвестиции/i).test(s);
-
-        const typeVal = (grant.type || '').toLowerCase();
+ 
+        const typeVal = (grant.type || '').toLowerCase().trim();
         const typeMatch =
-          (isGrantQuery && (typeVal === 'grants' || typeVal === 'eu-grants')) ||
-          (isTenderQuery && typeVal === 'tenders') ||
-          (isLoanQuery && typeVal === 'loans') ||
-          (isInvestorQuery && (typeVal === 'private-funding' || typeVal === 'investors'));
-
-        return titleMatch || descMatch || programMatch || typeMatch;
+          (isGrantQuery    && (typeVal.includes('grant') || typeVal.includes('eu'))) ||
+          (isTenderQuery   &&  typeVal.includes('tender')) ||
+          (isLoanQuery     && (typeVal.includes('loan') || typeVal.includes('credit'))) ||
+          (isInvestorQuery && (typeVal.includes('private') || typeVal.includes('invest')));
+ 
+        // If the user typed a generic keyword (grant/tender/loan/investor), accept even without metadata match
+        const keywordIntent = isGrantQuery || isTenderQuery || isLoanQuery || isInvestorQuery;
+ 
+        return titleMatch || descMatch || programMatch || typeMatch || keywordIntent;
       });
     }
 

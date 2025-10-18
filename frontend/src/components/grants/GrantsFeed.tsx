@@ -33,7 +33,7 @@ interface GrantsFeedProps {
   const [visibleCount, setVisibleCount] = useState(6);
 
   // Filter grants by sector, search, and deadline
-  const grants = allGrants?.filter(grant => {
+  let grants = allGrants?.filter(grant => {
     // Deadline filter - show grants that are not expired or expired within last 6 months
     // This allows users to see historical opportunities and prepare for future similar calls
     if (grant.deadline) {
@@ -72,10 +72,18 @@ interface GrantsFeedProps {
         (isLoanQuery     && (typeVal.includes('loan') || typeVal.includes('credit'))) ||
         (isInvestorQuery && (typeVal.includes('private') || typeVal.includes('invest')));
 
-      if (!titleMatch && !descMatch && !typeMatch) return false;
+      // Also accept generic keyword-intent even if type metadata is missing
+      const keywordIntent = isGrantQuery || isTenderQuery || isLoanQuery || isInvestorQuery;
+
+      if (!titleMatch && !descMatch && !typeMatch && !keywordIntent) return false;
     }
     return true;
-  });
+  }) as typeof allGrants;
+
+  // Fallback: if a search is used but nothing matched, show all items to avoid empty state
+  if (search && (!grants || grants.length === 0)) {
+    grants = (allGrants || []) as typeof allGrants;
+  }
 
   const visibleGrants = grants?.slice(0, visibleCount) || [];
   const hasMore = grants && grants.length > visibleCount;
